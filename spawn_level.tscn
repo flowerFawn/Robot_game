@@ -7,13 +7,13 @@ size = Vector2(31, 10)
 
 [node name="SpawnLevel" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["floor"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(5.5, 5)
 shape = SubResource("RectangleShape2D_hjily")
 
 [node name="Player" parent="." instance=ExtResource("1_anqrn")]
-position = Vector2(3, -13)
+position = Vector2(3, -36)
 
 [node name="Camera2D" type="Camera2D" parent="."]

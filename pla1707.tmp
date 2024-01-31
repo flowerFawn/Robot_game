@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://br2p34txi01wm"]
+
+[ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
+[ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
+[ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
+[ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40rak"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdf3r"]
+size = Vector2(9.75, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h8ch"]
+size = Vector2(2.5, 10)
+
+[node name="PlayerMain" type="CharacterBody2D"]
+script = ExtResource("1_xrvte")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -10)
+shape = SubResource("RectangleShape2D_ys71y")
+
+[node name="Torso" type="StaticBody2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_hu2in")
+
+[node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
+shape = SubResource("RectangleShape2D_40rak")
+
+[node name="RightArm" type="StaticBody2D" parent="."]
+position = Vector2(4, -5)
+collision_layer = 0
+script = ExtResource("3_uxcag")
+
+[node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="LeftArm" type="StaticBody2D" parent="."]
+position = Vector2(-4, -5)
+collision_layer = 0
+script = ExtResource("3_uxcag")
+is_left = true
+
+[node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="LeftLeg" type="StaticBody2D" parent="."]
+position = Vector2(2, 7)
+collision_layer = 2
+script = ExtResource("4_l7m4c")
+
+[node name="LeftLegCollision" type="CollisionShape2D" parent="LeftLeg"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2h8ch")
+
+[node name="RightLeg" type="StaticBody2D" parent="."]
+position = Vector2(-2, 7)
+collision_layer = 2
+script = ExtResource("4_l7m4c")
+
+[node name="RightLegCollision" type="CollisionShape2D" parent="RightLeg"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2h8ch")
+
+[node name="FloorRay" type="RayCast2D" parent="."]
+position = Vector2(-3, 16)
+target_position = Vector2(6, 0)
