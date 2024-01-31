@@ -15,5 +15,3 @@ shape = SubResource("RectangleShape2D_hjily")
 
 [node name="Player" parent="." instance=ExtResource("1_anqrn")]
 position = Vector2(3, -36)
-
-[node name="Camera2D" type="Camera2D" parent="."]
