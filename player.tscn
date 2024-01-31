@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://br2p34txi01wm"]
+
+[ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
+[ext_resource type="Script" path="res://player_main.gd" id="1_xrvte"]
+[ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40rak"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdf3r"]
+size = Vector2(9.75, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
+size = Vector2(0, 0)
+
+[node name="Player" type="StaticBody2D"]
+script = ExtResource("1_xrvte")
+
+[node name="Torso" type="StaticBody2D" parent="."]
+script = ExtResource("1_hu2in")
+
+[node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
+shape = SubResource("RectangleShape2D_40rak")
+
+[node name="RightArm" type="StaticBody2D" parent="."]
+position = Vector2(4, -5)
+script = ExtResource("3_uxcag")
+
+[node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="LeftArm" type="StaticBody2D" parent="."]
+position = Vector2(-4, -5)
+script = ExtResource("3_uxcag")
+is_left = true
+
+[node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -10)
+shape = SubResource("RectangleShape2D_ys71y")
