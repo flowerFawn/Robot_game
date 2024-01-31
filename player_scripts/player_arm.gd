@@ -1,6 +1,7 @@
 extends StaticBody2D
 @export var is_left: bool
-const UNSHOOTABLE_STATES = ["disabled"]
+const UNSHOOTABLE_STATES = ["disabled", "sliding"]
+var speed_multiplier: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

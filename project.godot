@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Robot Game"
+run/main_scene="res://spawn_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/scale_mode="integer"
+
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Bullets"
 
 [rendering]
 
