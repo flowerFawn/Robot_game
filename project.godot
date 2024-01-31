@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://player_limbs/": "purple",
+"res://player_scripts/": "green"
+}
+
 [layer_names]
 
 2d_physics/layer_1="Environment"

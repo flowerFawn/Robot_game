@@ -9,6 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	if get_parent().player_state not in UNSHOOTABLE_STATES or is_left:
 		look_at(get_global_mouse_position())
