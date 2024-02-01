@@ -23,5 +23,17 @@ func start_slide(direction_multiplier):
 		position.y -= 4
 		rotation_degrees = 90 * direction_multiplier
 	
+func end_slide(direction_multiplier):
+	position.x -= 15 * direction_multiplier
+	if is_left:
+		position.y += 5
+		rotation_degrees = 0
+		if direction_multiplier == -1:
+			position.x += 3
+	else:
+		position.y += 4
+		rotation_degrees = 0
+
+
 func _process(delta):
 	pass

@@ -6,6 +6,7 @@ var total_weight:float = 0
 var total_hp:float = 0
 var total_speed:float = 40
 var total_jump:float = 0
+var stored_slide:float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_state = "walking"
@@ -17,21 +18,24 @@ func _physics_process(delta):
 	var slide_output:Array = take_slide_input()
 	if slide_output[0]:
 		player_state = "sliding"
+		stored_slide = slide_output[1]
 		current_forces = Vector2(total_speed * 2 * slide_output[1], 0)
 		for limb in get_children():
 			if limb.is_in_group("ray"):
 				limb.position.y -= 12
 			elif not limb.is_in_group("slide_excluded"):
-				limb.start_slide(slide_output[1])
+				limb.start_slide(stored_slide)
+				print(stored_slide)
 	elif player_state not in UNMOVABLE_STATES:
 		current_forces.x = take_movement_inputs()
 		current_forces.y -= take_jump_input()
-	if player_state == "sliding" and current_forces.x < 1:
+	if (player_state == "sliding" and current_forces.x < 1) or Input.is_action_just_released("slide"):
 		player_state = "walking"
-		#for limb in get_children():
-			#if limb.is_in_group("ray"):	
-			#elif not limb.is_in_group("slide_excluded"):
-				#limb.start_slide(slide_output[1])
+		for limb in get_children():
+			if limb.is_in_group("ray"):	
+				limb.position.y += 12
+			elif not limb.is_in_group("slide_excluded"):
+				limb.end_slide(stored_slide)
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta
 	move_and_collide(current_forces * delta)

@@ -28,3 +28,13 @@ func start_slide(direction_multiplier):
 	else:
 		position.x -= 4
 		
+func end_slide(direction_multiplier):
+	if not is_left:
+		rotation_degrees = 0
+		position.y -= 4
+		position.x += 4 * direction_multiplier
+		if direction_multiplier == -1:
+			rotation_degrees += 90
+	else:
+		position.x += 4
+		
