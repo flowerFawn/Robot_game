@@ -1,7 +1,0 @@
-[gd_resource type="JSON" format=3 uid="uid://ccvdyfscoqrf8"]
-
-[resource]
-data = {
-"hp": 10.0,
-"weight": 10.0
-}

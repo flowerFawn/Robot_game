@@ -7,8 +7,11 @@ func _ready():
 	get_parent().add_stats(stats)
 
 func decode_part_json():
-	var stats: Dictionary = load("res://player_limbs/player_torsos/standard.tres").data
+	var stats: Dictionary = load("res://player_limbs/player_torsos/standard.json").data
 	return stats
+	
+func start_slide(direction_multiplier):
+	rotation_degrees = 90 * direction_multiplier
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

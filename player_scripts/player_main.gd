@@ -1,4 +1,5 @@
 extends CharacterBody2D
+const UNMOVABLE_STATES = ["disabled", "sliding"]
 var player_state = "disabled"
 var current_forces: Vector2
 var total_weight:float = 0
@@ -13,8 +14,26 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	add_gravity(delta)
-	current_forces.x = take_movement_inputs()
-	current_forces.y -= take_jump_input()
+	var slide_output:Array = take_slide_input()
+	if slide_output[0]:
+		player_state = "sliding"
+		current_forces = Vector2(total_speed * 2 * slide_output[1], 0)
+		for limb in get_children():
+			if limb.is_in_group("ray"):
+				limb.position.y -= 12
+			elif not limb.is_in_group("slide_excluded"):
+				limb.start_slide(slide_output[1])
+	elif player_state not in UNMOVABLE_STATES:
+		current_forces.x = take_movement_inputs()
+		current_forces.y -= take_jump_input()
+	if player_state == "sliding" and current_forces.x < 1:
+		player_state = "walking"
+		#for limb in get_children():
+			#if limb.is_in_group("ray"):	
+			#elif not limb.is_in_group("slide_excluded"):
+				#limb.start_slide(slide_output[1])
+	if player_state == "sliding":
+		current_forces.x -= 10 * delta
 	move_and_collide(current_forces * delta)
 
 func add_stats(limb_stats: Dictionary):
@@ -45,3 +64,18 @@ func take_jump_input():
 			return 0
 	else:
 		return 0
+		
+func take_slide_input():
+	if get_node("FloorRay").get_collider() != null:
+		if Input.is_action_just_pressed("slide") and player_state not in UNMOVABLE_STATES and get_node("FloorRay").get_collider().is_in_group("floor"):
+			if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+				return [false]
+			elif Input.is_action_pressed("left"):
+				return [true, -1]
+			elif Input.is_action_pressed("right"):
+				return [true, 1]
+			
+		else:
+			return [false]
+	else:
+		return [false]

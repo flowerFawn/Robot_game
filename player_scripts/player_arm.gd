@@ -15,5 +15,16 @@ func _process(delta):
 		look_at(get_global_mouse_position())
 
 func decode_part_json():
-	var stats: Dictionary = load("res://player_limbs/player_arms/standard.tres").data
+	var stats: Dictionary = load("res://player_limbs/player_arms/standard.json").data
 	return stats
+
+func start_slide(direction_multiplier):
+	if not is_left:
+		rotation_degrees = 150 
+		position.y += 4
+		position.x -= 4 * direction_multiplier
+		if direction_multiplier == -1:
+			rotation_degrees -= 90
+	else:
+		position.x -= 4
+		

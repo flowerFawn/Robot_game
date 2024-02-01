@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=10 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
+[ext_resource type="Script" path="res://player_scripts/player_collision.gd" id="2_adrog"]
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
-size = Vector2(12, 24)
+size = Vector2(8, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40rak"]
 size = Vector2(8, 16)
@@ -21,11 +22,13 @@ size = Vector2(2.5, 10)
 collision_layer = 0
 script = ExtResource("1_xrvte")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["limb"]]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ys71y")
+script = ExtResource("2_adrog")
 
-[node name="Torso" type="StaticBody2D" parent="."]
+[node name="Torso" type="StaticBody2D" parent="." groups=["limb"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_hu2in")
@@ -33,18 +36,8 @@ script = ExtResource("1_hu2in")
 [node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
 shape = SubResource("RectangleShape2D_40rak")
 
-[node name="RightArm" type="StaticBody2D" parent="."]
+[node name="LeftArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(4, -5)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_uxcag")
-
-[node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
-position = Vector2(4.125, 0)
-shape = SubResource("RectangleShape2D_jdf3r")
-
-[node name="LeftArm" type="StaticBody2D" parent="."]
-position = Vector2(-4, -5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_uxcag")
@@ -54,17 +47,28 @@ is_left = true
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
-[node name="LeftLeg" type="StaticBody2D" parent="."]
+[node name="RightArm" type="StaticBody2D" parent="." groups=["limb"]]
+position = Vector2(-4, -5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_uxcag")
+
+[node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="LeftLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(2, 7)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_l7m4c")
+is_left = true
 
 [node name="LeftLegCollision" type="CollisionShape2D" parent="LeftLeg"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_2h8ch")
 
-[node name="RightLeg" type="StaticBody2D" parent="."]
+[node name="RightLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-2, 7)
 collision_layer = 2
 collision_mask = 0
@@ -74,11 +78,11 @@ script = ExtResource("4_l7m4c")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_2h8ch")
 
-[node name="FloorRay" type="RayCast2D" parent="."]
+[node name="FloorRay" type="RayCast2D" parent="." groups=["ray"]]
 position = Vector2(-3, 16)
 target_position = Vector2(6, 1)
 hit_from_inside = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["slide_excluded"]]
 position = Vector2(0, -49)
 zoom = Vector2(4, 4)
