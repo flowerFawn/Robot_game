@@ -38,3 +38,4 @@ func end_slide(direction_multiplier):
 	else:
 		position.x += 4
 		
+		
