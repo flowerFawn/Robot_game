@@ -17,4 +17,4 @@ offset_right = 480.0
 offset_bottom = 838.0
 theme = ExtResource("1_fqmev")
 script = ExtResource("2_nwdpp")
-searched_folder = "res://player_limbs/player_legs/"
+searched_folder = "res://player_limbs/player_legs"
