@@ -39,6 +39,7 @@ func _physics_process(delta):
 	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
 		#sets state back, and does end_slide, undoing the start of the slide
 		player_state = "walking"
+		position.y -= 6
 		for limb in get_children():
 			if limb.is_in_group("ray"):	
 				limb.position.y += 12
