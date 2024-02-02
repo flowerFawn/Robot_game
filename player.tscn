@@ -83,5 +83,5 @@ target_position = Vector2(6, 1)
 hit_from_inside = true
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["slide_excluded"]]
-position = Vector2(0, -49)
+position = Vector2(0, -100)
 zoom = Vector2(4, 4)
