@@ -1,13 +1,19 @@
 extends OptionButton
 @export var searched_folder:String
-var limb_folder = DirAccess.open("res://player_limbs/player_legs")
-# Called when the node enters the scene tree for the first time.
+@export var assigned_limb:String
+#snakecase
+#put the folder link here (no "")
 func _ready():
-	print(limb_folder)
-	print(searched_folder)
+	var limb_folder = DirAccess.open(searched_folder)
+	for file in limb_folder.get_files():
+		file = file.left(-5)
+		add_item(file)
 	print(limb_folder.get_files())
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_item_selected(index):
+	pass # Replace with function body.

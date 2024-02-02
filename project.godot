@@ -15,6 +15,10 @@ run/main_scene="res://spawn_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Selected_Limbs="*res://autoloads/limb_selection_storage.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -26,8 +30,10 @@ window/stretch/scale_mode="integer"
 
 folder_colors={
 "res://assets/": "pink",
+"res://autoloads/": "red",
 "res://player_limbs/": "purple",
-"res://player_scripts/": "green"
+"res://player_scripts/": "green",
+"res://saves/": "yellow"
 }
 
 [input]

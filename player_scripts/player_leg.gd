@@ -8,8 +8,12 @@ func _ready():
 	get_parent().add_stats(stats)
 
 func decode_part_json():
-	var stats: Dictionary = load("res://player_limbs/player_legs/standard.json").data
-	return stats
+	if is_left:
+		var stats: Dictionary = load("res://player_limbs/player_legs/standard.json").data
+		return stats
+	else:
+		var stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["right_leg"]).data
+		return stats
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func start_slide(direction_multiplier):
