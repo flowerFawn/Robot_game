@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://b6tutxqpfhrco"]
+[gd_scene load_steps=3 format=3 uid="uid://b6tutxqpfhrco"]
+
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_fqmev"]
+[ext_resource type="Script" path="res://limb_dropdown.gd" id="2_nwdpp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -6,7 +9,12 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="LeftLeg" type="OptionButton" parent="."]
 layout_mode = 0
-offset_right = 132.0
-offset_bottom = 20.0
+offset_left = 230.0
+offset_top = 781.0
+offset_right = 480.0
+offset_bottom = 838.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_legs/"

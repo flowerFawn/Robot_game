@@ -25,6 +25,7 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
+"res://assets/": "pink",
 "res://player_limbs/": "purple",
 "res://player_scripts/": "green"
 }
