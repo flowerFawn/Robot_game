@@ -25,11 +25,10 @@ func _physics_process(delta):
 				limb.position.y -= 12
 			elif not limb.is_in_group("slide_excluded"):
 				limb.start_slide(stored_slide)
-				print(stored_slide)
 	elif player_state not in UNMOVABLE_STATES:
 		current_forces.x = take_movement_inputs()
 		current_forces.y -= take_jump_input()
-	if (player_state == "sliding" and current_forces.x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
+	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
 		player_state = "walking"
 		for limb in get_children():
 			if limb.is_in_group("ray"):	
@@ -37,7 +36,7 @@ func _physics_process(delta):
 			elif not limb.is_in_group("slide_excluded"):
 				limb.end_slide(stored_slide)
 	if player_state == "sliding":
-		current_forces.x -= 10 * delta
+		current_forces.x -= 10 * delta * stored_slide
 	move_and_collide(current_forces * delta)
 
 func add_stats(limb_stats: Dictionary):
@@ -78,6 +77,8 @@ func take_slide_input():
 				return [true, -1]
 			elif Input.is_action_pressed("right"):
 				return [true, 1]
+			else:
+				return [false]
 		else:
 			return [false]
 	else:
