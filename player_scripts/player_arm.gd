@@ -24,6 +24,7 @@ func start_slide(direction_multiplier):
 		position.y += 4
 		position.x -= 4 * direction_multiplier
 		if direction_multiplier == -1:
+			position.x += 6
 			rotation_degrees -= 90
 	else:
 		position.x -= 4
@@ -34,6 +35,7 @@ func end_slide(direction_multiplier):
 		position.y -= 4
 		position.x += 4 * direction_multiplier
 		if direction_multiplier == -1:
+			position.x -= 6
 			rotation_degrees += 90
 	else:
 		position.x += 4
