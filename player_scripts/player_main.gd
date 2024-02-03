@@ -10,6 +10,7 @@ var stored_slide:float
 func _ready():
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
+	Player_Stats.player_current_hp = 5
 	player_state = "walking"
 	current_forces = Vector2(0, 10)
 
