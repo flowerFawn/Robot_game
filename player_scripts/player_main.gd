@@ -41,8 +41,8 @@ func _physics_process(delta):
 	elif player_state not in UNMOVABLE_STATES and not (not are_legs_on_floor() and is_climbing):
 		current_forces.x = take_movement_inputs()
 		current_forces.y -= take_jump_input()
-	if not are_legs_on_floor() and is_climbing:
-		current_forces.x = 0
+	if not are_legs_on_floor() and is_climbing and abs(current_forces.x) > 1:
+		current_forces.x -= 100 * delta
 	#checks if the player is sliding and is slowed to 0, or has released slide 
 	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
 		#sets state back, and does end_slide, undoing the start of the slide
@@ -83,11 +83,8 @@ func take_movement_inputs():
 
 func take_jump_input():
 	#if not jumping (or is not on the floor) will return 0 to be added, and if jumping and on the floor will add the total jump to the y movement
-	if get_node("FloorRay").get_collider() != null:
-		if Input.is_action_just_pressed("jump") and get_node("FloorRay").get_collider().is_in_group("floor"):
-			return total_jump
-		else:
-			return 0
+	if Input.is_action_just_pressed("jump") and are_legs_on_floor():
+		return total_jump
 	else:
 		return 0
 		
