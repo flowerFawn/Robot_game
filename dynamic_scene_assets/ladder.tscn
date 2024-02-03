@@ -10,7 +10,7 @@ collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_k0usg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WarningDisabler" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hbe3j")
 disabled = true
 

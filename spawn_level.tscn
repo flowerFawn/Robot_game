@@ -8,7 +8,7 @@
 size = Vector2(692, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vphne"]
-size = Vector2(20, 166)
+size = Vector2(88, 166)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csd51"]
 size = Vector2(20, 166)
@@ -28,15 +28,15 @@ position = Vector2(37, -21)
 
 [node name="UIControl" parent="SpawnLevel/Player" instance=ExtResource("2_60qmp")]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="SpawnLevel"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="SpawnLevel" groups=["floor"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D2"]
-position = Vector2(220, -88)
+position = Vector2(254, -88)
 shape = SubResource("RectangleShape2D_vphne")
 
 [node name="Ladder" parent="." instance=ExtResource("3_tpd07")]
 position = Vector2(201, -29)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+[node name="LC1" type="CollisionShape2D" parent="Ladder"]
 position = Vector2(-1, -59)
 shape = SubResource("RectangleShape2D_csd51")
