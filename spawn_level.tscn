@@ -9,37 +9,48 @@ size = Vector2(692, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vphne"]
 size = Vector2(20, 166)
 
-[node name="SpawnLevel" type="Node2D"]
+[node name="Node" type="Node"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["floor"]]
+[node name="SpawnLevel" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="SpawnLevel" groups=["floor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D"]
 position = Vector2(241, 0)
 shape = SubResource("RectangleShape2D_hjily")
 
-[node name="Player" parent="." instance=ExtResource("1_anqrn")]
+[node name="Player" parent="SpawnLevel" instance=ExtResource("1_anqrn")]
 position = Vector2(37, -21)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="SpawnLevel"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D2"]
 position = Vector2(111, -147)
 shape = SubResource("RectangleShape2D_vphne")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.007
-anchor_top = -0.074
-anchor_right = 0.007
-anchor_bottom = -0.074
-offset_left = -153.44
-offset_top = -26.08
-offset_right = 153.56
-offset_bottom = 25.92
+anchor_left = -0.066
+anchor_top = -0.202
+anchor_right = 0.022
+anchor_bottom = -0.127
+offset_left = -0.279999
+offset_top = 0.160004
+offset_right = 7.72001
+offset_bottom = 8.16
+size_flags_horizontal = 4
 script = ExtResource("2_g7lwc")
 link_to = "res://limb_menu.tscn"
 metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = -200.0
+offset_top = -253.0
+offset_right = -33.0
+offset_bottom = -222.0
+show_percentage = false
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
