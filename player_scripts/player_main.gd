@@ -58,6 +58,7 @@ func _physics_process(delta):
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
 	move_and_collide(current_forces * delta)
+	Player_Stats.player_current_forces = current_forces
 
 func add_stats(limb_stats: Dictionary):
 	#takes in the dictionary from a limbs json, and adds it to the totals

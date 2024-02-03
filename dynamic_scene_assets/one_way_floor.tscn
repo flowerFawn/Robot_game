@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qjcrbllqri7i"]
+
+[ext_resource type="Script" path="res://dynamic_scene_assets/one_way_floor.gd" id="1_qcsep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4504o"]
+radius = 0.0
+
+[node name="OneWayFloor" type="StaticBody2D" groups=["floor"]]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_qcsep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4504o")
