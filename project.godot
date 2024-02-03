@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Selected_Limbs="*res://autoloads/limb_selection_storage.gd"
+Player_Stats="*res://autoloads/player_stats.gd"
 
 [display]
 
@@ -66,4 +67,5 @@ slide={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="mobile"

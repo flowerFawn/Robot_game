@@ -8,6 +8,8 @@ var total_speed:float = 40
 var total_jump:float = 0
 var stored_slide:float
 func _ready():
+	Player_Stats.player_current_hp = total_hp
+	Player_Stats.player_total_hp = total_hp
 	player_state = "walking"
 	current_forces = Vector2(0, 10)
 

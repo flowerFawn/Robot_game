@@ -1,10 +1,11 @@
 extends StaticBody2D
 @export var is_left:bool
-
+var limb_hp:float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
+	limb_hp = stats["hp"]
 	get_parent().add_stats(stats)
 
 func decode_part_json():
