@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjn81ri13m5by"]
+[gd_scene load_steps=6 format=3 uid="uid://bjn81ri13m5by"]
 
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="1_anqrn"]
 [ext_resource type="PackedScene" uid="uid://d28alxgvssei7" path="res://main_player_ui.tscn" id="2_60qmp"]
+[ext_resource type="PackedScene" uid="uid://cu1cmttchc8so" path="res://dynamic_scene_assets/ladder.tscn" id="3_tpd07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjily"]
 size = Vector2(692, 10)
@@ -29,3 +30,6 @@ position = Vector2(37, -21)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D2"]
 position = Vector2(111, -147)
 shape = SubResource("RectangleShape2D_vphne")
+
+[node name="Ladder" parent="." instance=ExtResource("3_tpd07")]
+position = Vector2(201, -29)
