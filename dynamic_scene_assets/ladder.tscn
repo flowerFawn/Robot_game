@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" path="res://dynamic_scene_assets/ladder.gd" id="1_k0usg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk7xb"]
-size = Vector2(19, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbe3j"]
+radius = 0.0
 
 [node name="Ladder" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_k0usg")
 
-[node name="LadderCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xk7xb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hbe3j")
+disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

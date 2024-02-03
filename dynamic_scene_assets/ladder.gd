@@ -19,3 +19,4 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		body.is_climbing = false
+		body.current_forces.y *= 0.25
