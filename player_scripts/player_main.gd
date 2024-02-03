@@ -11,6 +11,7 @@ var stored_slide:float
 func _ready():
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
+	get_node("UIControl").set_max()
 	player_state = "walking"
 	current_forces = Vector2(0, 10)
 
