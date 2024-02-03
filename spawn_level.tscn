@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjn81ri13m5by"]
 
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="1_anqrn"]
-[ext_resource type="Script" path="res://back_to_level.gd" id="2_g7lwc"]
+[ext_resource type="PackedScene" uid="uid://d28alxgvssei7" path="res://main_player_ui.tscn" id="2_60qmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjily"]
 size = Vector2(692, 10)
@@ -28,29 +28,8 @@ position = Vector2(37, -21)
 position = Vector2(111, -147)
 shape = SubResource("RectangleShape2D_vphne")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = -0.066
-anchor_top = -0.202
-anchor_right = 0.022
-anchor_bottom = -0.127
-offset_left = -0.279999
-offset_top = 0.160004
-offset_right = 7.72001
-offset_bottom = 8.16
-size_flags_horizontal = 4
-script = ExtResource("2_g7lwc")
-link_to = "res://limb_menu.tscn"
-metadata/_edit_use_anchors_ = true
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = -200.0
-offset_top = -253.0
-offset_right = -33.0
-offset_bottom = -222.0
-show_percentage = false
-
-[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
+[node name="UIControl" parent="." instance=ExtResource("2_60qmp")]
+offset_left = -203.0
+offset_top = -256.0
+offset_right = 277.0
+offset_bottom = 14.0
