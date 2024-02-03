@@ -12,7 +12,6 @@ func _ready():
 		add_item(file)
 	#selects nothing
 	select(-1)
-	print(limb_folder.get_files())
 	
 
 func _process(delta):
@@ -22,6 +21,5 @@ func _process(delta):
 func _on_item_selected(index):
 	#reopens the folder
 	var limb_folder = DirAccess.open(searched_folder)
-	print(limb_folder.get_files()[index])
 	#gets the same index in the files as the index of the selected one, returning the correct limb :)
 	Selected_Limbs.parts[assigned_limb] = limb_folder.get_files()[index]

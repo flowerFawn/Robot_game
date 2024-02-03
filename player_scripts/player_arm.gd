@@ -1,6 +1,6 @@
 extends StaticBody2D
 @export var is_left: bool
-const UNSHOOTABLE_STATES = ["disabled", "sliding"]
+const UNSHOOTABLE_STATES = ["disabled", "sliding", "climbing"]
 var speed_multiplier: int
 var limb_hp:float
 # Called when the node enters the scene tree for the first time.
@@ -12,8 +12,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if get_parent().player_state not in UNSHOOTABLE_STATES or is_left:
+func _physics_process(delta):
+	if (get_parent().player_state not in UNSHOOTABLE_STATES and not get_parent().is_climbing) or is_left:
 		look_at(get_global_mouse_position())
 
 func decode_part_json():
