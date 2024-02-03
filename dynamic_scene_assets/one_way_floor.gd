@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if abs(Player_Stats.player_current_forces.y) == Player_Stats.player_current_forces.y:
+	if abs(Player_Stats.player_current_forces.y) == Player_Stats.player_current_forces.y and not Player_Stats.player_is_climbing:
 		set_collision_layer_value(1, true)
 	else:
 		set_collision_layer_value(1, false)
