@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjn81ri13m5by"]
+[gd_scene load_steps=8 format=3 uid="uid://bjn81ri13m5by"]
 
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="1_anqrn"]
 [ext_resource type="PackedScene" uid="uid://d28alxgvssei7" path="res://main_player_ui.tscn" id="2_60qmp"]
@@ -9,6 +9,9 @@ size = Vector2(692, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vphne"]
 size = Vector2(88, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muk1c"]
+size = Vector2(20, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csd51"]
 size = Vector2(20, 166)
@@ -23,6 +26,10 @@ size = Vector2(20, 166)
 position = Vector2(241, 0)
 shape = SubResource("RectangleShape2D_hjily")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D"]
+position = Vector2(254, -88)
+shape = SubResource("RectangleShape2D_vphne")
+
 [node name="Player" parent="SpawnLevel" instance=ExtResource("1_anqrn")]
 position = Vector2(37, -21)
 
@@ -31,8 +38,8 @@ position = Vector2(37, -21)
 [node name="StaticBody2D2" type="StaticBody2D" parent="SpawnLevel" groups=["floor"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/StaticBody2D2"]
-position = Vector2(254, -88)
-shape = SubResource("RectangleShape2D_vphne")
+position = Vector2(-94, -48)
+shape = SubResource("RectangleShape2D_muk1c")
 
 [node name="Ladder" parent="." instance=ExtResource("3_tpd07")]
 position = Vector2(201, -29)
