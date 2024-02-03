@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=11 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
 [ext_resource type="Script" path="res://player_scripts/player_collision.gd" id="2_adrog"]
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
+[ext_resource type="Script" path="res://back_to_level.gd" id="6_ij3fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
 size = Vector2(8, 24)
@@ -85,3 +86,22 @@ hit_from_inside = true
 [node name="Camera2D" type="Camera2D" parent="." groups=["slide_excluded"]]
 position = Vector2(0, -100)
 zoom = Vector2(4, 4)
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+
+[node name="Button" type="Button" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 64.0
+offset_right = 330.0
+offset_bottom = 116.0
+script = ExtResource("6_ij3fn")
+link_to = "res://limb_menu.tscn"
+
+[connection signal="pressed" from="Camera2D/Control/Button" to="Camera2D/Control/Button" method="_on_pressed"]

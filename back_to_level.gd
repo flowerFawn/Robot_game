@@ -1,5 +1,5 @@
 extends Button
-
+@export var link_to:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://spawn_level.tscn")
+	#chanes to whatever scene the button is set to
+	get_tree().change_scene_to_file(link_to)

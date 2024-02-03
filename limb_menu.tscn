@@ -70,6 +70,7 @@ layout_mode = 0
 offset_right = 307.0
 offset_bottom = 52.0
 script = ExtResource("3_ueba4")
+link_to = "res://spawn_level.tscn"
 
 [connection signal="item_selected" from="LeftLeg" to="LeftLeg" method="_on_item_selected"]
 [connection signal="item_selected" from="RightLeg" to="RightLeg" method="_on_item_selected"]
