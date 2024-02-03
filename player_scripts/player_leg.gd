@@ -8,8 +8,9 @@ func _ready():
 	get_parent().add_stats(stats)
 
 func decode_part_json():
+	#uses selected limbs to get the selected limb and then the json for it
 	if is_left:
-		var stats: Dictionary = load("res://player_limbs/player_legs/standard.json").data
+		var stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["left_leg"]).data
 		return stats
 	else:
 		var stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["right_leg"]).data

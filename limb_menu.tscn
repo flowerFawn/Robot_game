@@ -21,11 +21,59 @@ script = ExtResource("2_nwdpp")
 searched_folder = "res://player_limbs/player_legs"
 assigned_limb = "right_leg"
 
+[node name="RightLeg" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1455.0
+offset_top = 947.0
+offset_right = 1705.0
+offset_bottom = 1004.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_legs"
+assigned_limb = "left_leg"
+
+[node name="Torso" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1326.0
+offset_top = 602.0
+offset_right = 1576.0
+offset_bottom = 659.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_torsos"
+assigned_limb = "torso"
+
+[node name="LeftArm" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 345.0
+offset_right = 405.0
+offset_bottom = 402.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_arms"
+assigned_limb = "left_arm"
+
+[node name="RightArm" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1369.0
+offset_top = 228.0
+offset_right = 1619.0
+offset_bottom = 285.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_arms"
+assigned_limb = "right_arm"
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 664.0
-offset_bottom = 425.0
+offset_right = 307.0
+offset_bottom = 52.0
 script = ExtResource("3_ueba4")
 
 [connection signal="item_selected" from="LeftLeg" to="LeftLeg" method="_on_item_selected"]
+[connection signal="item_selected" from="RightLeg" to="RightLeg" method="_on_item_selected"]
+[connection signal="item_selected" from="Torso" to="Torso" method="_on_item_selected"]
+[connection signal="item_selected" from="LeftArm" to="LeftArm" method="_on_item_selected"]
+[connection signal="item_selected" from="RightArm" to="RightArm" method="_on_item_selected"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

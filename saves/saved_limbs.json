@@ -1,4 +1,7 @@
 {
-	right_leg : "standard.json",
-	left_leg : "standard.json"
+	"right_leg" : "standard.json",
+	"left_leg" : "standard.json",
+	"torso" : "standard.json",
+	"left_arm" : "standard.json",
+	"right_arm" : "standard.json"
 }

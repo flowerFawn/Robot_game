@@ -15,8 +15,12 @@ func _process(delta):
 		look_at(get_global_mouse_position())
 
 func decode_part_json():
-	var stats: Dictionary = load("res://player_limbs/player_arms/standard.json").data
-	return stats
+	if is_left:
+		var stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
+		return stats
+	else:
+		var stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["right_arm"]).data
+		return stats
 
 func start_slide(direction_multiplier):
 	if not is_left:
