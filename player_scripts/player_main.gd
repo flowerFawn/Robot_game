@@ -19,7 +19,7 @@ func _ready():
 func _physics_process(delta):
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
-		current_forces.y = take_climbing_input()
+		current_forces.y = take_climbing_input(delta)
 	else:
 		add_gravity(delta)
 	#checks if the player is inputting slide, and returns an array with 0 as a bool, and 1 as the multiplier (-1 or 1, passed to change the direction of slide effects)
@@ -40,7 +40,7 @@ func _physics_process(delta):
 				limb.start_slide(stored_slide)
 	#does all the check movement checks
 	elif player_state not in UNMOVABLE_STATES and not (not are_legs_on_floor() and is_climbing):
-		current_forces.x = take_movement_inputs()
+		current_forces.x = take_movement_inputs(delta)
 		current_forces.y -= take_jump_input()
 	if not are_legs_on_floor() and is_climbing and abs(current_forces.x) > 1:
 		current_forces.x -= 100 * delta
@@ -76,7 +76,7 @@ func add_gravity(delta):
 	else:
 		current_forces.y = 0
 
-func take_movement_inputs():
+func take_movement_inputs(delta):
 	#returns a total  to set the speed to (only will be called when walking)
 	var movement_total:float = 0
 	if Input.is_action_pressed("left"):
@@ -105,7 +105,7 @@ func take_slide_input():
 	else:
 		return [false]
 		
-func take_climbing_input():
+func take_climbing_input(delta):
 	var movement_total:float = 0
 	if Input.is_action_pressed("up"):
 		movement_total -= total_speed * delta
