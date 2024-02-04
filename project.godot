@@ -33,6 +33,7 @@ folder_colors={
 "res://assets/": "pink",
 "res://autoloads/": "red",
 "res://dynamic_scene_assets/": "teal",
+"res://enemies/": "blue",
 "res://player_limbs/": "purple",
 "res://player_scripts/": "green",
 "res://saves/": "yellow"

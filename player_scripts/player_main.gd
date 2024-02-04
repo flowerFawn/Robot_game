@@ -106,7 +106,6 @@ func take_slide_input():
 		return [false]
 		
 func take_climbing_input():
-	print(is_climbing)
 	var movement_total:float = 0
 	if Input.is_action_pressed("up"):
 		movement_total -= total_speed

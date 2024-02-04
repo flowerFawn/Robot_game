@@ -12,3 +12,4 @@ func _process(delta):
 
 func _physics_process(delta):
 	get_node("LeftArm").look_at(Player_Stats.player_position)
+	get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
