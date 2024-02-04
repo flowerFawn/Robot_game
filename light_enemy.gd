@@ -5,12 +5,12 @@ var enabled:bool = false
 @export var damage:float = 10
 @export var bullet_speed:float = 30
 var preloaded_bullet = preload("res://instanceables/base_bullet.tscn")
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta):
 	pass
 

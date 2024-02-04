@@ -5,23 +5,24 @@ var damage:float
 var speed:float
 #will only hit bodies in that group
 var targeted_group:String
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	hit_limb = move_and_collide(Vector2(speed,0).rotated(rotation) * delta)
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):
+			#total takes full damage, limb takes half
 			hit_limb.get_collider().limb_hp -= damage / 2
-			
 			hit_limb.get_collider().get_parent().total_hp -= damage / 2
-			print(hit_limb.get_collider().get_parent().total_hp)
 		elif hit_limb.get_collider().get_parent().is_in_group("enemy"):
+			#total takes  full damage as enemies don't work based on individual limbs
 			hit_limb.get_collider().get_parent().total_hp -= damage
+		#removes itself
 		queue_free()
 	elif hit_limb != null:
+		#if it hits something that isn't in the targeted group then it will also remove itself
 		queue_free()
 
