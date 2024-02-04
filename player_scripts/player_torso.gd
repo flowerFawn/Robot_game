@@ -17,5 +17,5 @@ func start_slide(direction_multiplier):
 func end_slide(_direction_multiplier):
 	rotation_degrees = 0
 	
-func _process(delta):
+func _process(_delta):
 	pass

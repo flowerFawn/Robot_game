@@ -14,7 +14,7 @@ func _ready():
 	select(-1)
 	
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 
