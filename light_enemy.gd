@@ -1,6 +1,10 @@
 extends CharacterBody2D
 var within_shooting_range:bool = false
 var enabled:bool = false
+@export var hp:float = 50
+@export var damage:float = 10
+@export var bullet_speed:float = 30
+var preloaded_bullet = preload("res://instanceables/base_bullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -46,4 +50,12 @@ func _on_shoot_radius_body_exited(body):
 
 
 func _on_weapon_charge_timeout():
-	print("bullet shooty")
+	var instancing_bullet:Node = preloaded_bullet.instantiate()
+	instancing_bullet.global_position = get_node("LeftArm/WeaponSystem").global_position
+	instancing_bullet.rotation = get_node("LeftArm").rotation
+	instancing_bullet.targeted_group = "player"
+	instancing_bullet.speed = bullet_speed
+	instancing_bullet.damage = damage
+	#gets the node of the scene 
+	#ENEMY MUST BE A DIRECT CHILD OF THE NODE2D OF THE LEVEL OR ANOTHER UNMOVING NODE
+	get_parent().add_child(instancing_bullet)
