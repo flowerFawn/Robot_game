@@ -2,7 +2,7 @@ extends CharacterBody2D
 const UNMOVABLE_STATES = ["disabled", "sliding"]
 var player_state = "disabled"
 var is_climbing:bool = false
-var current_forces: Vector2
+var current_forces:Vector2
 var total_weight:float = 0
 var total_hp:float = 0
 var total_speed:float = 40
