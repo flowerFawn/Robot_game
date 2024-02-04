@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjn81ri13m5by"]
+[gd_scene load_steps=12 format=3 uid="uid://bjn81ri13m5by"]
 
+[ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="1_4apws"]
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="1_anqrn"]
 [ext_resource type="PackedScene" uid="uid://d28alxgvssei7" path="res://main_player_ui.tscn" id="2_60qmp"]
+[ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="2_ilur4"]
 [ext_resource type="PackedScene" uid="uid://cu1cmttchc8so" path="res://dynamic_scene_assets/ladder.tscn" id="3_tpd07"]
 [ext_resource type="PackedScene" uid="uid://qjcrbllqri7i" path="res://dynamic_scene_assets/one_way_floor.tscn" id="4_qtjqm"]
 
@@ -24,20 +26,22 @@ size = Vector2(108, 3)
 
 [node name="SpawnLevel" type="Node2D" parent="."]
 
-[node name="Walls" type="StaticBody2D" parent="SpawnLevel" groups=["floor"]]
+[node name="Walls" parent="SpawnLevel" instance=ExtResource("1_4apws")]
+position = Vector2(-272, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/Walls"]
-position = Vector2(-94, -48)
+position = Vector2(178, 64)
 shape = SubResource("RectangleShape2D_muk1c")
 
-[node name="Floors" type="StaticBody2D" parent="SpawnLevel" groups=["floor"]]
+[node name="Floors" parent="SpawnLevel" instance=ExtResource("2_ilur4")]
+position = Vector2(-271, -125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/Floors"]
-position = Vector2(241, 0)
+position = Vector2(512, 125)
 shape = SubResource("RectangleShape2D_hjily")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/Floors"]
-position = Vector2(254, -88)
+position = Vector2(525, 37)
 shape = SubResource("RectangleShape2D_vphne")
 
 [node name="Ladders" parent="SpawnLevel" instance=ExtResource("3_tpd07")]

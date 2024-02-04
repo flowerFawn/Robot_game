@@ -77,6 +77,9 @@ down={
 2d_physics/layer_2="Bullets"
 2d_physics/layer_3="ladder detection"
 2d_physics/layer_4="floorcast"
+2d_physics/layer_5="Light Enemy"
+2d_physics/layer_6="Heavy Enemy"
+2d_physics/layer_7="Line of Sight"
 
 [rendering]
 

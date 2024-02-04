@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm7u3cavl2j1w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4pncf"]
+radius = 0.0
+
+[node name="Walls" type="StaticBody2D" groups=["floor"]]
+collision_layer = 17
+
+[node name="WarningDisabler" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4pncf")

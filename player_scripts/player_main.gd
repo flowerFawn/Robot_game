@@ -57,6 +57,7 @@ func _physics_process(delta):
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
+	Player_Stats.player_position = global_position
 	move_and_collide(current_forces * delta)
 	Player_Stats.player_current_forces = current_forces
 	Player_Stats.player_is_climbing = is_climbing
@@ -114,6 +115,7 @@ func take_climbing_input():
 	return movement_total
 
 func are_legs_on_floor():
+	#uses the floorray and groups to see if touching the floor
 	if get_node("FloorRay").get_collider() != null:
 		if get_node("FloorRay").get_collider().is_in_group("floor"):
 			return true
