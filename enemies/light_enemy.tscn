@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dla2x6o8b00mb"]
+
+[ext_resource type="Script" path="res://light_enemy.gd" id="1_kosva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
+size = Vector2(8, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40rak"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdf3r"]
+size = Vector2(9.75, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h8ch"]
+size = Vector2(2.5, 10)
+
+[node name="EnemyMain" type="CharacterBody2D" groups=["light_enemy"]]
+collision_layer = 4
+script = ExtResource("1_kosva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy_limb"]]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ys71y")
+
+[node name="Torso" type="StaticBody2D" parent="." groups=["enemy_limb"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
+shape = SubResource("RectangleShape2D_40rak")
+
+[node name="LeftArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
+position = Vector2(4, -5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="RightArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
+position = Vector2(-4, -5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
+position = Vector2(4.125, 0)
+shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="LeftLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
+position = Vector2(2, 7)
+collision_layer = 2
+collision_mask = 0
+
+[node name="LeftLegCollision" type="CollisionShape2D" parent="LeftLeg"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2h8ch")
+
+[node name="RightLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
+position = Vector2(-2, 7)
+collision_layer = 2
+collision_mask = 0
+
+[node name="RightLegCollision" type="CollisionShape2D" parent="RightLeg"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2h8ch")
+
+[node name="FloorRay" type="RayCast2D" parent="." groups=["ray"]]
+position = Vector2(-3, 16)
+target_position = Vector2(6, 1)
+collision_mask = 9
+hit_from_inside = true
