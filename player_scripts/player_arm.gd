@@ -7,7 +7,7 @@ var limb_hp:float
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
-	limb_hp = stats["hp"] * 2
+	limb_hp = stats["hp"]
 	get_parent().add_stats(stats)
 
 
