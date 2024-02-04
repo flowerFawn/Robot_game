@@ -81,6 +81,7 @@ down={
 2d_physics/layer_5="Light Enemy"
 2d_physics/layer_6="Heavy Enemy"
 2d_physics/layer_7="Line of Sight"
+2d_physics/layer_8="Player Detection"
 
 [rendering]
 

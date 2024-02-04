@@ -19,7 +19,7 @@ size = Vector2(9.75, 2)
 size = Vector2(2.5, 10)
 
 [node name="PlayerMain" type="CharacterBody2D" groups=["player"]]
-collision_layer = 4
+collision_layer = 132
 script = ExtResource("1_xrvte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["limb"]]
