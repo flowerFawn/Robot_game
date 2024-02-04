@@ -80,9 +80,9 @@ func take_movement_inputs():
 	#returns a total  to set the speed to (only will be called when walking)
 	var movement_total:float = 0
 	if Input.is_action_pressed("left"):
-		movement_total -= total_speed
+		movement_total -= total_speed * delta
 	if Input.is_action_pressed("right"):
-		movement_total += total_speed
+		movement_total += total_speed * delta
 	return movement_total
 
 func take_jump_input():
@@ -108,9 +108,9 @@ func take_slide_input():
 func take_climbing_input():
 	var movement_total:float = 0
 	if Input.is_action_pressed("up"):
-		movement_total -= total_speed
+		movement_total -= total_speed * delta
 	if Input.is_action_pressed("down"):
-		movement_total += total_speed
+		movement_total += total_speed * delta
 	return movement_total
 
 func are_legs_on_floor():

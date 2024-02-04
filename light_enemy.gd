@@ -15,11 +15,11 @@ func _physics_process(_delta):
 		#looks at players position and aims raycast for line of sight
 		get_node("LeftArm").look_at(Player_Stats.player_position)
 		get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
-		#starts the timer to shoot
-		if within_shooting_range:
+		#starts the timer to shoot if within shooting range and timer is inactive (time_left returns 0 when inactive
+		if within_shooting_range and get_node("LeftArm/WeaponSystem/WeaponCharge").time_left == 0:
 			get_node("LeftArm/WeaponSystem/WeaponCharge").start()
 		#stops, NOT PAUSES the timer.
-		else:
+		elif not within_shooting_range:
 			get_node("LeftArm/WeaponSystem/WeaponCharge").stop()
 
 func _on_enable_radius_body_entered(body):
@@ -46,4 +46,4 @@ func _on_shoot_radius_body_exited(body):
 
 
 func _on_weapon_charge_timeout():
-	pass # bullet shooty
+	print("bullet shooty")
