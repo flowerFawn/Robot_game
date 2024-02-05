@@ -1,5 +1,6 @@
-extends AnimatableBody2D 
+extends AnimatableBody2D
 var hit_limb:KinematicCollision2D
+#damage it does
 var damage:float
 #goes that far per second
 var speed:float
@@ -15,11 +16,10 @@ func _physics_process(delta):
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):
 			#total takes full damage, limb takes half
-			hit_limb.get_collider().limb_hp -= damage / 2
-			hit_limb.get_collider().get_parent().total_hp -= damage / 2
+			hit_limb.get_collider().take_damage(damage)
 		elif hit_limb.get_collider().get_parent().is_in_group("enemy"):
-			#total takes  full damage as enemies don't work based on individual limbs
-			hit_limb.get_collider().get_parent().total_hp -= damage
+			#total takes full damage
+			hit_limb.get_collider().get_parent().take_damage(damage)
 		#removes itself
 		queue_free()
 	elif hit_limb != null:

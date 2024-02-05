@@ -41,5 +41,6 @@ func end_slide(direction_multiplier):
 		rotation_degrees = 0
 
 
-func _process(_delta):
-	pass
+func take_damage(damage):
+	limb_hp -= damage / 2
+	get_parent().total_hp -= damage

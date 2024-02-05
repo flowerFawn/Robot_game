@@ -11,11 +11,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muk1c"]
 size = Vector2(20, 86)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjily"]
-size = Vector2(692, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vphne"]
 size = Vector2(88, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjily"]
+size = Vector2(1350, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csd51"]
 size = Vector2(20, 166)
@@ -34,16 +34,16 @@ position = Vector2(-272, -112)
 position = Vector2(178, 64)
 shape = SubResource("RectangleShape2D_muk1c")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/Walls"]
+position = Vector2(526, 24)
+shape = SubResource("RectangleShape2D_vphne")
+
 [node name="Floors" parent="SpawnLevel" instance=ExtResource("2_ilur4")]
 position = Vector2(-271, -125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/Floors"]
-position = Vector2(512, 125)
+position = Vector2(841, 125)
 shape = SubResource("RectangleShape2D_hjily")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/Floors"]
-position = Vector2(525, 37)
-shape = SubResource("RectangleShape2D_vphne")
 
 [node name="Ladders" parent="SpawnLevel" instance=ExtResource("3_tpd07")]
 position = Vector2(201, -29)
@@ -61,9 +61,10 @@ shape = SubResource("RectangleShape2D_bdeih")
 
 [node name="Player" parent="SpawnLevel" instance=ExtResource("1_anqrn")]
 visibility_layer = 3
-position = Vector2(37, -21)
+position = Vector2(586, -21)
 
 [node name="UIControl" parent="SpawnLevel/Player" instance=ExtResource("2_60qmp")]
 
 [node name="EnemyMain" parent="." instance=ExtResource("7_vi4o8")]
-position = Vector2(-86, -109)
+position = Vector2(358, -21)
+bullet_speed = 100.0

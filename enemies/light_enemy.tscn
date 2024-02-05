@@ -14,14 +14,14 @@ size = Vector2(9.75, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h8ch"]
 size = Vector2(2.5, 10)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j6nbp"]
-radius = 226.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xijbu"]
+size = Vector2(360, 920)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qbjls"]
-radius = 332.151
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q4e4"]
+size = Vector2(944, 1374)
 
 [node name="EnemyMain" type="CharacterBody2D" groups=["enemy", "light_enemy"]]
-collision_layer = 17
+collision_layer = 16
 script = ExtResource("1_kosva")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy_limb"]]
@@ -29,7 +29,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ys71y")
 
 [node name="Torso" type="StaticBody2D" parent="." groups=["enemy_limb"]]
-collision_layer = 2
+collision_layer = 16
 collision_mask = 0
 
 [node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_40rak")
 
 [node name="LeftArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(4, -5)
-collision_layer = 2
+collision_layer = 16
 collision_mask = 0
 
 [node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
@@ -54,7 +54,7 @@ one_shot = true
 [node name="RightArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(-4, -5)
 rotation = 1.5708
-collision_layer = 2
+collision_layer = 16
 collision_mask = 0
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_jdf3r")
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(2, 7)
-collision_layer = 2
+collision_layer = 16
 collision_mask = 0
 
 [node name="LeftLegCollision" type="CollisionShape2D" parent="LeftLeg"]
@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_2h8ch")
 
 [node name="RightLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(-2, 7)
-collision_layer = 2
+collision_layer = 16
 collision_mask = 0
 
 [node name="RightLegCollision" type="CollisionShape2D" parent="RightLeg"]
@@ -91,20 +91,28 @@ target_position = Vector2(0, 0)
 collision_mask = 64
 
 [node name="ShootRadius" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRadius"]
-shape = SubResource("CircleShape2D_j6nbp")
+shape = SubResource("RectangleShape2D_xijbu")
 
 [node name="EnableRadius" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableRadius"]
-shape = SubResource("CircleShape2D_qbjls")
+shape = SubResource("RectangleShape2D_5q4e4")
+
+[node name="rightedgecheck" type="RayCast2D" parent="."]
+position = Vector2(5, 16)
+target_position = Vector2(0, 3)
+hit_from_inside = true
+
+[node name="leftedgecheck" type="RayCast2D" parent="."]
+position = Vector2(-5, 16)
+target_position = Vector2(0, 3)
+hit_from_inside = true
 
 [connection signal="timeout" from="LeftArm/WeaponSystem/WeaponCharge" to="." method="_on_weapon_charge_timeout"]
 [connection signal="body_entered" from="ShootRadius" to="." method="_on_shoot_radius_body_entered"]

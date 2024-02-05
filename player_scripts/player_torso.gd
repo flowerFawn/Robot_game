@@ -19,3 +19,7 @@ func end_slide(_direction_multiplier):
 	
 func _process(_delta):
 	pass
+
+func take_damage(damage):
+	limb_hp -= damage / 2
+	get_parent().total_hp -= damage

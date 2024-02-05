@@ -62,7 +62,7 @@ func _physics_process(delta):
 	Player_Stats.player_current_forces = current_forces
 	Player_Stats.player_is_climbing = is_climbing
 
-func _process(delta):
+func _process(_delta):
 	Player_Stats.player_current_hp = total_hp
 
 func add_stats(limb_stats: Dictionary):

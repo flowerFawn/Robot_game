@@ -46,4 +46,6 @@ func end_slide(direction_multiplier):
 	else:
 		position.x += 4
 		
-		
+func take_damage(damage):
+	limb_hp -= damage / 2
+	get_parent().total_hp -= damage
