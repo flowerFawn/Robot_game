@@ -1,5 +1,5 @@
 {
-	"hp" : 6,
+	"hp" : 30,
 	"weight" : 1.1,
 	"script" : "res://limb_scripts/medical_torso.gd"
 }
