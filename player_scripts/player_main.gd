@@ -20,7 +20,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(slide_multiplier)
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
 		current_forces.y = take_climbing_input()
@@ -79,6 +78,7 @@ func add_stats(limb_stats: Dictionary, added_limb):
 	if added_limb.get_node("ScriptHost").has_method("edit_main_stats"):
 		added_limb.get_node("ScriptHost").edit_main_stats()
 	current_hp = total_hp
+	
 func add_gravity(delta):
 	#uses the floor ray like is_on_floor()
 	if get_node("FloorRay").get_collider() == null or not get_node("FloorRay").get_collider().is_in_group("floor"):
