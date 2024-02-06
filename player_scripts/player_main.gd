@@ -8,15 +8,19 @@ var total_hp:float = 0
 var total_speed:float = 40
 var total_jump:float = 0
 var stored_slide:float
+var slide_multiplier:float = 2
+var current_hp:float
+
 func _ready():
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	get_node("UIControl").set_max()
 	player_state = "walking"
-	current_forces = Vector2(0, 10)
+	current_forces = Vector2(0, 0)
 
 
 func _physics_process(delta):
+	print(slide_multiplier)
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
 		current_forces.y = take_climbing_input()
@@ -30,7 +34,7 @@ func _physics_process(delta):
 		player_state = "sliding"
 		stored_slide = slide_output[1]
 		#starts the slide forces
-		current_forces = Vector2(total_speed * 2 * slide_output[1], 0)
+		current_forces = Vector2(total_speed * slide_multiplier * slide_output[1], 0)
 		#tells every child to do its own part to start sliding, calls start_slide and passed the multiplier
 		position.y += 6
 		for limb in get_children():
@@ -63,15 +67,18 @@ func _physics_process(delta):
 	Player_Stats.player_is_climbing = is_climbing
 
 func _process(_delta):
-	Player_Stats.player_current_hp = total_hp
+	Player_Stats.player_current_hp = current_hp
 
-func add_stats(limb_stats: Dictionary):
+func add_stats(limb_stats: Dictionary, added_limb):
 	#takes in the dictionary from a limbs json, and adds it to the totals
 	total_weight += limb_stats.get("weight", 0.0)
 	total_hp += limb_stats.get("hp", 0.0)
 	total_speed *= limb_stats.get("speed", 1)
 	total_jump += limb_stats.get("jump", 0)
-	
+	#gets the limbs script (if it has one) and runs its editing main stats (if it has one)
+	if added_limb.get_node("ScriptHost").has_method("edit_main_stats"):
+		added_limb.get_node("ScriptHost").edit_main_stats()
+	current_hp = total_hp
 func add_gravity(delta):
 	#uses the floor ray like is_on_floor()
 	if get_node("FloorRay").get_collider() == null or not get_node("FloorRay").get_collider().is_in_group("floor"):

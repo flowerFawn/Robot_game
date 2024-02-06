@@ -1,0 +1,5 @@
+{
+	"hp" : 6,
+	"weight" : 1.1,
+	"script" : "res://limb_scripts/medical_limb.gd"
+}

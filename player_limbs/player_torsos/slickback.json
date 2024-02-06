@@ -1,0 +1,5 @@
+{
+	"weight" : 30,
+	"hp" : 5,
+	"script" : "res://limb_scripts/slickback.gd"
+}

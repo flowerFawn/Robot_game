@@ -35,6 +35,8 @@ script = ExtResource("1_hu2in")
 [node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
 shape = SubResource("RectangleShape2D_40rak")
 
+[node name="ScriptHost" type="Node2D" parent="Torso"]
+
 [node name="LeftArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(4, -5)
 collision_layer = 2
@@ -46,6 +48,8 @@ is_left = true
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
+[node name="ScriptHost" type="Node2D" parent="LeftArm"]
+
 [node name="RightArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-4, -5)
 collision_layer = 2
@@ -55,6 +59,8 @@ script = ExtResource("3_uxcag")
 [node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
+
+[node name="ScriptHost" type="Node2D" parent="RightArm"]
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(2, 7)
@@ -67,6 +73,8 @@ is_left = true
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_2h8ch")
 
+[node name="ScriptHost" type="Node2D" parent="LeftLeg"]
+
 [node name="RightLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-2, 7)
 collision_layer = 2
@@ -76,6 +84,8 @@ script = ExtResource("4_l7m4c")
 [node name="RightLegCollision" type="CollisionShape2D" parent="RightLeg"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_2h8ch")
+
+[node name="ScriptHost" type="Node2D" parent="RightLeg"]
 
 [node name="FloorRay" type="RayCast2D" parent="." groups=["ray"]]
 position = Vector2(-3, 16)

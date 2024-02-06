@@ -5,7 +5,9 @@ func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
 	limb_hp = stats["hp"]
-	get_parent().add_stats(stats)
+	if stats.has("script"):
+		get_node("ScriptHost").set_script(load(stats["script"]))
+	get_parent().add_stats(stats, self)
 
 func decode_part_json():
 	var stats: Dictionary = load("res://player_limbs/player_torsos/" + Selected_Limbs.parts["torso"]).data
@@ -22,4 +24,4 @@ func _process(_delta):
 
 func take_damage(damage):
 	limb_hp -= damage / 2
-	get_parent().total_hp -= damage
+	get_parent().current_hp -= damage

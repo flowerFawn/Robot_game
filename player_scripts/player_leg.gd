@@ -6,7 +6,9 @@ func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
 	limb_hp = stats["hp"]
-	get_parent().add_stats(stats)
+	if stats.has("script"):
+		get_node("ScriptHost").set_script(load(stats["script"]))
+	get_parent().add_stats(stats, self)
 
 func decode_part_json():
 	#uses selected limbs to get the selected limb and then the json for it
@@ -43,4 +45,4 @@ func end_slide(direction_multiplier):
 
 func take_damage(damage):
 	limb_hp -= damage / 2
-	get_parent().total_hp -= damage
+	get_parent().current_hp -= damage
