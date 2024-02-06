@@ -1,12 +1,8 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_parent().get_parent().curre
+	#adds 1 hp to the player per second
+	get_parent().get_parent().current_hp += 1 * delta
 
