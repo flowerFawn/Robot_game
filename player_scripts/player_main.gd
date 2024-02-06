@@ -66,6 +66,7 @@ func _physics_process(delta):
 	Player_Stats.player_is_climbing = is_climbing
 
 func _process(_delta):
+	current_hp = clamp(current_hp, -10000000, total_hp)
 	Player_Stats.player_current_hp = current_hp
 
 func add_stats(limb_stats: Dictionary, added_limb):
@@ -98,6 +99,7 @@ func take_movement_inputs():
 func take_jump_input():
 	#if not jumping (or is not on the floor) will return 0 to be added, and if jumping and on the floor will add the total jump to the y movement
 	if Input.is_action_just_pressed("jump") and are_legs_on_floor():
+		print("jump")
 		return total_jump
 	else:
 		return 0
