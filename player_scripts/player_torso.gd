@@ -7,6 +7,8 @@ func _ready():
 	limb_hp = stats["hp"]
 	if stats.has("script"):
 		get_node("ScriptHost").set_script(load(stats["script"]))
+		if get_node("ScriptHost").has_method("set_script_stats") and stats.has("script_value"):
+			get_node("ScriptHost").set_script_stats(stats["script_value"])
 	get_parent().add_stats(stats, self)
 
 func decode_part_json():
