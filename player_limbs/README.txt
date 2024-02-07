@@ -11,3 +11,4 @@
 #projectile ("res://instanceables/projectiles/scene_name.tscn") the projectile that gets loaded
 #attack_speed (in seconds)
 #damage (damage it does, standard dps should be /put standard dps here/)
+#projectile_speed (in units per second, not a Vector2)

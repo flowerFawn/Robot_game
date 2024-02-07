@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=11 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
 [ext_resource type="Script" path="res://player_scripts/player_collision.gd" id="2_adrog"]
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
+[ext_resource type="Script" path="res://player_weapon.gd" id="5_2x807"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
 size = Vector2(8, 24)
@@ -50,6 +51,8 @@ shape = SubResource("RectangleShape2D_jdf3r")
 
 [node name="ScriptHost" type="Node2D" parent="LeftArm"]
 
+[node name="LeftWeaponSystem" type="Node2D" parent="LeftArm"]
+
 [node name="RightArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-4, -5)
 collision_layer = 2
@@ -61,6 +64,9 @@ position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
 [node name="ScriptHost" type="Node2D" parent="RightArm"]
+
+[node name="RightWeaponSystem" type="Node2D" parent="RightArm"]
+script = ExtResource("5_2x807")
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(2, 7)
