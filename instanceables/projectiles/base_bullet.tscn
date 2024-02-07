@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://clx724khwfmqh"]
 
-[ext_resource type="Script" path="res://base_bullet.gd" id="1_qh1r5"]
+[ext_resource type="Script" path="res://base_bullet.gd" id="1_iqsxw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahj66"]
 radius = 1.0
@@ -10,7 +10,7 @@ height = 4.0
 collision_layer = 0
 collision_mask = 19
 sync_to_physics = false
-script = ExtResource("1_qh1r5")
+script = ExtResource("1_iqsxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 4.71239

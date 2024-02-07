@@ -3,5 +3,7 @@
 	"left_leg" : "standard.json",
 	"torso" : "standard.json",
 	"left_arm" : "standard.json",
-	"right_arm" : "standard.json"
+	"right_arm" : "standard.json",
+	"right_weapon" : "standard.json",
+	"left_weapon" : "standard.json"
 }

@@ -72,9 +72,31 @@ offset_bottom = 52.0
 script = ExtResource("3_ueba4")
 link_to = "res://spawn_level.tscn"
 
+[node name="RightWeapon" type="OptionButton" parent="."]
+offset_left = 1352.0
+offset_top = 400.0
+offset_right = 1602.0
+offset_bottom = 457.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_weapons"
+assigned_limb = "right_weapon"
+
+[node name="LeftWeapon" type="OptionButton" parent="."]
+offset_left = 240.0
+offset_top = 536.0
+offset_right = 490.0
+offset_bottom = 593.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_weapons"
+assigned_limb = "left_weapon"
+
 [connection signal="item_selected" from="LeftLeg" to="LeftLeg" method="_on_item_selected"]
 [connection signal="item_selected" from="RightLeg" to="RightLeg" method="_on_item_selected"]
 [connection signal="item_selected" from="Torso" to="Torso" method="_on_item_selected"]
 [connection signal="item_selected" from="LeftArm" to="LeftArm" method="_on_item_selected"]
 [connection signal="item_selected" from="RightArm" to="RightArm" method="_on_item_selected"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="item_selected" from="RightWeapon" to="RightWeapon" method="_on_item_selected"]
+[connection signal="item_selected" from="LeftWeapon" to="LeftWeapon" method="_on_item_selected"]

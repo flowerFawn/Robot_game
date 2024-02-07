@@ -5,7 +5,7 @@ var current_forces:Vector2
 @export var hp:float = 50
 @export var damage:float = 10
 @export var bullet_speed:float = 30
-var preloaded_bullet = preload("res://instanceables/base_bullet.tscn")
+var preloaded_bullet = preload("res://instanceables/projectiles/base_bullet.tscn")
 
 func _ready():
 	pass
