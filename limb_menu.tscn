@@ -73,20 +73,22 @@ script = ExtResource("3_ueba4")
 link_to = "res://spawn_level.tscn"
 
 [node name="RightWeapon" type="OptionButton" parent="."]
-offset_left = 1352.0
-offset_top = 400.0
-offset_right = 1602.0
-offset_bottom = 457.0
+layout_mode = 0
+offset_left = 239.0
+offset_top = 532.0
+offset_right = 489.0
+offset_bottom = 589.0
 theme = ExtResource("1_fqmev")
 script = ExtResource("2_nwdpp")
 searched_folder = "res://player_limbs/player_weapons"
 assigned_limb = "right_weapon"
 
 [node name="LeftWeapon" type="OptionButton" parent="."]
-offset_left = 240.0
-offset_top = 536.0
-offset_right = 490.0
-offset_bottom = 593.0
+layout_mode = 0
+offset_left = 1312.0
+offset_top = 417.0
+offset_right = 1562.0
+offset_bottom = 474.0
 theme = ExtResource("1_fqmev")
 script = ExtResource("2_nwdpp")
 searched_folder = "res://player_limbs/player_weapons"

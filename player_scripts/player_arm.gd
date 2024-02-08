@@ -3,7 +3,7 @@ extends StaticBody2D
 const UNSHOOTABLE_STATES = ["disabled", "sliding", "climbing"]
 var speed_multiplier: int
 var limb_hp:float
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
@@ -21,6 +21,7 @@ func _physics_process(_delta):
 		look_at(get_global_mouse_position())
 
 func decode_part_json():
+	#gets the data for the selected limb of this type
 	if is_left:
 		var stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
 		return stats

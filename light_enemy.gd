@@ -74,7 +74,9 @@ func _on_weapon_charge_timeout():
 	instancing_bullet.set_collision_mask_value(5, false)
 	#gets the node of the scene 
 	#ENEMY MUST BE A DIRECT CHILD OF THE NODE2D OF THE LEVEL OR ANOTHER UNMOVING NODE
-	get_parent().add_child(instancing_bullet)
+	get_parent().get_node("Bullets").add_child(instancing_bullet)
 
 func take_damage(damage_dealt_to):
 	hp -= damage_dealt_to
+	if hp < 0:
+		queue_free()
