@@ -12,6 +12,7 @@ func _ready():
 	damage = stats["damage"]
 	get_node("Shot_cooldown").wait_time = stats["attack_speed"]
 	projectile_speed = stats["projectile_speed"]
+	get_parent().get_parent().add_stats(stats, self)
 	
 
 func _process(_delta):

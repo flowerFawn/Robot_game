@@ -76,8 +76,9 @@ func add_stats(limb_stats: Dictionary, added_limb):
 	total_speed *= limb_stats.get("speed", 1)
 	total_jump += limb_stats.get("jump", 0)
 	#gets the limbs script (if it has one) and runs its editing main stats (if it has one)
-	if added_limb.get_node("ScriptHost").has_method("edit_main_stats"):
-		added_limb.get_node("ScriptHost").edit_main_stats()
+	if added_limb.has_node("ScriptHost"):
+		if added_limb.get_node("ScriptHost").has_method("edit_main_stats"):
+			added_limb.get_node("ScriptHost").edit_main_stats()
 	current_hp = total_hp
 	
 func add_gravity(delta):
