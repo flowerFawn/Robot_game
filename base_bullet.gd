@@ -12,7 +12,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	hit_limb = move_and_collide(Vector2(speed,0).rotated(rotation) * delta)
+	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):
 			#total takes full damage, limb takes half

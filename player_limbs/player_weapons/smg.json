@@ -2,5 +2,5 @@
 	"projectile" : "res://instanceables/projectiles/base_bullet.tscn",
 	"attack_speed" : 0.1,
 	"damage" : 2,
-	"projectile_speed" : 50
+	"projectile_speed" : 300
 }

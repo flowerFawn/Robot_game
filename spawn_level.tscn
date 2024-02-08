@@ -69,4 +69,4 @@ position = Vector2(586, -21)
 
 [node name="EnemyMain" parent="SpawnLevel" instance=ExtResource("7_vi4o8")]
 position = Vector2(358, -21)
-bullet_speed = 100.0
+bullet_speed = 250.0
