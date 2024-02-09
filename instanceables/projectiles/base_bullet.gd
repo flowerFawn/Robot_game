@@ -6,12 +6,17 @@ var damage:float
 var speed:float
 #will only hit bodies in that group
 var targeted_group:String
-
+var gain_damage:bool
+var gain_speed:bool
 func _ready():
 	pass
 
 
 func _physics_process(delta):
+	if gain_speed == true:
+		speed += delta * 10
+	if gain_damage == true:
+		damage += delta * 10
 	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):

@@ -7,11 +7,17 @@ var speed:float
 #will only hit bodies in that group
 var targeted_group:String
 var turn_rate:float
+var gain_damage:bool
+var gain_speed:bool
 func _ready():
 	pass
 
 
 func _physics_process(delta): 
+	if gain_speed == true:
+		speed += delta * 10
+	if gain_damage == true:
+		damage += delta * 10
 	if rotation_degrees != abs(rotation_degrees):
 			rotation_degrees += 360
 	if rotation_degrees > 360:

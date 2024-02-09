@@ -1,0 +1,10 @@
+{
+	"projectile" : "res://instanceables/projectiles/tank_round.tscn",
+	"attack_speed" : 4,
+	"damage" : 40,
+	"projectile_speed" : 100,
+	"weight" : 60,
+	"projectile_turn_speed" : 100,
+	"gain_damage" : true,
+	"gain_speed" : true
+}

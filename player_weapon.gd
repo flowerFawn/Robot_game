@@ -5,6 +5,8 @@ var instanced_projectile
 var damage:float
 var projectile_speed:float
 var projectile_turn_speed:float
+var gain_damage:bool
+var gain_speed:bool
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
@@ -14,7 +16,9 @@ func _ready():
 	if stats.get("projectile_turn_speed") != null:
 		projectile_turn_speed = stats["projectile_turn_speed"]
 	get_node("Shot_cooldown").wait_time = stats["attack_speed"]
+	gain_damage = stats.get("gain_damage", false)
 	projectile_speed = stats["projectile_speed"]
+	gain_speed = stats.get("gain_speed", false)
 	get_parent().get_parent().add_stats(stats, self)
 	
 
@@ -42,6 +46,8 @@ func shoot_projectile():
 	instanced_projectile.rotation_degrees = get_parent().rotation_degrees
 	instanced_projectile.damage = damage
 	instanced_projectile.speed = projectile_speed
+	instanced_projectile.gain_damage = gain_damage
+	instanced_projectile.gain_speed = gain_speed
 	if "turn_rate" in instanced_projectile:
 		instanced_projectile.turn_rate = projectile_turn_speed
 	get_parent().get_parent().get_parent().get_node("Bullets").add_child(instanced_projectile)
