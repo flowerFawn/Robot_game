@@ -12,7 +12,7 @@ func _ready():
 	projectile = load(stats["projectile"])
 	damage = stats["damage"]
 	if stats.get("projectile_turn_speed") != null:
-		projectile_turn_speed = stats["turn_speed"]
+		projectile_turn_speed = stats["projectile_turn_speed"]
 	get_node("Shot_cooldown").wait_time = stats["attack_speed"]
 	projectile_speed = stats["projectile_speed"]
 	get_parent().get_parent().add_stats(stats, self)

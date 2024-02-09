@@ -29,7 +29,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ys71y")
 
 [node name="Torso" type="StaticBody2D" parent="." groups=["enemy_limb"]]
-collision_layer = 16
+collision_layer = 272
 collision_mask = 0
 
 [node name="TorsoCollision" type="CollisionShape2D" parent="Torso"]
@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_40rak")
 
 [node name="LeftArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(4, -5)
-collision_layer = 16
+collision_layer = 272
 collision_mask = 0
 
 [node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
@@ -54,7 +54,7 @@ one_shot = true
 [node name="RightArm" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(-4, -5)
 rotation = 1.5708
-collision_layer = 16
+collision_layer = 272
 collision_mask = 0
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_jdf3r")
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(2, 7)
-collision_layer = 16
+collision_layer = 272
 collision_mask = 0
 
 [node name="LeftLegCollision" type="CollisionShape2D" parent="LeftLeg"]
@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_2h8ch")
 
 [node name="RightLeg" type="StaticBody2D" parent="." groups=["enemy_limb"]]
 position = Vector2(-2, 7)
-collision_layer = 16
+collision_layer = 272
 collision_mask = 0
 
 [node name="RightLegCollision" type="CollisionShape2D" parent="RightLeg"]

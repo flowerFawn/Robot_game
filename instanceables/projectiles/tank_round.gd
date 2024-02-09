@@ -11,11 +11,16 @@ func _ready():
 	pass
 
 
-func _physics_process(delta):
-	if rotation_degrees < 175:
-		rotation_degrees += turn_rate
-	elif 185 < rotation_degrees:
-		rotation_degrees -= turn_rate
+func _physics_process(delta): 
+	if rotation_degrees != abs(rotation_degrees):
+			rotation_degrees += 360
+	if rotation_degrees > 360:
+		rotation_degrees = fmod(rotation_degrees, 360)
+	print(rotation_degrees)
+	if rotation_degrees < 270:
+		rotation_degrees = clamp(rotation_degrees - turn_rate * delta, 90, 270)
+	elif 90 < rotation_degrees:
+		rotation_degrees = clamp(rotation_degrees + turn_rate * delta,90, 270)
 	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):

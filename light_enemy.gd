@@ -71,7 +71,7 @@ func _on_weapon_charge_timeout():
 	instancing_bullet.targeted_group = "player"
 	instancing_bullet.speed = bullet_speed
 	instancing_bullet.damage = damage
-	instancing_bullet.set_collision_mask_value(5, false)
+	instancing_bullet.set_collision_mask_value(9, false)
 	#gets the node of the scene 
 	#ENEMY MUST BE A DIRECT CHILD OF THE NODE2D OF THE LEVEL OR ANOTHER UNMOVING NODE
 	get_parent().get_node("Bullets").add_child(instancing_bullet)
