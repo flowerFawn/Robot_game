@@ -12,7 +12,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	if true:
+	if rotation_degrees < 175:
+		rotation_degrees += turn_rate
+	elif 185 < rotation_degrees:
 		rotation_degrees -= turn_rate
 	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):

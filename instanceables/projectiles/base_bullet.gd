@@ -8,7 +8,7 @@ var speed:float
 var targeted_group:String
 
 func _ready():
-	print(rotation_degrees)
+	pass
 
 
 func _physics_process(delta):
