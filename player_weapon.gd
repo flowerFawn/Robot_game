@@ -4,12 +4,15 @@ var projectile:Resource
 var instanced_projectile
 var damage:float
 var projectile_speed:float
+var projectile_turn_speed:float
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
 	#sets the scene that will be instanced as the projecitile
 	projectile = load(stats["projectile"])
 	damage = stats["damage"]
+	if stats.get("projectile_turn_speed") != null:
+		projectile_turn_speed = stats["turn_speed"]
 	get_node("Shot_cooldown").wait_time = stats["attack_speed"]
 	projectile_speed = stats["projectile_speed"]
 	get_parent().get_parent().add_stats(stats, self)
@@ -36,9 +39,11 @@ func shoot_projectile():
 	instanced_projectile.global_position = global_position
 	instanced_projectile.set_collision_mask_value(2, false)
 	instanced_projectile.targeted_group = "enemy"
-	instanced_projectile.rotation = get_parent().rotation
+	instanced_projectile.rotation_degrees = get_parent().rotation_degrees
 	instanced_projectile.damage = damage
 	instanced_projectile.speed = projectile_speed
+	if "turn_rate" in instanced_projectile:
+		instanced_projectile.turn_rate = projectile_turn_speed
 	get_parent().get_parent().get_parent().get_node("Bullets").add_child(instanced_projectile)
 	
 	

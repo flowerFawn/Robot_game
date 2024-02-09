@@ -19,6 +19,10 @@ func _ready():
 func _physics_process(_delta):
 	if (get_parent().player_state not in UNSHOOTABLE_STATES and not get_parent().is_climbing) or is_left:
 		look_at(get_global_mouse_position())
+		if rotation_degrees != abs(rotation_degrees):
+			rotation_degrees += 360
+		if rotation_degrees > 360:
+			rotation_degrees = fmod(rotation_degrees, 360)
 
 func decode_part_json():
 	#gets the data for the selected limb of this type

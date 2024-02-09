@@ -8,7 +8,7 @@ var speed:float
 var targeted_group:String
 
 func _ready():
-	pass
+	print(rotation_degrees)
 
 
 func _physics_process(delta):
@@ -26,3 +26,7 @@ func _physics_process(delta):
 		#if it hits something that isn't in the targeted group then it will also remove itself
 		queue_free()
 
+
+
+func _on_time_to_despawn_timeout():
+	queue_free()

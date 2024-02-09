@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgr31ki5n5c3p"]
+
+[ext_resource type="Script" path="res://instanceables/projectiles/tank_round.gd" id="1_d7da4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kux6"]
+radius = 1.0
+height = 10.0
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+collision_layer = 0
+collision_mask = 19
+sync_to_physics = false
+script = ExtResource("1_d7da4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 4.71239
+shape = SubResource("CapsuleShape2D_7kux6")
+
+[node name="TimeToDespawn" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimeToDespawn" to="." method="_on_time_to_despawn_timeout"]
