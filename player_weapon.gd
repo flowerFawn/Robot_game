@@ -26,7 +26,7 @@ func _process(_delta):
 	is_shooting()
 func decode_part_json():
 	if is_left:
-		var stats: Dictionary = load("res://player_limbs/player_weapons/" + Selected_Limbs.parts["left_weapon"]).data
+		var  stats: Dictionary = load("res://player_limbs/player_weapons/" + Selected_Limbs.parts["left_weapon"]).data
 		return stats
 	else:
 		var stats: Dictionary = load("res://player_limbs/player_weapons/" + Selected_Limbs.parts["right_weapon"]).data

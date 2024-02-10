@@ -14,19 +14,29 @@ func _ready():
 
 
 func _physics_process(delta): 
+	#increases damage/speed over time
 	if gain_speed == true:
 		speed += delta * 10
 	if gain_damage == true:
 		damage += delta * 10
+	#makes it not negative anymore
 	if rotation_degrees != abs(rotation_degrees):
 			rotation_degrees += 360
 	if rotation_degrees > 360:
+	#makes it less than 360, but pointing the same way
 		rotation_degrees = fmod(rotation_degrees, 360)
-	print(rotation_degrees)
-	if rotation_degrees < 270:
-		rotation_degrees = clamp(rotation_degrees - turn_rate * delta, 90, 270)
+	if 270 < rotation_degrees:
+		rotation_degrees = rotation_degrees + turn_rate * delta
+	elif 90 < rotation_degrees and rotation_degrees < 270:
+		print(delta)
+		print(rotation_degrees)
+		rotation_degrees = rotation_degrees - turn_rate * delta
+		print(rotation_degrees)
+		print(turn_rate * delta)
 	elif 90 < rotation_degrees:
-		rotation_degrees = clamp(rotation_degrees + turn_rate * delta,90, 270)
+		rotation_degrees = rotation_degrees + turn_rate * delta
+	elif rotation_degrees < 90:
+		rotation_degrees = rotation_degrees + turn_rate * delta
 	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
 	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
 		if hit_limb.get_collider().get_parent().is_in_group("player"):

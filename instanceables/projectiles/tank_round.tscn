@@ -21,4 +21,7 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(3.99756, -0.139598)
+
 [connection signal="timeout" from="TimeToDespawn" to="." method="_on_time_to_despawn_timeout"]

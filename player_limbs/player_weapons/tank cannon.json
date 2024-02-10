@@ -4,5 +4,5 @@
 	"damage" : 100,
 	"projectile_speed" : 120,
 	"weight" : 100,
-	"projectile_turn_speed" : 30
+	"projectile_turn_speed" : 50
 }
