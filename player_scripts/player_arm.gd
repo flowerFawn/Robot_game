@@ -3,9 +3,14 @@ extends StaticBody2D
 const UNSHOOTABLE_STATES = ["disabled", "sliding", "climbing"]
 var speed_multiplier: int
 var limb_hp:float
+var limb_id:String
+var stats
 
 func _ready():
-	var stats: Dictionary
+	if is_left:
+		limb_id = "left_arm"
+	else:
+		limb_id = "right_arm"
 	stats = decode_part_json()
 	limb_hp = stats["hp"]
 	if stats.has("script"):
@@ -27,10 +32,10 @@ func _physics_process(_delta):
 func decode_part_json():
 	#gets the data for the selected limb of this type
 	if is_left:
-		var stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
+		var readable_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
 		return stats
 	else:
-		var stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["right_arm"]).data
+		var readable_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["right_arm"]).data
 		return stats
 
 func start_slide(direction_multiplier):
@@ -58,3 +63,9 @@ func end_slide(direction_multiplier):
 func take_damage(damage):
 	limb_hp -= damage / 2
 	get_parent().current_hp -= damage
+	if limb_hp < 0:
+		queue_free()
+		if is_left:
+			get_parent().current_parts.pop_at(get_parent().current_parts.find("left_arm"))
+		else:
+			get_parent().current_parts.pop_at(get_parent().current_parts.find("right_arm"))

@@ -1,11 +1,19 @@
 extends StaticBody2D
 @export var is_left:bool
 var limb_hp:float
+var total_limb_hp:float
+var stats:Dictionary
+#stores things like right_leg, so it can be removed when destroyed
+var limb_id:String
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var stats: Dictionary
+	if is_left:
+		limb_id = "left_leg"
+	else:
+		limb_id = "right_leg"
 	stats = decode_part_json()
-	limb_hp = stats["hp"]
+	total_limb_hp = stats["hp"]
+	limb_hp = total_limb_hp
 	if stats.has("script"):
 		get_node("ScriptHost").set_script(load(stats["script"]))
 		if get_node("ScriptHost").has_method("set_script_stats") and stats.has("script_value"):
@@ -48,3 +56,7 @@ func end_slide(direction_multiplier):
 func take_damage(damage):
 	limb_hp -= damage / 2
 	get_parent().current_hp -= damage
+	#removes the leg from the scene and tells the main player it has lost a leg
+	if limb_hp < 0:
+		queue_free()
+		get_parent().remove_stats(stats, self)

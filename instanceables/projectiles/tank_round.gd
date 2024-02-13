@@ -28,11 +28,7 @@ func _physics_process(delta):
 	if 270 < rotation_degrees:
 		rotation_degrees = rotation_degrees + turn_rate * delta
 	elif 90 < rotation_degrees and rotation_degrees < 270:
-		print(delta)
-		print(rotation_degrees)
 		rotation_degrees = rotation_degrees - turn_rate * delta
-		print(rotation_degrees)
-		print(turn_rate * delta)
 	elif 90 < rotation_degrees:
 		rotation_degrees = rotation_degrees + turn_rate * delta
 	elif rotation_degrees < 90:

@@ -10,6 +10,7 @@ var total_jump:float = 0
 var stored_slide:float
 var slide_multiplier:float = 2
 var current_hp:float
+var current_parts:Array = ["head", "left_leg", "right_leg", "left_arm", "right_arm"]
 
 func _ready():
 	Player_Stats.player_current_hp = total_hp
@@ -81,6 +82,14 @@ func add_stats(limb_stats: Dictionary, added_limb):
 			added_limb.get_node("ScriptHost").edit_main_stats()
 	current_hp = total_hp
 	
+func remove_stats(limb_stats: Dictionary, removed_limb):
+	current_parts.pop_at(current_parts.find(removed_limb.limb_id))
+	#takes in the dictionary from a limbs json, and removes it from the totals (called when a limb is destroyed)
+	total_weight -= limb_stats.get("weight", 0.0)
+	total_speed /= limb_stats.get("speed", 1)
+	total_jump -= limb_stats.get("jump", 0)
+
+
 func add_gravity(delta):
 	#uses the floor ray like is_on_floor()
 	if get_node("FloorRay").get_collider() == null or not get_node("FloorRay").get_collider().is_in_group("floor"):
@@ -134,3 +143,6 @@ func are_legs_on_floor():
 			return false
 	else:
 		return false
+
+func die():
+	print("you dead :(")
