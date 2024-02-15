@@ -32,9 +32,12 @@ func _physics_process(delta):
 	if slide_output[0]:
 		run_slide(slide_output)
 	#does all the movement checks
-	#runs if the player_state isn't an unmoveable state (such as sliding or disabled) and they are on the floor, and are not climbing
-	elif player_state not in UNMOVABLE_STATES and not (not are_legs_on_floor() and is_climbing):
+	#runs if the player_state isn't an unmoveable state (such as sliding or disabled) and they are on the floor, while in a ladder, or just not in a ladder, or that they are in the air with only one leg
+	elif can_walk():
 		current_forces.x = take_movement_inputs()
+	elif player_state == "walking":
+		current_forces.x = 0
+	if are_legs_on_floor():
 		current_forces.y -= take_jump_input()
 	#if the player is not on the floor, and they are climbing, they will slow down (smoothes it out a lot, looks much prettier
 	if not are_legs_on_floor() and is_climbing and abs(current_forces.x) > 1:
@@ -69,7 +72,6 @@ func add_stats(limb_stats: Dictionary, added_limb):
 	
 func remove_stats(limb_stats: Dictionary, removed_limb):
 	current_parts.pop_at(current_parts.find(removed_limb.limb_id))
-	print(current_parts)
 	#takes in the dictionary from a limbs json, and removes it from the totals (called when a limb is destroyed)
 	total_weight -= limb_stats.get("weight", 0.0)
 	total_speed /= limb_stats.get("speed", 1)
@@ -155,3 +157,20 @@ func run_end_slide():
 			limb.position.y += 12
 		elif not limb.is_in_group("slide_excluded"):
 			limb.end_slide(stored_slide)
+			
+func can_walk():
+	#elif player_state not in UNMOVABLE_STATES and ((not (not are_legs_on_floor() and is_climbing) and current_parts.has("left_leg") and current_parts.has("right_leg")) or (not current_parts.has("left_leg") or not current_parts.has("right_leg") and not are_legs_on_floor())):
+	if player_state not in UNMOVABLE_STATES:
+		if not (not are_legs_on_floor() and is_climbing):
+			if current_parts.has("left_leg") and current_parts.has("right_leg"):
+				return true
+			elif not are_legs_on_floor():
+				return true
+			else:
+				return false
+		else:
+			return false
+	else:
+		return false
+				
+			

@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_bdeih")
 
 [node name="Player" parent="SpawnLevel" instance=ExtResource("1_anqrn")]
 visibility_layer = 3
-position = Vector2(586, -21)
+position = Vector2(50, -21)
 
 [node name="UIControl" parent="SpawnLevel/Player" instance=ExtResource("2_60qmp")]
 
