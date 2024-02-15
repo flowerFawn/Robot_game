@@ -69,6 +69,7 @@ func add_stats(limb_stats: Dictionary, added_limb):
 	
 func remove_stats(limb_stats: Dictionary, removed_limb):
 	current_parts.pop_at(current_parts.find(removed_limb.limb_id))
+	print(current_parts)
 	#takes in the dictionary from a limbs json, and removes it from the totals (called when a limb is destroyed)
 	total_weight -= limb_stats.get("weight", 0.0)
 	total_speed /= limb_stats.get("speed", 1)

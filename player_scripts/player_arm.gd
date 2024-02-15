@@ -65,7 +65,4 @@ func take_damage(damage):
 	get_parent().current_hp -= damage
 	if limb_hp < 0:
 		queue_free()
-		if is_left:
-			get_parent().current_parts.pop_at(get_parent().current_parts.find("left_arm"))
-		else:
-			get_parent().current_parts.pop_at(get_parent().current_parts.find("right_arm"))
+		get_parent().remove_stats(stats, self)
