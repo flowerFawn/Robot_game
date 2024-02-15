@@ -30,19 +30,9 @@ func _physics_process(delta):
 	var slide_output:Array = take_slide_input()
 	#if it was a slide
 	if slide_output[0]:
-		#sets the state and stores it
-		player_state = "sliding"
-		stored_slide = slide_output[1]
-		#starts the slide forces
-		current_forces = Vector2(total_speed * slide_multiplier * slide_output[1], 0)
-		#tells every child to do its own part to start sliding, calls start_slide and passed the multiplier
-		position.y += 6
-		for limb in get_children():
-			if limb.is_in_group("ray"):
-				limb.position.y -= 12
-			elif not limb.is_in_group("slide_excluded"):
-				limb.start_slide(stored_slide)
-	#does all the check movement checks
+		run_slide(slide_output)
+	#does all the movement checks
+	#runs if the player_state isn't an unmoveable state (such as sliding or disabled) and they are on the floor, and are not climbing
 	elif player_state not in UNMOVABLE_STATES and not (not are_legs_on_floor() and is_climbing):
 		current_forces.x = take_movement_inputs()
 		current_forces.y -= take_jump_input()
@@ -146,3 +136,17 @@ func are_legs_on_floor():
 
 func die():
 	print("you dead :(")
+
+func run_slide(slide_output):
+	#sets the state and stores it
+	player_state = "sliding"
+	stored_slide = slide_output[1]
+	#starts the slide forces
+	current_forces = Vector2(total_speed * slide_multiplier * slide_output[1], 0)
+	#tells every child to do its own part to start sliding, calls start_slide and passed the multiplier
+	position.y += 6
+	for limb in get_children():
+		if limb.is_in_group("ray"):
+			limb.position.y -= 12
+		elif not limb.is_in_group("slide_excluded"):
+			limb.start_slide(stored_slide)
