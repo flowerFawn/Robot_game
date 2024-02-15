@@ -36,6 +36,7 @@ func _physics_process(delta):
 	elif player_state not in UNMOVABLE_STATES and not (not are_legs_on_floor() and is_climbing):
 		current_forces.x = take_movement_inputs()
 		current_forces.y -= take_jump_input()
+	#if the player is not on the floor, and they are climbing, they will slow down (smoothes it out a lot, looks much prettier
 	if not are_legs_on_floor() and is_climbing and abs(current_forces.x) > 1:
 		current_forces.x -= 100 * delta
 	#checks if the player is sliding and is slowed to 0, or has released slide 
