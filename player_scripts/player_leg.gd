@@ -23,11 +23,11 @@ func _ready():
 func decode_part_json():
 	#uses selected limbs to get the selected limb and then the json for it
 	if is_left:
-		var stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["left_leg"]).data
-		return stats
+		var reading_stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["left_leg"]).data
+		return reading_stats
 	else:
-		var stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["right_leg"]).data
-		return stats
+		var reading_stats: Dictionary = load("res://player_limbs/player_legs/" + Selected_Limbs.parts["right_leg"]).data
+		return reading_stats
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func start_slide(direction_multiplier):

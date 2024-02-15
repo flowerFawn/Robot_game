@@ -41,14 +41,8 @@ func _physics_process(delta):
 		current_forces.x -= 100 * delta
 	#checks if the player is sliding and is slowed to 0, or has released slide 
 	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
-		#sets state back, and does end_slide, undoing the start of the slide
-		player_state = "walking"
-		position.y -= 6
-		for limb in get_children():
-			if limb.is_in_group("ray"):	
-				limb.position.y += 12
-			elif not limb.is_in_group("slide_excluded"):
-				limb.end_slide(stored_slide)
+		#sets state back, and does end_slide on each limb, undoing the start of the slide
+		run_end_slide()
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
@@ -151,3 +145,12 @@ func run_slide(slide_output):
 			limb.position.y -= 12
 		elif not limb.is_in_group("slide_excluded"):
 			limb.start_slide(stored_slide)
+
+func run_end_slide():
+	player_state = "walking"
+	position.y -= 6
+	for limb in get_children():
+		if limb.is_in_group("ray"):	
+			limb.position.y += 12
+		elif not limb.is_in_group("slide_excluded"):
+			limb.end_slide(stored_slide)

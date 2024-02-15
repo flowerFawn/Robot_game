@@ -32,11 +32,11 @@ func _physics_process(_delta):
 func decode_part_json():
 	#gets the data for the selected limb of this type
 	if is_left:
-		var readable_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
-		return stats
+		var reading_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["left_arm"]).data
+		return reading_stats
 	else:
-		var readable_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["right_arm"]).data
-		return stats
+		var reading_stats: Dictionary = load("res://player_limbs/player_arms/" + Selected_Limbs.parts["right_arm"]).data
+		return reading_stats
 
 func start_slide(direction_multiplier):
 	if not is_left:
