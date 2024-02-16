@@ -57,6 +57,8 @@ func _physics_process(delta):
 func _process(_delta):
 	current_hp = clamp(current_hp, -10000000, total_hp)
 	Player_Stats.player_current_hp = current_hp
+	if current_hp < 0 or not (current_parts.has("left_leg") and current_parts.has("right_leg")):
+		die()
 
 func add_stats(limb_stats: Dictionary, added_limb):
 	#takes in the dictionary from a limbs json, and adds it to the totals
