@@ -29,6 +29,8 @@ size = Vector2(137, 3)
 
 [node name="Bullets" type="Node2D" parent="SpawnLevel"]
 
+[node name="Scrap" type="Node2D" parent="SpawnLevel"]
+
 [node name="Walls" parent="SpawnLevel" instance=ExtResource("1_4apws")]
 position = Vector2(-272, -112)
 
@@ -68,5 +70,5 @@ position = Vector2(50, -21)
 [node name="UIControl" parent="SpawnLevel/Player" instance=ExtResource("2_60qmp")]
 
 [node name="EnemyMain" parent="SpawnLevel" instance=ExtResource("7_vi4o8")]
-position = Vector2(358, -21)
+position = Vector2(134, -21)
 bullet_speed = 250.0

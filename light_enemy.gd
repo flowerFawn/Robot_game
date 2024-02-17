@@ -6,6 +6,8 @@ var current_forces:Vector2
 @export var damage:float = 10
 @export var bullet_speed:float = 30
 var preloaded_bullet = preload("res://instanceables/projectiles/base_bullet.tscn")
+var rng = RandomNumberGenerator.new()
+var preloaded_scrap = preload("res://instanceables/scrap/scrap_chunk.tscn")
 
 func _ready():
 	pass
@@ -79,4 +81,17 @@ func _on_weapon_charge_timeout():
 func take_damage(damage_dealt_to):
 	hp -= damage_dealt_to
 	if hp < 0:
-		queue_free()
+		die()
+		
+func die():
+	#creates 0-3 scrap chunks that the player can collect
+	var scrap_chunks:int = rng.randi_range(0, 3)
+	var new_scrap_chunk:Node2D
+	if scrap_chunks != 0:
+		for scrap_chunk in range(1, scrap_chunks):
+			new_scrap_chunk = preloaded_scrap.instantiate()
+			new_scrap_chunk.global_position = global_position
+			new_scrap_chunk.global_rotation_degrees = rng.randi_range(0, 360)
+			#sets up each and adds them to the world
+			get_parent().get_node("Scrap").add_child(new_scrap_chunk)
+	queue_free()

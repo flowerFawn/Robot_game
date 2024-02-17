@@ -102,6 +102,7 @@ interact={
 2d_physics/layer_7="Line of Sight"
 2d_physics/layer_8="Player Detection"
 2d_physics/layer_9="enemy_limbs"
+2d_physics/layer_10="Scrap"
 
 [rendering]
 

@@ -139,7 +139,8 @@ func are_legs_on_floor():
 		return false
 
 func die():
-	print("you dead :(")
+	pass
+	#print("you dead :(")
 
 func run_slide(slide_output):
 	#sets the state and stores it
