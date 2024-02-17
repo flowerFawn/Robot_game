@@ -24,8 +24,6 @@ func out_of_interactable_range(body):
 func _on_exit_interactable_body_entered(body):
 	if body.is_in_group("player"):
 		current_interactable = "exit"
-		
-
 
 
 func _on_work_table_interacable_body_entered(body):

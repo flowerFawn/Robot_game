@@ -15,15 +15,17 @@ size = Vector2(25, 176)
 size = Vector2(513, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y88ro"]
-size = Vector2(20, 31)
+size = Vector2(48, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsew8"]
-size = Vector2(44, 20)
+size = Vector2(16, 34)
 
 [node name="Node" type="Node"]
 
 [node name="Workshop" type="Node2D" parent="."]
 script = ExtResource("1_1a6c0")
+
+[node name="Bullets" type="Node2D" parent="Workshop"]
 
 [node name="PlayerMain" parent="Workshop" instance=ExtResource("3_gfvn6")]
 position = Vector2(119, 143)
@@ -52,17 +54,21 @@ position = Vector2(246.5, 0)
 shape = SubResource("RectangleShape2D_5ndvp")
 
 [node name="WorkTableInteracable" type="Area2D" parent="Workshop"]
-position = Vector2(26, 150)
+position = Vector2(160, 150)
+collision_layer = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/WorkTableInteracable"]
-position = Vector2(1, -6.5)
+position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_y88ro")
 
 [node name="ExitInteractable" type="Area2D" parent="Workshop"]
-position = Vector2(160, 152)
+position = Vector2(33, 152)
+collision_layer = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/ExitInteractable"]
-position = Vector2(-12, -2)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_xsew8")
 
 [node name="LevelCamera" type="Camera2D" parent="." groups=["slide_excluded"]]

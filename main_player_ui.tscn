@@ -24,7 +24,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_cmsfi")
 text = "back to limb selection"
 script = ExtResource("1_45fv6")
-link_to = "res://limb_menu.tscn"
+link_to = "res://levels/workshop.tscn"
 
 [node name="HPBar" type="ProgressBar" parent="."]
 layout_mode = 1
