@@ -69,6 +69,9 @@ assigned_limb = "right_arm"
 layout_mode = 0
 offset_right = 307.0
 offset_bottom = 52.0
+theme = ExtResource("1_fqmev")
+theme_override_font_sizes/font_size = 32
+text = " Back To Workshop"
 script = ExtResource("3_ueba4")
 link_to = "res://spawn_level.tscn"
 

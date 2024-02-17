@@ -11,13 +11,17 @@ var stored_slide:float
 var slide_multiplier:float = 2
 var current_hp:float
 var current_parts:Array = ["head", "left_leg", "right_leg", "left_arm", "right_arm"]
+@export var camera_disabled:bool = false
 
 func _ready():
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
-	get_node("UIControl").set_max()
+	if has_node("UIControl"):
+		get_node("UIControl").set_max()
 	player_state = "walking"
 	current_forces = Vector2(0, 0)
+	if camera_disabled:
+		get_node("PlayerCamera").enabled = false
 
 
 func _physics_process(delta):

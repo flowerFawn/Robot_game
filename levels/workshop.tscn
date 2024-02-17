@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://7s2mbix1nc7l"]
+
+[ext_resource type="Script" path="res://levels/Workshop.gd" id="1_1a6c0"]
+[ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="1_g6u7q"]
+[ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="2_bkqjd"]
+[ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="3_gfvn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyc6m"]
+size = Vector2(330, 31.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xlxa"]
+size = Vector2(25, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ndvp"]
+size = Vector2(513, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y88ro"]
+size = Vector2(20, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsew8"]
+size = Vector2(44, 20)
+
+[node name="Node" type="Node"]
+
+[node name="Workshop" type="Node2D" parent="."]
+script = ExtResource("1_1a6c0")
+
+[node name="PlayerMain" parent="Workshop" instance=ExtResource("3_gfvn6")]
+position = Vector2(119, 143)
+camera_disabled = true
+
+[node name="Floors" parent="Workshop" instance=ExtResource("1_g6u7q")]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Floors"]
+position = Vector2(160, 174.125)
+shape = SubResource("RectangleShape2D_pyc6m")
+
+[node name="Walls" parent="Workshop" instance=ExtResource("2_bkqjd")]
+position = Vector2(-5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Walls"]
+position = Vector2(325, 75)
+shape = SubResource("RectangleShape2D_7xlxa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Workshop/Walls"]
+position = Vector2(5, 80)
+shape = SubResource("RectangleShape2D_7xlxa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Workshop/Walls"]
+position = Vector2(246.5, 0)
+shape = SubResource("RectangleShape2D_5ndvp")
+
+[node name="WorkTableInteracable" type="Area2D" parent="Workshop"]
+position = Vector2(26, 150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/WorkTableInteracable"]
+position = Vector2(1, -6.5)
+shape = SubResource("RectangleShape2D_y88ro")
+
+[node name="ExitInteractable" type="Area2D" parent="Workshop"]
+position = Vector2(160, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/ExitInteractable"]
+position = Vector2(-12, -2)
+shape = SubResource("RectangleShape2D_xsew8")
+
+[node name="LevelCamera" type="Camera2D" parent="." groups=["slide_excluded"]]
+position = Vector2(160, 90)
+zoom = Vector2(6, 6)
+
+[connection signal="body_entered" from="Workshop/WorkTableInteracable" to="Workshop" method="_on_work_table_interacable_body_entered"]
+[connection signal="body_exited" from="Workshop/WorkTableInteracable" to="Workshop" method="out_of_interactable_range"]
+[connection signal="body_entered" from="Workshop/ExitInteractable" to="Workshop" method="_on_exit_interactable_body_entered"]
+[connection signal="body_exited" from="Workshop/ExitInteractable" to="Workshop" method="out_of_interactable_range"]

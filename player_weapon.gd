@@ -38,19 +38,20 @@ func is_shooting():
 		
 func shoot_projectile():
 	#creates a new instance of the projectile, and sets its position
-	get_node("Shot_cooldown").start()
-	instanced_projectile = projectile.instantiate()
-	instanced_projectile.global_position = global_position
-	instanced_projectile.set_collision_mask_value(2, false)
-	instanced_projectile.targeted_group = "enemy"
-	instanced_projectile.rotation_degrees = get_parent().rotation_degrees
-	instanced_projectile.damage = damage
-	instanced_projectile.speed = projectile_speed
-	instanced_projectile.gain_damage = gain_damage
-	instanced_projectile.gain_speed = gain_speed
-	if "turn_rate" in instanced_projectile:
-		instanced_projectile.turn_rate = projectile_turn_speed
-	get_parent().get_parent().get_parent().get_node("Bullets").add_child(instanced_projectile)
+	if get_parent().get_parent().get_parent().has_node("Bullets"):
+		get_node("Shot_cooldown").start()
+		instanced_projectile = projectile.instantiate()
+		instanced_projectile.global_position = global_position
+		instanced_projectile.set_collision_mask_value(2, false)
+		instanced_projectile.targeted_group = "enemy"
+		instanced_projectile.rotation_degrees = get_parent().rotation_degrees
+		instanced_projectile.damage = damage
+		instanced_projectile.speed = projectile_speed
+		instanced_projectile.gain_damage = gain_damage
+		instanced_projectile.gain_speed = gain_speed
+		if "turn_rate" in instanced_projectile:
+			instanced_projectile.turn_rate = projectile_turn_speed
+		get_parent().get_parent().get_parent().get_node("Bullets").add_child(instanced_projectile)
 	
 	
 
