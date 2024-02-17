@@ -73,7 +73,7 @@ theme = ExtResource("1_fqmev")
 theme_override_font_sizes/font_size = 32
 text = " Back To Workshop"
 script = ExtResource("3_ueba4")
-link_to = "res://spawn_level.tscn"
+link_to = "res://levels/workshop.tscn"
 
 [node name="RightWeapon" type="OptionButton" parent="."]
 layout_mode = 0
