@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=14 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
 [ext_resource type="Script" path="res://player_weapon.gd" id="5_2x807"]
+[ext_resource type="Texture2D" uid="uid://bxlcmbvoj0njy" path="res://general images/base_arm.png" id="5_u1i3r"]
 [ext_resource type="Script" path="res://collectionarea.gd" id="7_p8ot4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
@@ -51,6 +52,7 @@ script = ExtResource("3_uxcag")
 is_left = true
 
 [node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
+visible = false
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
@@ -64,6 +66,11 @@ is_left = true
 [node name="Shot_cooldown" type="Timer" parent="LeftArm/LeftWeaponSystem"]
 one_shot = true
 
+[node name="BaseArm" type="Sprite2D" parent="LeftArm"]
+position = Vector2(4, 0)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("5_u1i3r")
+
 [node name="RightArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-4, -5)
 collision_layer = 2
@@ -71,6 +78,7 @@ collision_mask = 0
 script = ExtResource("3_uxcag")
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
+visible = false
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
@@ -82,6 +90,11 @@ script = ExtResource("5_2x807")
 
 [node name="Shot_cooldown" type="Timer" parent="RightArm/RightWeaponSystem"]
 one_shot = true
+
+[node name="BaseArm2" type="Sprite2D" parent="RightArm"]
+position = Vector2(4, 0)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("5_u1i3r")
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(2, 7)
@@ -119,6 +132,7 @@ position = Vector2(0, -100)
 zoom = Vector2(4, 4)
 
 [node name="CollectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 512
