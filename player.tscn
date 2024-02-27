@@ -52,7 +52,6 @@ script = ExtResource("3_uxcag")
 is_left = true
 
 [node name="LeftArmCollision" type="CollisionShape2D" parent="LeftArm"]
-visible = false
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
@@ -78,7 +77,6 @@ collision_mask = 0
 script = ExtResource("3_uxcag")
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="RightArm"]
-visible = false
 position = Vector2(4.125, 0)
 shape = SubResource("RectangleShape2D_jdf3r")
 
