@@ -1,4 +1,5 @@
 {
-	"hp": 10,
-	"weight": 10
-	}
+	"hp" : 10,
+	"weight" : 10,
+	"texture" : "res://sprites/limbs/arms/standard_arm.png"
+}

@@ -17,6 +17,10 @@ func _ready():
 		get_node("ScriptHost").set_script(load(stats["script"]))
 		if get_node("ScriptHost").has_method("set_script_stats") and stats.has("script_value"):
 			get_node("ScriptHost").set_script_stats(stats["script_value"])
+	if stats.has("texture") and load(stats["texture"]) != null:
+		get_node("ArmSprite").texture = load(stats["texture"])
+	else:
+		print("set texture, or set it to a real texture")
 	get_parent().add_stats(stats, self)
 
 
@@ -28,7 +32,6 @@ func _physics_process(_delta):
 			rotation_degrees += 360
 		if rotation_degrees > 360:
 			rotation_degrees = fmod(rotation_degrees, 360)
-	print(get_node("ArmSprite").flip_v)
 	if 270 > rotation_degrees and rotation_degrees > 90:
 		get_node("ArmSprite").flip_v = true
 	else:
