@@ -28,6 +28,12 @@ func _physics_process(_delta):
 			rotation_degrees += 360
 		if rotation_degrees > 360:
 			rotation_degrees = fmod(rotation_degrees, 360)
+	print(get_node("ArmSprite").flip_v)
+	if 270 > rotation_degrees and rotation_degrees > 90:
+		get_node("ArmSprite").flip_v = true
+	else:
+		get_node("ArmSprite").flip_v = false
+		
 
 func decode_part_json():
 	#gets the data for the selected limb of this type

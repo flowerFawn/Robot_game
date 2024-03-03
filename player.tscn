@@ -65,7 +65,7 @@ is_left = true
 [node name="Shot_cooldown" type="Timer" parent="LeftArm/LeftWeaponSystem"]
 one_shot = true
 
-[node name="BaseArm" type="Sprite2D" parent="LeftArm"]
+[node name="ArmSprite" type="Sprite2D" parent="LeftArm"]
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("5_u1i3r")
@@ -89,7 +89,7 @@ script = ExtResource("5_2x807")
 [node name="Shot_cooldown" type="Timer" parent="RightArm/RightWeaponSystem"]
 one_shot = true
 
-[node name="BaseArm2" type="Sprite2D" parent="RightArm"]
+[node name="ArmSprite" type="Sprite2D" parent="RightArm"]
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("5_u1i3r")
