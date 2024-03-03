@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
 [ext_resource type="Script" path="res://player_weapon.gd" id="5_2x807"]
-[ext_resource type="Texture2D" uid="uid://bxlcmbvoj0njy" path="res://general images/base_arm.png" id="5_u1i3r"]
+[ext_resource type="Texture2D" uid="uid://qn31vvwm1h7y" path="res://sprites/limbs/arms/error_arm.png" id="6_issu3"]
 [ext_resource type="Script" path="res://collectionarea.gd" id="7_p8ot4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
@@ -68,7 +68,7 @@ one_shot = true
 [node name="ArmSprite" type="Sprite2D" parent="LeftArm"]
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
-texture = ExtResource("5_u1i3r")
+texture = ExtResource("6_issu3")
 
 [node name="RightArm" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-4, -5)
@@ -92,7 +92,7 @@ one_shot = true
 [node name="ArmSprite" type="Sprite2D" parent="RightArm"]
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
-texture = ExtResource("5_u1i3r")
+texture = ExtResource("6_issu3")
 
 [node name="LeftLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(2, 7)
