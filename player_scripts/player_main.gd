@@ -55,6 +55,7 @@ func _physics_process(delta):
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
+	run_zooming()
 	Player_Stats.player_position = global_position
 	move_and_collide(current_forces * delta)
 	Player_Stats.player_current_forces = current_forces
@@ -181,5 +182,14 @@ func can_walk():
 			return false
 	else:
 		return false
-				
-			
+
+func run_zooming():
+	print(get_node("PlayerCamera").zoom)
+	if Input.is_action_just_released("zoom_in") and not Input.is_action_just_released("zoom_out"):
+		get_node("PlayerCamera").zoom.x = clamp(get_node("PlayerCamera").zoom.x + 1, 3, 10)
+		get_node("PlayerCamera").zoom.y = clamp(get_node("PlayerCamera").zoom.y + 1, 3, 10)
+		get_node("PlayerCamera").offset.y = get_node("PlayerCamera").zoom.y * 8
+	elif Input.is_action_just_released("zoom_out"):
+		get_node("PlayerCamera").zoom.x = clamp(get_node("PlayerCamera").zoom.x - 1, 3, 10)
+		get_node("PlayerCamera").zoom.y = clamp(get_node("PlayerCamera").zoom.y - 1, 3, 10)
+		get_node("PlayerCamera").offset.y = get_node("PlayerCamera").zoom.y * 8

@@ -127,6 +127,7 @@ hit_from_inside = true
 
 [node name="PlayerCamera" type="Camera2D" parent="." groups=["slide_excluded"]]
 position = Vector2(0, -100)
+offset = Vector2(0, -4)
 zoom = Vector2(4, 4)
 
 [node name="CollectionArea" type="Area2D" parent="."]
