@@ -25,14 +25,6 @@ func _physics_process(delta):
 	if rotation_degrees > 360:
 	#makes it less than 360, but pointing the same way
 		rotation_degrees = fmod(rotation_degrees, 360)
-	#if 270 < rotation_degrees:
-		#rotation_degrees = rotation_degrees + turn_rate * delta
-	#elif 90 < rotation_degrees and rotation_degrees < 270:
-		#rotation_degrees = rotation_degrees - turn_rate * delta
-	#elif 90 < rotation_degrees:
-		#rotation_degrees = rotation_degrees + turn_rate * delta
-	#elif rotation_degrees < 90:
-		#rotation_degrees = rotation_degrees + turn_rate * delta
 	if 270 > rotation_degrees and rotation_degrees > 90:
 		rotation_degrees = rotation_degrees - turn_rate * delta
 	else:
