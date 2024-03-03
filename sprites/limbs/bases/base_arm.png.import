@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3y5nqcrw788v"
-path="res://.godot/imported/base_arm.png-e2220350496db64cccd39f4b27e87dfd.ctex"
+path="res://.godot/imported/base_arm.png-37247706c0d10ecaf6f33beecb27687b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/limbs/arms/base_arm.png"
-dest_files=["res://.godot/imported/base_arm.png-e2220350496db64cccd39f4b27e87dfd.ctex"]
+source_file="res://sprites/limbs/bases/base_arm.png"
+dest_files=["res://.godot/imported/base_arm.png-37247706c0d10ecaf6f33beecb27687b.ctex"]
 
 [params]
 
