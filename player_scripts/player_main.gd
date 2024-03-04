@@ -185,7 +185,6 @@ func can_walk():
 
 func run_zooming():
 	get_node("PlayerCamera").offset.y = (get_node("PlayerCamera").zoom.y * 8)
-	print(get_node("PlayerCamera").zoom)
 	if Input.is_action_just_released("zoom_in") and not Input.is_action_just_released("zoom_out"):
 		var zooming_tween = create_tween()
 		zooming_tween.tween_property(get_node("PlayerCamera"), "zoom", Vector2(clamp(ceil(get_node("PlayerCamera").zoom.x + 1), 3, 10),clamp(ceil(get_node("PlayerCamera").zoom.y + 1), 3, 10)), 0.25)
