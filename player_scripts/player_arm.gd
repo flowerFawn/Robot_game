@@ -50,11 +50,14 @@ func decode_part_json():
 func start_slide(direction_multiplier):
 	if not is_left:
 		rotation_degrees = 150 
-		position.y += 4
+		position.y += 8
 		position.x -= 4 * direction_multiplier
 		if direction_multiplier == -1:
 			position.x += 6
-			rotation_degrees -= 110
+			rotation_degrees -= 140
+		else:
+			position.x += 1
+			rotation_degrees = 170
 	else:
 		position.y += 1
 		if direction_multiplier == 1:
@@ -65,11 +68,13 @@ func start_slide(direction_multiplier):
 func end_slide(direction_multiplier):
 	if not is_left:
 		rotation_degrees = 0
-		position.y -= 4
+		position.y -= 8
 		position.x += 4 * direction_multiplier
 		if direction_multiplier == -1:
 			position.x -= 6
 			rotation_degrees += 110
+		else:
+			position.x -= 1
 	else:
 		position.y -= 1
 		if direction_multiplier == 1:
