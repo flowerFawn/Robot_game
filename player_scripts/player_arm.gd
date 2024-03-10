@@ -56,7 +56,11 @@ func start_slide(direction_multiplier):
 			position.x += 6
 			rotation_degrees -= 110
 	else:
-		position.x -= 4
+		position.y += 1
+		if direction_multiplier == 1:
+			position.x -= 10
+		else:
+			position.x += 1
 		
 func end_slide(direction_multiplier):
 	if not is_left:
@@ -67,7 +71,11 @@ func end_slide(direction_multiplier):
 			position.x -= 6
 			rotation_degrees += 110
 	else:
-		position.x += 4
+		position.y -= 1
+		if direction_multiplier == 1:
+			position.x += 10
+		else:
+			position.x -= 1
 		
 func take_damage(damage):
 	limb_hp -= damage / 2
