@@ -21,32 +21,39 @@ func add_gravity(delta):
 
 func _process(_delta):
 	pass
+	
+func attempt_shot():
+	#starts the timer to shoot if within shooting range and timer is inactive (time_left returns 0 when inactive)
+	if within_shooting_range and get_node("LeftArm/WeaponSystem/WeaponCharge").time_left == 0 and  not get_node("LineOfSight").is_colliding():
+		get_node("LeftArm/WeaponSystem/WeaponCharge").start()
+	#stops, NOT PAUSES the timer.
+	elif not within_shooting_range:
+		get_node("LeftArm/WeaponSystem/WeaponCharge").stop()
+		
+func movement_checks():
+	if abs(Player_Stats.player_position.x - global_position.x) > 140 and not get_node("LineOfSight").is_colliding():
+		if Player_Stats.player_position.x < global_position.x and get_node("leftedgecheck").is_colliding():
+			current_forces.x = -40
+		elif get_node("rightedgecheck").is_colliding():
+			current_forces.x = 40
+	elif abs(Player_Stats.player_position.x - global_position.x) < 70 and not get_node("LineOfSight").is_colliding():
+		if Player_Stats.player_position.x < global_position.x and get_node("rightedgecheck").is_colliding():
+			current_forces.x = 40
+		elif get_node("leftedgecheck").is_colliding():
+			current_forces.x = -40
 
+func move_line_of_sight():
+	get_node("LeftArm").look_at(Player_Stats.player_position)
+	get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
+	
 func _physics_process(delta):
 	if enabled:
-		add_gravity(delta)
 		current_forces.x = 0
-		if abs(Player_Stats.player_position.x - global_position.x) > 140 and not get_node("LineOfSight").is_colliding():
-
-			if Player_Stats.player_position.x < global_position.x and get_node("leftedgecheck").is_colliding():
-				current_forces.x = -40
-			elif get_node("rightedgecheck").is_colliding():
-				current_forces.x = 40
-		elif abs(Player_Stats.player_position.x - global_position.x) < 70 and not get_node("LineOfSight").is_colliding():
-
-			if Player_Stats.player_position.x < global_position.x and get_node("leftedgecheck").is_colliding():
-				current_forces.x = 40
-			elif get_node("rightedgecheck").is_colliding():
-				current_forces.x = -40
+		add_gravity(delta)
+		movement_checks()
 		#looks at players position and aims raycast for line of sight
-		get_node("LeftArm").look_at(Player_Stats.player_position)
-		get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
-		#starts the timer to shoot if within shooting range and timer is inactive (time_left returns 0 when inactive
-		if within_shooting_range and get_node("LeftArm/WeaponSystem/WeaponCharge").time_left == 0 and  not get_node("LineOfSight").is_colliding():
-			get_node("LeftArm/WeaponSystem/WeaponCharge").start()
-		#stops, NOT PAUSES the timer.
-		elif not within_shooting_range:
-			get_node("LeftArm/WeaponSystem/WeaponCharge").stop()
+		move_line_of_sight()
+		attempt_shot()
 		move_and_collide(current_forces * delta)
 
 func _on_enable_radius_body_entered(body):

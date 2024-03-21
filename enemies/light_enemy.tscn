@@ -109,11 +109,13 @@ shape = SubResource("RectangleShape2D_5q4e4")
 [node name="rightedgecheck" type="RayCast2D" parent="."]
 position = Vector2(5, 16)
 target_position = Vector2(0, 3)
+collision_mask = 9
 hit_from_inside = true
 
 [node name="leftedgecheck" type="RayCast2D" parent="."]
 position = Vector2(-5, 16)
 target_position = Vector2(0, 3)
+collision_mask = 9
 hit_from_inside = true
 
 [connection signal="timeout" from="LeftArm/WeaponSystem/WeaponCharge" to="." method="_on_weapon_charge_timeout"]
