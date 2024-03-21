@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=16 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://player_weapon.gd" id="5_2x807"]
 [ext_resource type="Texture2D" uid="uid://qn31vvwm1h7y" path="res://sprites/limbs/arms/error_arm.png" id="6_issu3"]
 [ext_resource type="Script" path="res://collectionarea.gd" id="7_p8ot4"]
+[ext_resource type="Texture2D" uid="uid://y6p0jgdsult7" path="res://sprites/limbs/legs/placeholder.png" id="9_8ooks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
 size = Vector2(8, 24)
@@ -46,6 +47,7 @@ shape = SubResource("RectangleShape2D_40rak")
 [node name="ScriptHost" type="Node2D" parent="Torso"]
 
 [node name="TorsoSprite" type="Sprite2D" parent="Torso"]
+z_index = 1
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("4_hkpw0")
 
@@ -71,6 +73,7 @@ is_left = true
 one_shot = true
 
 [node name="ArmSprite" type="Sprite2D" parent="LeftArm"]
+z_index = 2
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("6_issu3")
@@ -95,6 +98,7 @@ script = ExtResource("5_2x807")
 one_shot = true
 
 [node name="ArmSprite" type="Sprite2D" parent="RightArm"]
+z_index = 2
 position = Vector2(4, 0)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("6_issu3")
@@ -112,6 +116,11 @@ shape = SubResource("RectangleShape2D_2h8ch")
 
 [node name="ScriptHost" type="Node2D" parent="LeftLeg"]
 
+[node name="Placeholder" type="Sprite2D" parent="LeftLeg"]
+position = Vector2(0, 4)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("9_8ooks")
+
 [node name="RightLeg" type="StaticBody2D" parent="." groups=["limb"]]
 position = Vector2(-2, 7)
 collision_layer = 2
@@ -123,6 +132,11 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_2h8ch")
 
 [node name="ScriptHost" type="Node2D" parent="RightLeg"]
+
+[node name="LegSprite" type="Sprite2D" parent="RightLeg"]
+position = Vector2(0, 4)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("9_8ooks")
 
 [node name="FloorRay" type="RayCast2D" parent="." groups=["ray"]]
 position = Vector2(-3, 16)
