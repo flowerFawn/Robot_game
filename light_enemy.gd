@@ -12,13 +12,19 @@ var preloaded_scrap = preload("res://instanceables/scrap/scrap_chunk.tscn")
 func _ready():
 	pass
 
-
+func add_gravity(delta):
+	#uses the floor ray like is_on_floor()
+	if get_node("FloorRay").get_collider() == null or not get_node("FloorRay").get_collider().is_in_group("floor"):
+		current_forces.y += 100 * delta
+	else:
+		current_forces.y = 0
 
 func _process(_delta):
 	pass
 
 func _physics_process(delta):
 	if enabled:
+		add_gravity(delta)
 		current_forces.x = 0
 		if abs(Player_Stats.player_position.x - global_position.x) > 140 and not get_node("LineOfSight").is_colliding():
 
