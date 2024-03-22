@@ -68,7 +68,7 @@ visibility_layer = 3
 position = Vector2(50, -21)
 
 [node name="EnemyMain" parent="SpawnLevel" instance=ExtResource("7_vi4o8")]
-position = Vector2(256, -180)
+position = Vector2(221, -187)
 bullet_speed = 250.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
