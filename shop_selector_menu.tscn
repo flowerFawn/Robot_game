@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci7etd0a7s7nq"]
+[gd_scene load_steps=4 format=3 uid="uid://ci7etd0a7s7nq"]
 
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_fd6sk"]
 [ext_resource type="Script" path="res://shop_select_button.gd" id="2_qi0ah"]
+[ext_resource type="Script" path="res://back_to_level.gd" id="3_nsad6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,5 +32,17 @@ text = "Arms"
 script = ExtResource("2_qi0ah")
 button_limb = "arms"
 
+[node name="Button" type="Button" parent="Button2"]
+offset_left = -716.0
+offset_top = 1008.0
+offset_right = -422.0
+offset_bottom = 1080.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 64
+text = " Back To Workshop"
+script = ExtResource("3_nsad6")
+link_to = "res://levels/workshop.tscn"
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[connection signal="pressed" from="Button2/Button" to="Button2/Button" method="_on_pressed"]
