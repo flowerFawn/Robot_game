@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci7etd0a7s7nq"]
+
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_fd6sk"]
+[ext_resource type="Script" path="res://shop_select_button.gd" id="2_qi0ah"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 644.0
+offset_bottom = 288.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 128
+text = "Legs"
+script = ExtResource("2_qi0ah")
+button_limb = "legs"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 716.0
+offset_right = 1360.0
+offset_bottom = 288.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 128
+text = "Arms"
+script = ExtResource("2_qi0ah")
+button_limb = "arms"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

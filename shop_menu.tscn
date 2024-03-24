@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ksv3koutpsok"]
+
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_1wjp7"]
+[ext_resource type="Script" path="res://shop_dropdown.gd" id="2_qshhv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 209.0
+theme = ExtResource("1_1wjp7")
+script = ExtResource("2_qshhv")
