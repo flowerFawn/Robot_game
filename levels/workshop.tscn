@@ -62,6 +62,15 @@ collision_mask = 128
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_y88ro")
 
+[node name="ShopInteractable" type="Area2D" parent="Workshop"]
+position = Vector2(261, 152)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/ShopInteractable"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_xsew8")
+
 [node name="ExitInteractable" type="Area2D" parent="Workshop"]
 position = Vector2(33, 152)
 collision_layer = 0
@@ -71,22 +80,13 @@ collision_mask = 128
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_xsew8")
 
-[node name="ExitInteractable" type="Area2D" parent="."]
-position = Vector2(261, 152)
-collision_layer = 0
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitInteractable"]
-position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_xsew8")
-
 [node name="LevelCamera" type="Camera2D" parent="." groups=["slide_excluded"]]
 position = Vector2(160, 90)
 zoom = Vector2(6, 6)
 
 [connection signal="body_entered" from="Workshop/WorkTableInteracable" to="Workshop" method="_on_work_table_interacable_body_entered"]
 [connection signal="body_exited" from="Workshop/WorkTableInteracable" to="Workshop" method="out_of_interactable_range"]
+[connection signal="body_entered" from="Workshop/ShopInteractable" to="Workshop" method="_on_shop_interactable_body_entered"]
+[connection signal="body_exited" from="Workshop/ShopInteractable" to="Workshop" method="out_of_interactable_range"]
 [connection signal="body_entered" from="Workshop/ExitInteractable" to="Workshop" method="_on_exit_interactable_body_entered"]
 [connection signal="body_exited" from="Workshop/ExitInteractable" to="Workshop" method="out_of_interactable_range"]
-[connection signal="body_entered" from="ExitInteractable" to="Workshop" method="_on_shop_interactable_body_entered"]
-[connection signal="body_exited" from="ExitInteractable" to="Workshop" method="out_of_interactable_range"]

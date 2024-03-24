@@ -18,3 +18,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_item_selected(index):
+	var limb_folder = DirAccess.open(searched_folder)
+	var limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
+	print(limb_folder.get_files()[index])
+	if limb_json.has("texture") and load(limb_json["texture"]) != null:
+		get_parent().get_node("LimbSprite").texture = load(limb_json["texture"])
+		get_parent().get_node("LimbSprite").scale = Vector2(5, 5)
+	
+	#get_parent().get_node("LimbSprite").texture
