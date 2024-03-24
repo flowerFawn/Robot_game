@@ -114,6 +114,7 @@ zoom_out={
 2d_physics/layer_8="Player Detection"
 2d_physics/layer_9="enemy_limbs"
 2d_physics/layer_10="Scrap"
+2d_physics/layer_11="projectile collisions"
 
 [rendering]
 

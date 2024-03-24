@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 1008.0
 offset_right = 484.0
 offset_bottom = 1080.0
@@ -33,6 +34,7 @@ script = ExtResource("2_qi0ah")
 button_limb = "legs"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 716.0
 offset_right = 1360.0
 offset_bottom = 288.0
