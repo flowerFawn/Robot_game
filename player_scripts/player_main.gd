@@ -14,6 +14,7 @@ var current_parts:Array = ["head", "left_leg", "right_leg", "left_arm", "right_a
 @export var camera_disabled:bool = false
 
 func _ready():
+	print(JSON.stringify(["foo", "faz", "bear"], "\n"))
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	#gets the UI if it exists and calls set_max on it

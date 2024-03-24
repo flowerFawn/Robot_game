@@ -1,6 +1,7 @@
 extends OptionButton
 var searched_folder = ("res://player_limbs/player_" + Temp_Vars.selected_shop_limb)
-
+var selected_limb_name:String
+var limb_folder
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#looks through the folder it is told too
