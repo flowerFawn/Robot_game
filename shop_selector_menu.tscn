@@ -44,6 +44,29 @@ text = "Arms"
 script = ExtResource("2_qi0ah")
 button_limb = "arms"
 
+[node name="Button3" type="Button" parent="."]
+offset_top = 408.0
+offset_right = 644.0
+offset_bottom = 696.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 128
+text = "Weapons"
+script = ExtResource("2_qi0ah")
+button_limb = "weapons"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 716.0
+offset_top = 408.0
+offset_right = 1360.0
+offset_bottom = 696.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 128
+text = "Torsos"
+script = ExtResource("2_qi0ah")
+button_limb = "torsos"
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]
+[connection signal="pressed" from="Button4" to="Button4" method="_on_pressed"]
