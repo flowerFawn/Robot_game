@@ -34,11 +34,9 @@ func _on_item_selected(index):
 	limb_folder = DirAccess.open(searched_folder)
 	owned_limb = is_limb_owned(index)
 	if owned_limb:
-		get_parent().get_node("OwnedLabel").visible = true
-		get_parent().get_node("BuyButton").disabled = true
+		set_owned_item(true)
 	else:
-		get_parent().get_node("OwnedLabel").visible = false
-		get_parent().get_node("BuyButton").disabled = false
+		set_owned_item(false)
 	selected_limb_name = limb_folder.get_files()[index].left(-5)
 	limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
 	print(limb_folder.get_files()[index])
@@ -56,4 +54,10 @@ func purchase_item():
 		print(saved_owned_limbs)
 		var save_location = FileAccess.open("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json", FileAccess.WRITE)
 		save_location.store_string(JSON.stringify(saved_owned_limbs, "\n"))
+		set_owned_item(true)
 	#get_parent().get_node("LimbSprite").texture
+	
+func set_owned_item(owned_bool):
+	get_parent().get_node("OwnedLabel").visible = owned_bool
+	get_parent().get_node("BuyButton").disabled = owned_bool
+	owned_limb = owned_bool
