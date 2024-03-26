@@ -2,12 +2,14 @@ extends OptionButton
 var searched_folder = ("res://player_limbs/player_" + Temp_Vars.selected_shop_limb)
 var selected_limb_name:String
 var limb_folder
+var limb_json
+var owned_limb
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#looks through the folder it is told too
-	print(searched_folder)
-	var limb_folder = DirAccess.open(searched_folder)
-	print(limb_folder)
+	#print(searched_folder)
+	limb_folder = DirAccess.open(searched_folder)
+	#print(limb_folder)
 	#adds each file as a string without the .json text
 	for file in limb_folder.get_files():
 		file = file.left(-5)
@@ -20,10 +22,22 @@ func _ready():
 func _process(delta):
 	pass
 
-
+func is_limb_owned(index):
+	var saved_limbs_file = load("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json")
+	#print(saved_limbs_folder)
+	if limb_folder.get_files()[index].left(-5) in saved_limbs_file.data:
+		return true
+	else:
+		return false
+		
 func _on_item_selected(index):
-	var limb_folder = DirAccess.open(searched_folder)
-	var limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
+	limb_folder = DirAccess.open(searched_folder)
+	owned_limb = is_limb_owned(index)
+	if owned_limb:
+		get_parent().get_node("OwnedLabel").visible = true
+	else:
+		get_parent().get_node("OwnedLabel").visible = false
+	limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
 	print(limb_folder.get_files()[index])
 	if limb_json.has("texture") and load(limb_json["texture"]) != null:
 		get_parent().get_node("LimbSprite").texture = load(limb_json["texture"])

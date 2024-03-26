@@ -1,2 +1,2 @@
 extends Node
-var parts:Dictionary = load("res://saves/saved_limbs.json").data
+var parts:Dictionary = load("res://saves/current_limbs.json").data
