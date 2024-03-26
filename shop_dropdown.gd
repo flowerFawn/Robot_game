@@ -35,12 +35,25 @@ func _on_item_selected(index):
 	owned_limb = is_limb_owned(index)
 	if owned_limb:
 		get_parent().get_node("OwnedLabel").visible = true
+		get_parent().get_node("BuyButton").disabled = true
 	else:
 		get_parent().get_node("OwnedLabel").visible = false
+		get_parent().get_node("BuyButton").disabled = false
+	selected_limb_name = limb_folder.get_files()[index].left(-5)
 	limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
 	print(limb_folder.get_files()[index])
-	if limb_json.has("texture") and load(limb_json["texture"]) != null:
+	if limb_json.has("texture") and FileAccess.file_exists(limb_json["texture"]):
 		get_parent().get_node("LimbSprite").texture = load(limb_json["texture"])
 		get_parent().get_node("LimbSprite").scale = Vector2(5, 5)
 	
+func purchase_item():
+	#in theory this should never run while it is an owned limb, but better safe than sorry innit
+	print([selected_limb_name])
+	if not owned_limb and selected_limb_name != "":
+		var saved_owned_limbs = load("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json").data
+		print(selected_limb_name)
+		saved_owned_limbs.append(selected_limb_name)
+		print(saved_owned_limbs)
+		var save_location = FileAccess.open("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json", FileAccess.WRITE)
+		save_location.store_string(JSON.stringify(saved_owned_limbs, "\n"))
 	#get_parent().get_node("LimbSprite").texture

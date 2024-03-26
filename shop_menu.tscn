@@ -57,7 +57,9 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("1_1wjp7")
 theme_override_font_sizes/font_size = 256
+disabled = true
 text = "Buy"
 
 [connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="button_up" from="BuyButton" to="OptionButton" method="purchase_item"]

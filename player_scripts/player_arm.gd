@@ -17,7 +17,7 @@ func _ready():
 		get_node("ScriptHost").set_script(load(stats["script"]))
 		if get_node("ScriptHost").has_method("set_script_stats") and stats.has("script_value"):
 			get_node("ScriptHost").set_script_stats(stats["script_value"])
-	if stats.has("texture") and load(stats["texture"]) != null:
+	if stats.has("texture") and FileAccess.file_exists(stats["texture"]):
 		get_node("ArmSprite").texture = load(stats["texture"])
 	else:
 		print("set texture, or set it to a real texture")
