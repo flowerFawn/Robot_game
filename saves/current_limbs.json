@@ -1,9 +1,9 @@
 {
-	"right_leg" : "standard.json",
-	"left_leg" : "standard.json",
-	"torso" : "standard.json",
-	"left_arm" : "standard.json",
-	"right_arm" : "standard.json",
-	"right_weapon" : "standard.json",
-	"left_weapon" : "standard.json"
+	"right_leg": "standard",
+	"left_leg": "standard",
+	"torso": "standard",
+	"left_arm": "standard",
+	"right_arm": "standard",
+	"right_weapon": "standard",
+	"left_weapon": "standard"
 }

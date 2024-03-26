@@ -18,7 +18,7 @@ func _ready():
 	get_parent().add_stats(stats, self)
 
 func decode_part_json():
-	var reading_stats: Dictionary = load("res://player_limbs/player_torsos/" + Selected_Limbs.parts["torso"]).data
+	var reading_stats: Dictionary = load("res://player_limbs/player_torsos/" + Selected_Limbs.parts["torso"] + ".json").data
 	return reading_stats
 	
 func start_slide(direction_multiplier):
