@@ -15,3 +15,12 @@ func switch_pause():
 	get_tree().paused = not get_tree().paused
 	visible = get_tree().paused
 	switched_pause.emit()
+
+
+func reset_data():
+	var default_data = JSON.stringify(load("res://saves/defaults/defaults_owned.json").data, "\n\t")
+	var limb_types = ["arms", "legs", "torsos", "weapons"]
+	for limb_type in limb_types:
+		var owned_file = FileAccess.open("res://saves/owned_" + limb_type + ".json", FileAccess.WRITE)
+		owned_file.store_string(default_data)
+		

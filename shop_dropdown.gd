@@ -53,7 +53,7 @@ func purchase_item():
 		saved_owned_limbs.append(selected_limb_name)
 		print(saved_owned_limbs)
 		var save_location = FileAccess.open("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json", FileAccess.WRITE)
-		save_location.store_string(JSON.stringify(saved_owned_limbs, "\n"))
+		save_location.store_string(JSON.stringify(saved_owned_limbs, "\n\t"))
 		set_owned_item(true)
 	#get_parent().get_node("LimbSprite").texture
 	

@@ -1,16 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://de7hik87ocruu"]
+[gd_scene load_steps=3 format=3 uid="uid://de7hik87ocruu"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_a3smj"]
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="2_enp63"]
 
 [node name="PauseCanvas" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_a3smj")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 689.0
-offset_top = 276.0
-offset_right = 1137.0
-offset_bottom = 443.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[connection signal="button_up" from="Button" to="." method="switch_pause"]
+[node name="Resume" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.104
+anchor_right = 0.5
+anchor_bottom = 0.104
+offset_left = -224.0
+offset_top = -0.32
+offset_right = 224.0
+offset_bottom = 166.68
+grow_horizontal = 2
+theme = ExtResource("2_enp63")
+theme_override_font_sizes/font_size = 128
+text = "Resume"
+
+[node name="ResetData" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1687.0
+offset_top = 984.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("2_enp63")
+theme_override_font_sizes/font_size = 32
+text = "Reset save Data"
+
+[connection signal="button_up" from="Control/Resume" to="." method="switch_pause"]
+[connection signal="button_up" from="Control/ResetData" to="." method="reset_data"]
