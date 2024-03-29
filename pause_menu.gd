@@ -13,3 +13,4 @@ func _process(delta):
 		
 func switch_pause():
 	get_tree().paused = not get_tree().paused
+	visible = get_tree().paused

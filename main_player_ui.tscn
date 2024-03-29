@@ -5,13 +5,14 @@
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="3_cmsfi"]
 
 [node name="UILayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_t6hnx")
 
 [node name="UIControl" type="Control" parent="." groups=["slide_excluded"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-script = ExtResource("1_t6hnx")
 
 [node name="Button" type="Button" parent="UIControl"]
 layout_mode = 2
