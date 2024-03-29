@@ -4,14 +4,16 @@
 [ext_resource type="Script" path="res://player_UI.gd" id="1_t6hnx"]
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="3_cmsfi"]
 
-[node name="UIControl" type="Control" groups=["slide_excluded"]]
+[node name="UILayer" type="CanvasLayer"]
+
+[node name="UIControl" type="Control" parent="." groups=["slide_excluded"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_t6hnx")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="UIControl"]
 layout_mode = 2
 offset_left = 1271.0
 offset_top = 36.0
@@ -25,7 +27,7 @@ text = "back to limb selection"
 script = ExtResource("1_45fv6")
 link_to = "res://levels/workshop.tscn"
 
-[node name="HPBar" type="ProgressBar" parent="."]
+[node name="HPBar" type="ProgressBar" parent="UIControl"]
 layout_mode = 1
 offset_right = 694.0
 offset_bottom = 93.0
@@ -33,7 +35,7 @@ size_flags_vertical = 4
 theme = ExtResource("3_cmsfi")
 show_percentage = false
 
-[node name="HPLabel" type="Label" parent="HPBar"]
+[node name="HPLabel" type="Label" parent="UIControl/HPBar"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -50,4 +52,4 @@ theme = ExtResource("3_cmsfi")
 theme_override_font_sizes/font_size = 128
 text = "21/5"
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="UIControl/Button" to="UIControl/Button" method="_on_pressed"]

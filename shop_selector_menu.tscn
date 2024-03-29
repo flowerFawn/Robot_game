@@ -45,6 +45,7 @@ script = ExtResource("2_qi0ah")
 button_limb = "arms"
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_top = 408.0
 offset_right = 644.0
 offset_bottom = 696.0
@@ -55,6 +56,7 @@ script = ExtResource("2_qi0ah")
 button_limb = "weapons"
 
 [node name="Button4" type="Button" parent="."]
+layout_mode = 0
 offset_left = 716.0
 offset_top = 408.0
 offset_right = 1360.0

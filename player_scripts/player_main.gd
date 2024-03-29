@@ -17,9 +17,10 @@ func _ready():
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	#gets the UI if it exists and calls set_max on it
-	if get_parent().get_parent().has_node("CanvasLayer"):
-		if get_parent().get_parent().get_node("CanvasLayer").has_node("UIControl"):
-			get_parent().get_parent().get_node("CanvasLayer").get_node("UIControl").set_max()
+	if get_parent().get_parent().has_node("UIControl"):
+		if get_parent().get_parent().get_node("UIControl").has_node("UIControl"):
+			get_parent().get_parent().get_node("UIControl").get_node("UIControl").set_max()
+			print("test")
 	player_state = "walking"
 	current_forces = Vector2(0, 0)
 	if camera_disabled:
