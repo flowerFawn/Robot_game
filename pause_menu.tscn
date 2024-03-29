@@ -12,3 +12,5 @@ offset_left = 689.0
 offset_top = 276.0
 offset_right = 1137.0
 offset_bottom = 443.0
+
+[connection signal="button_up" from="Button" to="." method="switch_pause"]
