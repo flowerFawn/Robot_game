@@ -31,3 +31,8 @@ func _on_work_table_interacable_body_entered(body):
 func _on_shop_interactable_body_entered(body):
 	if body.is_in_group("player"):
 		current_interactable = "res://shop_selector_menu.tscn"
+
+
+func _on_quit_interactable_body_entered(body):
+	if body.is_in_group("player"):
+		current_interactable = "res://main_menu.tscn"
