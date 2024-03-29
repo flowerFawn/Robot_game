@@ -20,7 +20,6 @@ func _ready():
 	if get_parent().get_parent().has_node("UIControl"):
 		if get_parent().get_parent().get_node("UIControl").has_node("UIControl"):
 			get_parent().get_parent().get_node("UIControl").get_node("UIControl").set_max()
-			print("test")
 	player_state = "walking"
 	current_forces = Vector2(0, 0)
 	if camera_disabled:

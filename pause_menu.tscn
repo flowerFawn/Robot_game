@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://de7hik87ocruu"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_a3smj"]
+
+[node name="PauseCanvas" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_a3smj")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
