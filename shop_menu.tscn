@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_1wjp7"]
 [ext_resource type="Script" path="res://shop_dropdown.gd" id="2_qshhv"]
-[ext_resource type="Script" path="res://back_to_level.gd" id="3_453bt"]
+[ext_resource type="Script" path="res://link_button.gd" id="3_453bt"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rtv6v"]
 

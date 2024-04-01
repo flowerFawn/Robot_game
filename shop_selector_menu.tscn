@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_fd6sk"]
 [ext_resource type="Script" path="res://shop_select_button.gd" id="2_qi0ah"]
-[ext_resource type="Script" path="res://back_to_level.gd" id="3_nsad6"]
+[ext_resource type="Script" path="res://link_button.gd" id="3_nsad6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
