@@ -25,3 +25,7 @@ func reset_data():
 		var owned_file = FileAccess.open("res://saves/owned_" + limb_type + ".json", FileAccess.WRITE)
 		owned_file.store_string(default_data)
 		
+
+
+func quit():
+	get_tree().quit()

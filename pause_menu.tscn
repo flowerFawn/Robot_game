@@ -58,6 +58,25 @@ text = "Main Menu"
 script = ExtResource("3_3wy8p")
 link_to = "res://main_menu.tscn"
 
+[node name="QuitButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.104
+anchor_right = 0.5
+anchor_bottom = 0.104
+offset_left = -264.0
+offset_top = 610.728
+offset_right = 264.0
+offset_bottom = 777.728
+grow_horizontal = 2
+theme = ExtResource("2_enp63")
+theme_override_font_sizes/font_size = 128
+text = "Quit"
+script = ExtResource("3_3wy8p")
+link_to = "res://main_menu.tscn"
+
 [connection signal="button_up" from="Control/Resume" to="." method="switch_pause"]
 [connection signal="button_up" from="Control/ResetData" to="." method="reset_data"]
 [connection signal="pressed" from="Control/MainMenu" to="Control/MainMenu" method="_on_pressed"]
+[connection signal="pressed" from="Control/QuitButton" to="." method="quit"]
