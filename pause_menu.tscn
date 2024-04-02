@@ -30,16 +30,6 @@ theme = ExtResource("2_enp63")
 theme_override_font_sizes/font_size = 128
 text = "Resume"
 
-[node name="ResetData" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 1687.0
-offset_top = 984.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme = ExtResource("2_enp63")
-theme_override_font_sizes/font_size = 32
-text = "Reset save Data"
-
 [node name="MainMenu" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -77,6 +67,5 @@ script = ExtResource("3_3wy8p")
 link_to = "res://main_menu.tscn"
 
 [connection signal="button_up" from="Control/Resume" to="." method="switch_pause"]
-[connection signal="button_up" from="Control/ResetData" to="." method="reset_data"]
 [connection signal="pressed" from="Control/MainMenu" to="Control/MainMenu" method="_on_pressed"]
 [connection signal="pressed" from="Control/QuitButton" to="." method="quit"]

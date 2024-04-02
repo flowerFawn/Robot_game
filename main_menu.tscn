@@ -43,5 +43,15 @@ theme = ExtResource("1_h7u8i")
 theme_override_font_sizes/font_size = 128
 text = "Quit"
 
+[node name="ResetData" type="Button" parent="."]
+offset_left = 1687.0
+offset_top = 984.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_h7u8i")
+theme_override_font_sizes/font_size = 32
+text = "Reset save Data"
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="." method="quit"]
+[connection signal="button_up" from="ResetData" to="." method="reset_data"]
