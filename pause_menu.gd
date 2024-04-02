@@ -3,6 +3,7 @@ extends CanvasLayer
 signal switched_pause
 
 func _ready():
+	visible = false
 	switched_pause.connect(get_parent().get_node("UIControl").switch_pause)
 
 

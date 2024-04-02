@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq58c48h01hyt"]
+[gd_scene load_steps=3 format=3 uid="uid://bq58c48h01hyt"]
 
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_h7u8i"]
 [ext_resource type="Script" path="res://link_button.gd" id="1_njhqm"]
 
 [node name="MainMenu" type="Control"]
@@ -11,7 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 120.0
+offset_right = 304.0
+offset_bottom = 328.0
+grow_horizontal = 2
+theme = ExtResource("1_h7u8i")
+theme_override_font_sizes/font_size = 128
+text = "Start"
 script = ExtResource("1_njhqm")
+link_to = "res://levels/workshop.tscn"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
