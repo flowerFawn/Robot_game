@@ -7,11 +7,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	get_node("UIControl").get_node("HPBar").value = Player_Stats.player_current_hp
-	get_node("UIControl").get_node("HPBar").get_node("HPLabel").text = hp_preset % [round(Player_Stats.player_current_hp), Player_Stats.player_total_hp]
+	get_node("UIControl/XSpeed").text = str(Player_Stats.player_current_forces.x)
+	get_node("UIControl/HPBar").value = Player_Stats.player_current_hp
+	get_node("UIControl/HPBar/HPLabel").text = hp_preset % [round(Player_Stats.player_current_hp), Player_Stats.player_total_hp]
 
 func set_max():
-	get_node("UIControl").get_node("HPBar").max_value = Player_Stats.player_total_hp
+	get_node("UIControl/HPBar").max_value = Player_Stats.player_total_hp
 
 func switch_pause():
 	visible = not get_tree().paused
