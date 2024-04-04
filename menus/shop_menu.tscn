@@ -29,7 +29,7 @@ theme = ExtResource("1_1wjp7")
 theme_override_font_sizes/font_size = 64
 text = " Back"
 script = ExtResource("3_453bt")
-link_to = "res://shop_selector_menu.tscn"
+link_to = "res://menus/shop_selector_menu.tscn"
 
 [node name="LimbSprite" type="Sprite2D" parent="."]
 position = Vector2(1568, 231)
