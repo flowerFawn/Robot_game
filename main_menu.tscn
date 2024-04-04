@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq58c48h01hyt"]
+[gd_scene load_steps=4 format=3 uid="uid://danpnlnr8hpk1"]
 
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_h7u8i"]
 [ext_resource type="Script" path="res://link_button.gd" id="1_njhqm"]
@@ -44,6 +44,7 @@ theme_override_font_sizes/font_size = 128
 text = "Quit"
 
 [node name="ResetData" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1687.0
 offset_top = 984.0
 offset_right = 1920.0

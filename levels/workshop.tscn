@@ -20,7 +20,7 @@ size = Vector2(48, 16.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsew8"]
 size = Vector2(16, 34)
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 
 [node name="Workshop" type="Node2D" parent="."]
 script = ExtResource("1_1a6c0")

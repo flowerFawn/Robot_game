@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cu1cmttchc8so" path="res://dynamic_scene_assets/ladder.tscn" id="3_tpd07"]
 [ext_resource type="PackedScene" uid="uid://qjcrbllqri7i" path="res://dynamic_scene_assets/one_way_floor.tscn" id="4_qtjqm"]
 [ext_resource type="PackedScene" uid="uid://dla2x6o8b00mb" path="res://enemies/light_enemy.tscn" id="7_vi4o8"]
-[ext_resource type="PackedScene" uid="uid://de7hik87ocruu" path="res://pause_menu.tscn" id="8_6l4vf"]
+[ext_resource type="PackedScene" uid="uid://5ps62fkcku5m" path="res://pause_menu.tscn" id="8_6l4vf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muk1c"]
 size = Vector2(20, 86)
