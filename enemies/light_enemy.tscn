@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dla2x6o8b00mb"]
+[gd_scene load_steps=9 format=3 uid="uid://dla2x6o8b00mb"]
 
 [ext_resource type="Script" path="res://light_enemy.gd" id="1_kosva"]
 
@@ -19,6 +19,9 @@ size = Vector2(360, 920)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q4e4"]
 size = Vector2(944, 1374)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1vp7"]
+size = Vector2(24, 50)
 
 [node name="EnemyMain" type="CharacterBody2D" groups=["enemy", "light_enemy"]]
 collision_layer = 16
@@ -91,7 +94,6 @@ target_position = Vector2(0, 0)
 collision_mask = 64
 
 [node name="ShootRadius" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 128
 
@@ -99,12 +101,18 @@ collision_mask = 128
 shape = SubResource("RectangleShape2D_xijbu")
 
 [node name="EnableRadius" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableRadius"]
 shape = SubResource("RectangleShape2D_5q4e4")
+
+[node name="PointBlankRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointBlankRadius"]
+shape = SubResource("RectangleShape2D_c1vp7")
 
 [node name="rightedgecheck" type="RayCast2D" parent="."]
 position = Vector2(5, 16)
@@ -123,3 +131,6 @@ hit_from_inside = true
 [connection signal="body_exited" from="ShootRadius" to="." method="_on_shoot_radius_body_exited"]
 [connection signal="body_entered" from="EnableRadius" to="." method="_on_enable_radius_body_entered"]
 [connection signal="body_exited" from="EnableRadius" to="." method="_on_enable_radius_body_exited"]
+[connection signal="area_entered" from="PointBlankRadius" to="." method="_on_point_blank_radius_area_entered"]
+[connection signal="body_entered" from="PointBlankRadius" to="." method="_on_point_blank_radius_body_entered"]
+[connection signal="body_exited" from="PointBlankRadius" to="." method="_on_point_blank_radius_body_exited"]

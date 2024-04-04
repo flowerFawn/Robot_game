@@ -8,6 +8,7 @@ var current_forces:Vector2
 var preloaded_bullet = preload("res://instanceables/projectiles/base_bullet.tscn")
 var rng = RandomNumberGenerator.new()
 var preloaded_scrap = preload("res://instanceables/scrap/scrap_chunk.tscn")
+var point_blank:bool = false
 
 func _ready():
 	pass
@@ -24,11 +25,20 @@ func _process(_delta):
 	
 func attempt_shot():
 	#starts the timer to shoot if within shooting range and timer is inactive (time_left returns 0 when inactive)
-	if within_shooting_range and get_node("LeftArm/WeaponSystem/WeaponCharge").time_left == 0 and  not get_node("LineOfSight").is_colliding():
+	if can_shoot():
 		get_node("LeftArm/WeaponSystem/WeaponCharge").start()
 	#stops, NOT PAUSES the timer.
-	elif not within_shooting_range:
+	elif not within_shooting_range or point_blank:
 		get_node("LeftArm/WeaponSystem/WeaponCharge").stop()
+		
+func can_shoot():
+	if within_shooting_range and get_node("LeftArm/WeaponSystem/WeaponCharge").time_left == 0 and  not get_node("LineOfSight").is_colliding():
+		if point_blank == false:
+			return true
+		else:
+			return false
+	else:
+		return false
 		
 func movement_checks():
 	if abs(Player_Stats.player_position.x - global_position.x) > 140 and not get_node("LineOfSight").is_colliding():
@@ -47,6 +57,7 @@ func move_line_of_sight():
 	get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
 	
 func _physics_process(delta):
+	print(point_blank)
 	if enabled:
 		current_forces.x = 0
 		add_gravity(delta)
@@ -108,3 +119,15 @@ func die():
 			#sets up each and adds them to the world
 			get_parent().get_node("Scrap").add_child(new_scrap_chunk)
 	queue_free()
+
+
+
+
+func _on_point_blank_radius_body_entered(body):
+	if body.is_in_group("player"):
+		point_blank = true
+
+
+func _on_point_blank_radius_body_exited(body):
+	if body.is_in_group("player"):
+		point_blank = false
