@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci7etd0a7s7nq"]
 
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="1_fd6sk"]
-[ext_resource type="Script" path="res://shop_select_button.gd" id="2_qi0ah"]
-[ext_resource type="Script" path="res://link_button.gd" id="3_nsad6"]
+[ext_resource type="Script" path="res://scripts/shop_select_button.gd" id="2_qi0ah"]
+[ext_resource type="Script" path="res://scripts/link_button.gd" id="3_nsad6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

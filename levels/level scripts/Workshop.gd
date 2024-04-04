@@ -20,19 +20,19 @@ func out_of_interactable_range(body):
 
 func _on_exit_interactable_body_entered(body):
 	if body.is_in_group("player"):
-		current_interactable = "res://spawn_level.tscn"
+		current_interactable = "res://levels/spawn_level.tscn"
 
 
 func _on_work_table_interacable_body_entered(body):
 	if body.is_in_group("player"):
-		current_interactable = "res://limb_menu.tscn"
+		current_interactable = "res://menus/limb_menu.tscn"
 
 
 func _on_shop_interactable_body_entered(body):
 	if body.is_in_group("player"):
-		current_interactable = "res://shop_selector_menu.tscn"
+		current_interactable = "res://menus/shop_selector_menu.tscn"
 
 
 func _on_quit_interactable_body_entered(body):
 	if body.is_in_group("player"):
-		current_interactable = "res://main_menu.tscn"
+		current_interactable = "res://menus/main_menu.tscn"

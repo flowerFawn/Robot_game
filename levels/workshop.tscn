@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://7s2mbix1nc7l"]
 
-[ext_resource type="Script" path="res://levels/Workshop.gd" id="1_1a6c0"]
+[ext_resource type="Script" path="res://levels/level scripts/Workshop.gd" id="1_1a6c0"]
 [ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="1_g6u7q"]
 [ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="2_bkqjd"]
-[ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player.tscn" id="3_gfvn6"]
+[ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player_scripts/player.tscn" id="3_gfvn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyc6m"]
 size = Vector2(330, 31.75)
