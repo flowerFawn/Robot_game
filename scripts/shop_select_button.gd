@@ -13,4 +13,4 @@ func _process(delta):
 
 func _on_pressed():
 	Temp_Vars.selected_shop_limb = button_limb
-	get_tree().change_scene_to_file("res://shop_menu.tscn")
+	get_tree().change_scene_to_file("res://menus/shop_menu.tscn")
