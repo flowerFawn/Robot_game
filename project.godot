@@ -120,6 +120,7 @@ pause={
 2d_physics/layer_9="enemy_limbs"
 2d_physics/layer_10="Scrap"
 2d_physics/layer_11="projectile collisions"
+2d_physics/layer_12="layer 12"
 
 [rendering]
 

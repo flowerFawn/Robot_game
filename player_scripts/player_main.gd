@@ -16,7 +16,6 @@ var slide_immunity:bool = false
 @export var camera_disabled:bool = false
 
 func _ready():
-	set_immunity(true)
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	#gets the UI if it exists and calls set_max on it
