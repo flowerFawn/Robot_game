@@ -11,9 +11,12 @@ var stored_slide:float
 var slide_multiplier:float = 2
 var current_hp:float
 var current_parts:Array = ["head", "left_leg", "right_leg", "left_arm", "right_arm"]
+var slide_immunity_end:float
+var slide_immunity:bool = false
 @export var camera_disabled:bool = false
 
 func _ready():
+	set_immunity(true)
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	#gets the UI if it exists and calls set_max on it
@@ -51,9 +54,13 @@ func _physics_process(delta):
 	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
 		#sets state back, and does end_slide on each limb, undoing the start of the slide
 		run_end_slide()
+		set_immunity(false)
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
+		if current_forces.x < slide_immunity_end:
+			set_immunity(false)
+
 	run_zooming()
 	Player_Stats.player_position = global_position
 	move_and_collide(current_forces * delta)
@@ -150,6 +157,13 @@ func run_slide(slide_output):
 	stored_slide = slide_output[1]
 	#starts the slide forces
 	current_forces = Vector2(total_speed * slide_multiplier * slide_output[1], 0)
+	#sets the speed at which the player will lose immunity from sliding, at 80% of their starting slide speed
+	#the loss of slide speed is static, so this will give different amounts of time for different speeds
+	slide_immunity_end = abs(current_forces.x) * 0.8
+	#sets slide immunity to true
+	slide_immunity = true
+	set_immunity(true)
+	
 	#tells every child to do its own part to start sliding, calls start_slide and passed the multiplier
 	position.y += 6
 	for limb in get_children():
@@ -166,7 +180,12 @@ func run_end_slide():
 			limb.position.y += 12
 		elif not limb.is_in_group("slide_excluded"):
 			limb.end_slide(stored_slide)
-			
+
+func set_immunity(set_to):
+	var child_nodes = get_children()
+	for child_node in child_nodes:
+		if child_node.is_in_group("limb") and not child_node.is_in_group("no_collision"):
+			child_node.set_collision_layer_value(2, not set_to)
 func can_walk():
 	#elif player_state not in UNMOVABLE_STATES and ((not (not are_legs_on_floor() and is_climbing) and current_parts.has("left_leg") and current_parts.has("right_leg")) or (not current_parts.has("left_leg") or not current_parts.has("right_leg") and not are_legs_on_floor())):
 	if player_state not in UNMOVABLE_STATES:
