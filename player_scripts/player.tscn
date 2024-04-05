@@ -162,6 +162,7 @@ position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_nqkdg")
 
 [node name="PlaceholderWindEffect" type="Sprite2D" parent="." groups=["slide_excluded"]]
+visible = false
 z_index = 100
 position = Vector2(0, 2)
 scale = Vector2(0.065, 0.065)
