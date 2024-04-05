@@ -57,7 +57,7 @@ func _physics_process(delta):
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
-		if current_forces.x < slide_immunity_end:
+		if abs(current_forces.x) < slide_immunity_end:
 			set_immunity(false)
 
 	run_zooming()
@@ -181,6 +181,7 @@ func run_end_slide():
 			limb.end_slide(stored_slide)
 
 func set_immunity(set_to):
+	get_node("PlaceholderWindEffect").visible = set_to
 	var child_nodes = get_children()
 	for child_node in child_nodes:
 		if child_node.is_in_group("limb") and not child_node.is_in_group("no_collision"):
