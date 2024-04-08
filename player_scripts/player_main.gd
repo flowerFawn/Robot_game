@@ -28,6 +28,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	print(total_speed)
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
 		current_forces.y = take_climbing_input()
@@ -116,7 +117,7 @@ func take_jump_input():
 		return 0
 		
 func take_slide_input():
-	if Input.is_action_just_pressed("slide") and player_state not in UNMOVABLE_STATES and are_legs_on_floor():
+	if Input.is_action_just_pressed("slide") and player_state not in UNMOVABLE_STATES and are_legs_on_floor() and total_speed >= 30:
 		if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
 			return [false]
 		elif Input.is_action_pressed("left"):
