@@ -11,6 +11,7 @@ func _process(delta):
 	pass
 
 func quit():
+	Game.save_game()
 	get_tree().quit()
 
 func reset_data():

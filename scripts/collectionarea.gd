@@ -23,5 +23,5 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	Game.scrap += rng.randi_range(2, 5)
+	Game.game_info["scrap"] += rng.randi_range(2, 5)
 	body.queue_free()
