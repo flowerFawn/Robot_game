@@ -28,7 +28,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(total_speed)
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
 		current_forces.y = take_climbing_input()

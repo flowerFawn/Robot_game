@@ -1,1 +1,1 @@
-#nothing yet
+#default files in saves/defaults have to be the same name as the file they are the defaults for (excluding owned limbs, which are done as a batch)
