@@ -49,20 +49,27 @@ func _on_item_selected(index):
 		get_parent().get_node("LimbSprite").scale = Vector2(5, 5)
 	company = limb_json.get("company", "???")
 	get_parent().get_node("CompanyName").text = company
-	company_description = company_descriptions.get(company, "The serial number has been filed off, the source is unknown")
+	company_description = company_descriptions.get(company.to_lower(), "The serial number has been filed off, the source is unknown")
 	get_parent().get_node("CompanyDescription").text = company_description
 	
 	
 func purchase_item():
+	var cost
+	limb_json = load(searched_folder + "/" + selected_limb_name).data
+	cost = limb_json.get("cost", 0)
+	if cost == 0:
+		print("that limb cost 0 scrap, are you sure you don't want to give it a price?")
 	#in theory this should never run while it is an owned limb, but better safe than sorry innit
 	print([selected_limb_name])
-	if not owned_limb and selected_limb_name != "":
+	if valid_purchase(cost):
+		Game.game_info["scrap"] -= cost
 		var saved_owned_limbs = load("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json").data
 		print(selected_limb_name)
 		saved_owned_limbs.append(selected_limb_name)
 		print(saved_owned_limbs)
 		var save_location = FileAccess.open("res://saves/owned_" + Temp_Vars.selected_shop_limb + ".json", FileAccess.WRITE)
 		save_location.store_string(JSON.stringify(saved_owned_limbs, "\n\t"))
+		Game.save_game()
 		set_owned_item(true)
 	#get_parent().get_node("LimbSprite").texture
 	
@@ -70,3 +77,9 @@ func set_owned_item(owned_bool):
 	get_parent().get_node("OwnedLabel").visible = owned_bool
 	get_parent().get_node("BuyButton").disabled = owned_bool
 	owned_limb = owned_bool
+
+func valid_purchase(cost):
+	if not owned_limb and selected_limb_name != "" and cost <= Game.game_info["scrap"]:
+		return true
+	else:
+		return false

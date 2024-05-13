@@ -7,8 +7,10 @@
 #script ("res://limb_scripts/script_name.gd")
 #script_value (calls set_script_stats() on the script, and sets the variable to whatever script_value is)
 #texture (res://sprites/limbs/limb/limb_texture.png) if there is no texture then it will give an error texture 
+#company (a string from a predetermined list, not case sensitive)
+#cost (how much scrap it costs to buy)
 
-#weapons are very different, their stuff is here beneath
+#weapons are very different, their stuff is here beneath. they can also use any value found in standard limbs, except for hosts, though it is not undone when destroyed as the systems are to intertwined with the rest of the body
 #projectile ("res://instanceables/projectiles/scene_name.tscn") the projectile that gets loaded, texture is included in this
 #attack_speed (in seconds)
 #damage (damage it does, standard dps should be /put standard dps here/)
