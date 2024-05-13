@@ -4,6 +4,7 @@ var selected_limb_name:String
 var limb_folder
 var limb_json
 var owned_limb
+var company_descriptions = {"Glorbcorp" : "Run by a clown. Profits driven into the ground. Every single product they have put out has been completely worthless, yet somehow it is still running"}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#looks through the folder it is told too
@@ -31,6 +32,8 @@ func is_limb_owned(index):
 		return false
 		
 func _on_item_selected(index):
+	var company
+	var company_description
 	limb_folder = DirAccess.open(searched_folder)
 	owned_limb = is_limb_owned(index)
 	if owned_limb:
@@ -38,11 +41,17 @@ func _on_item_selected(index):
 	else:
 		set_owned_item(false)
 	selected_limb_name = limb_folder.get_files()[index].left(-5)
+	get_parent().get_node("LimbName").text = selected_limb_name
 	limb_json = load(searched_folder + "/" + limb_folder.get_files()[index]).data
 	print(limb_folder.get_files()[index])
 	if limb_json.has("texture") and FileAccess.file_exists(limb_json["texture"]):
 		get_parent().get_node("LimbSprite").texture = load(limb_json["texture"])
 		get_parent().get_node("LimbSprite").scale = Vector2(5, 5)
+	company = limb_json.get("company", "???")
+	get_parent().get_node("CompanyName").text = company
+	company_description = company_descriptions.get(company, "The serial number has been filed off, the source is unknown")
+	get_parent().get_node("CompanyDescription").text = company_description
+	
 	
 func purchase_item():
 	#in theory this should never run while it is an owned limb, but better safe than sorry innit

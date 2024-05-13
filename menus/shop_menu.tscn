@@ -60,6 +60,44 @@ theme_override_font_sizes/font_size = 256
 disabled = true
 text = "Buy"
 
+[node name="LimbName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.634
+anchor_top = 0.386
+anchor_right = 1.0
+anchor_bottom = 0.427
+offset_left = -1.28003
+offset_top = -12.88
+offset_right = -2.0
+offset_bottom = 2.84
+theme = ExtResource("1_1wjp7")
+theme_override_font_sizes/font_size = 64
+
+[node name="CompanyDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.684
+anchor_right = 1.0
+anchor_bottom = 4.025
+offset_left = 1224.0
+offset_top = -220.72
+offset_right = 1213.0
+offset_bottom = -212.751
+
+[node name="CompanyName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.229
+anchor_bottom = 0.099
+offset_left = 1217.0
+offset_top = 461.0
+offset_right = 1480.32
+offset_bottom = 445.08
+theme = ExtResource("1_1wjp7")
+theme_override_font_sizes/font_size = 64
+text = "Glorbcorp"
+
 [connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="button_up" from="BuyButton" to="OptionButton" method="purchase_item"]
