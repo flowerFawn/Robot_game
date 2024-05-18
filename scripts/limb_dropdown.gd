@@ -9,10 +9,15 @@ func _ready():
 	#looks through the folder it is told too
 	var limb_folder = DirAccess.open(searched_folder)
 	#adds each file as a string without the .json text
-	for file in limb_folder.get_files():
-		file = file.left(-5)
-		if file in owned_limbs:
+	if Cheat_Handler.access_all:
+		for file in limb_folder.get_files():
+			file = file.left(-5)
 			add_item(file)
+	else:
+		for file in limb_folder.get_files():
+			file = file.left(-5)
+			if file in owned_limbs:
+				add_item(file)
 	#selects nothing
 	select(-1)
 	

@@ -22,6 +22,7 @@ Selected_Limbs="*res://autoloads/limb_selection_storage.gd"
 Player_Stats="*res://autoloads/player_stats.gd"
 Game="*res://autoloads/game.gd"
 Temp_Vars="*res://autoloads/temp_vars.gd"
+Cheat_Handler="*res://autoloads/cheat_handler.gd"
 
 [display]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://7s2mbix1nc7l"]
+[gd_scene load_steps=11 format=3 uid="uid://7s2mbix1nc7l"]
 
 [ext_resource type="Script" path="res://levels/level scripts/Workshop.gd" id="1_1a6c0"]
 [ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="1_g6u7q"]
 [ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="2_bkqjd"]
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player_scripts/player.tscn" id="3_gfvn6"]
+[ext_resource type="Script" path="res://levels/cheat_input_handler.gd" id="5_llhq3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyc6m"]
 size = Vector2(330, 31.75)
@@ -93,6 +94,21 @@ shape = SubResource("RectangleShape2D_xsew8")
 position = Vector2(160, 90)
 zoom = Vector2(6, 6)
 
+[node name="CheatInputHandler" type="LineEdit" parent="."]
+offset_left = -152.0
+offset_top = -142.0
+offset_right = -84.9375
+offset_bottom = -111.0
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+secret = true
+secret_character = ""
+script = ExtResource("5_llhq3")
+
 [connection signal="body_entered" from="Workshop/WorkTableInteracable" to="Workshop" method="_on_work_table_interacable_body_entered"]
 [connection signal="body_exited" from="Workshop/WorkTableInteracable" to="Workshop" method="out_of_interactable_range"]
 [connection signal="body_entered" from="Workshop/ShopInteractable" to="Workshop" method="_on_shop_interactable_body_entered"]
@@ -101,3 +117,4 @@ zoom = Vector2(6, 6)
 [connection signal="body_exited" from="Workshop/ExitInteractable" to="Workshop" method="out_of_interactable_range"]
 [connection signal="body_entered" from="Workshop/QuitInteractable" to="Workshop" method="_on_quit_interactable_body_entered"]
 [connection signal="body_exited" from="Workshop/QuitInteractable" to="Workshop" method="out_of_interactable_range"]
+[connection signal="text_changed" from="CheatInputHandler" to="CheatInputHandler" method="_on_text_changed"]
