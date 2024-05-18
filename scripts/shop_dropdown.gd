@@ -55,7 +55,7 @@ func _on_item_selected(index):
 	
 func purchase_item():
 	var cost
-	limb_json = load(searched_folder + "/" + selected_limb_name).data
+	limb_json = load(searched_folder + "/" + selected_limb_name + ".json").data
 	cost = limb_json.get("cost", 0)
 	if cost == 0:
 		print("that limb cost 0 scrap, are you sure you don't want to give it a price?")
