@@ -57,7 +57,6 @@ func move_line_of_sight():
 	get_node("LineOfSight").target_position = Vector2(Player_Stats.player_position.x - global_position.x, Player_Stats.player_position.y - global_position.y)
 	
 func _physics_process(delta):
-	print(point_blank)
 	if enabled:
 		current_forces.x = 0
 		add_gravity(delta)
