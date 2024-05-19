@@ -16,3 +16,4 @@
 #damage (damage it does, standard dps should be /put standard dps here/)
 #projectile_speed (in units per second, not a Vector2)
 #spin_up (amount of time that you must wait after initially pressing for the gun to start firing, then it will go based on attack speed, useful for things like miniguns)
+#inaccuracy (how far positive or negative the projectile will go from the angle of the limb, shouldn't always be used. in degrees.)

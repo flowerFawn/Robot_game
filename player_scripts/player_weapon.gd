@@ -1,5 +1,6 @@
 extends Node2D
 @export var is_left:bool
+var rng = RandomNumberGenerator.new()
 var projectile:Resource
 var instanced_projectile
 var damage:float
@@ -8,6 +9,7 @@ var projectile_turn_speed:float
 var gain_damage:bool
 var gain_speed:bool
 var spin_up:float
+var inaccuracy:int
 var left_spinning:bool
 var right_spinning:bool
 func _ready():
@@ -24,6 +26,7 @@ func _ready():
 	gain_speed = stats.get("gain_speed", false)
 	get_parent().get_parent().add_stats(stats, self)
 	spin_up = stats.get("spin_up", 0)
+	inaccuracy = stats.get("inaccuracy", 0)
 	right_spinning = true
 	left_spinning = true
 	await get_tree().create_timer(spin_up).timeout
@@ -74,7 +77,7 @@ func shoot_projectile():
 	instanced_projectile.global_position = global_position
 	instanced_projectile.set_collision_mask_value(2, false)
 	instanced_projectile.targeted_group = "enemy"
-	instanced_projectile.rotation_degrees = get_parent().rotation_degrees
+	instanced_projectile.rotation_degrees = get_parent().rotation_degrees + rng.randi_range(-10, 10)
 	instanced_projectile.damage = damage
 	instanced_projectile.speed = projectile_speed
 	instanced_projectile.gain_damage = gain_damage
