@@ -43,7 +43,7 @@ func decode_part_json():
 
 func will_shoot():
 	if (is_left and Input.is_action_pressed("left_shoot")) or (not is_left and Input.is_action_pressed("right_shoot")):
-		if get_parent().get_parent().player_state != "sliding" and get_node("Shot_cooldown").time_left == 0:
+		if (get_parent().get_parent().player_state != "sliding" or is_left) and get_node("Shot_cooldown").time_left == 0:
 			if (is_left and not left_spinning) or (not is_left and not right_spinning):
 				return true
 			else:
