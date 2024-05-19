@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://player_scripts/player_arm.gd" id="3_uxcag"]
 [ext_resource type="Texture2D" uid="uid://b1be8hf1cqfxa" path="res://sprites/limbs/torsos/error_torso.png" id="4_hkpw0"]
 [ext_resource type="Script" path="res://player_scripts/player_leg.gd" id="4_l7m4c"]
-[ext_resource type="Script" path="res://scripts/player_weapon.gd" id="5_2x807"]
+[ext_resource type="Script" path="res://player_scripts/player_weapon.gd" id="5_2x807"]
 [ext_resource type="Texture2D" uid="uid://qn31vvwm1h7y" path="res://sprites/limbs/arms/error_arm.png" id="6_issu3"]
 [ext_resource type="Script" path="res://scripts/collectionarea.gd" id="7_p8ot4"]
 [ext_resource type="Texture2D" uid="uid://y6p0jgdsult7" path="res://sprites/limbs/legs/placeholder.png" id="9_8ooks"]
