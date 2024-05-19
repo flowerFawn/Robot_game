@@ -77,7 +77,7 @@ func shoot_projectile():
 	instanced_projectile.global_position = global_position
 	instanced_projectile.set_collision_mask_value(2, false)
 	instanced_projectile.targeted_group = "enemy"
-	instanced_projectile.rotation_degrees = get_parent().rotation_degrees + rng.randi_range(-10, 10)
+	instanced_projectile.rotation_degrees = get_parent().rotation_degrees + rng.randi_range(-inaccuracy, inaccuracy)
 	instanced_projectile.damage = damage
 	instanced_projectile.speed = projectile_speed
 	instanced_projectile.gain_damage = gain_damage
