@@ -10,8 +10,9 @@
 #company (a string from a predetermined list, not case sensitive)
 #cost (how much scrap it costs to buy)
 
-#weapons are very different, their stuff is here beneath. they can also use any value found in standard limbs, except for hosts, though it is not undone when destroyed as the systems are to intertwined with the rest of the body
+#weapons are very different, their stuff is here beneath. they can also use any value found in standard limbs, except for hosts, though it is not undone when destroyed as the systems are to intertwined with the rest of the body (in terms of lore, that difference is actually mainly for gameplay purpouses)
 #projectile ("res://instanceables/projectiles/scene_name.tscn") the projectile that gets loaded, texture is included in this
 #attack_speed (in seconds)
 #damage (damage it does, standard dps should be /put standard dps here/)
 #projectile_speed (in units per second, not a Vector2)
+#spin_up (amount of time that you must wait after initially pressing for the gun to start firing, then it will go based on attack speed, useful for things like miniguns)

@@ -7,6 +7,9 @@ var projectile_speed:float
 var projectile_turn_speed:float
 var gain_damage:bool
 var gain_speed:bool
+var spin_up:float
+var left_spinning:bool
+var right_spinning:bool
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
@@ -20,6 +23,12 @@ func _ready():
 	projectile_speed = stats["projectile_speed"]
 	gain_speed = stats.get("gain_speed", false)
 	get_parent().get_parent().add_stats(stats, self)
+	spin_up = stats.get("spin_up", 0)
+	right_spinning = true
+	left_spinning = true
+	await get_tree().create_timer(spin_up).timeout
+	right_spinning = false
+	left_spinning = true
 	
 
 func _process(_delta):
@@ -32,8 +41,30 @@ func decode_part_json():
 		var stats: Dictionary = load("res://player_limbs/player_weapons/" + Selected_Limbs.parts["right_weapon"] + ".json").data
 		return stats
 
+func will_shoot():
+	if (is_left and Input.is_action_pressed("left_shoot")) or (not is_left and Input.is_action_pressed("right_shoot")):
+		if get_parent().get_parent().player_state != "sliding" and get_node("Shot_cooldown").time_left == 0:
+			if (is_left and not left_spinning) or (not is_left and not right_spinning):
+				return true
+			else:
+				return false
+		else:
+			return false
+	else:
+		return false
+
 func is_shooting():
-	if ((is_left and Input.is_action_pressed("left_shoot")) or (not is_left and Input.is_action_pressed("right_shoot") and get_parent().get_parent().player_state != "sliding")) and get_node("Shot_cooldown").time_left == 0:
+	if Input.is_action_just_pressed("left_shoot") and is_left:
+		left_spinning = true
+		await get_tree().create_timer(spin_up).timeout
+		left_spinning = false
+		
+	if Input.is_action_just_pressed("right_shoot") and not is_left:
+		right_spinning = true
+		await get_tree().create_timer(spin_up).timeout
+		right_spinning = false
+		
+	if will_shoot():
 		shoot_projectile()
 		
 func shoot_projectile():

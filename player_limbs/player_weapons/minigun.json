@@ -4,5 +4,6 @@
 	"damage" : 10,
 	"projectile_speed" : 350,
 	"weight" : 100000,
-	"speed" : 0.5
+	"speed" : 0.5,
+	"spin_up" : 2
 }
