@@ -26,6 +26,7 @@ size = Vector2(24, 50)
 [node name="EnemyMain" type="CharacterBody2D" groups=["enemy", "light_enemy"]]
 collision_layer = 16
 script = ExtResource("1_kosva")
+bullet_speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy_limb"]]
 position = Vector2(0, 4)
