@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://7s2mbix1nc7l"]
+[gd_scene load_steps=12 format=3 uid="uid://7s2mbix1nc7l"]
 
 [ext_resource type="Script" path="res://levels/level scripts/Workshop.gd" id="1_1a6c0"]
 [ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="1_g6u7q"]
 [ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="2_bkqjd"]
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player_scripts/player.tscn" id="3_gfvn6"]
 [ext_resource type="Script" path="res://levels/cheat_input_handler.gd" id="5_llhq3"]
+[ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="6_ey0ah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyc6m"]
 size = Vector2(330, 31.75)
@@ -108,6 +109,19 @@ drag_and_drop_selection_enabled = false
 secret = true
 secret_character = ""
 script = ExtResource("5_llhq3")
+
+[node name="CheatTextDisplay" type="Label" parent="CheatInputHandler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.445
+anchor_top = 4.903
+anchor_right = 3.549
+anchor_bottom = 5.645
+offset_left = 0.0321808
+offset_top = 0.00698853
+offset_right = -0.00483704
+offset_bottom = 0.00498962
+theme = ExtResource("6_ey0ah")
 
 [connection signal="body_entered" from="Workshop/WorkTableInteracable" to="Workshop" method="_on_work_table_interacable_body_entered"]
 [connection signal="body_exited" from="Workshop/WorkTableInteracable" to="Workshop" method="out_of_interactable_range"]
