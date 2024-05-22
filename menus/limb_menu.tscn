@@ -97,6 +97,16 @@ script = ExtResource("2_nwdpp")
 searched_folder = "res://player_limbs/player_weapons"
 assigned_limb = "left_weapon"
 
+[node name="Head" type="OptionButton" parent="."]
+offset_left = 323.0
+offset_top = 97.0
+offset_right = 573.0
+offset_bottom = 154.0
+theme = ExtResource("1_fqmev")
+script = ExtResource("2_nwdpp")
+searched_folder = "res://player_limbs/player_heads"
+assigned_limb = "head"
+
 [connection signal="item_selected" from="LeftLeg" to="LeftLeg" method="_on_item_selected"]
 [connection signal="item_selected" from="RightLeg" to="RightLeg" method="_on_item_selected"]
 [connection signal="item_selected" from="Torso" to="Torso" method="_on_item_selected"]
@@ -105,3 +115,4 @@ assigned_limb = "left_weapon"
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="item_selected" from="RightWeapon" to="RightWeapon" method="_on_item_selected"]
 [connection signal="item_selected" from="LeftWeapon" to="LeftWeapon" method="_on_item_selected"]
+[connection signal="item_selected" from="Head" to="Head" method="_on_item_selected"]

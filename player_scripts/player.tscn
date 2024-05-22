@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://br2p34txi01wm"]
+[gd_scene load_steps=19 format=3 uid="uid://br2p34txi01wm"]
 
 [ext_resource type="Script" path="res://player_scripts/player_torso.gd" id="1_hu2in"]
 [ext_resource type="Script" path="res://player_scripts/player_main.gd" id="1_xrvte"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/collectionarea.gd" id="7_p8ot4"]
 [ext_resource type="Texture2D" uid="uid://y6p0jgdsult7" path="res://sprites/limbs/legs/placeholder.png" id="9_8ooks"]
 [ext_resource type="Texture2D" uid="uid://bv3u4md3uw55y" path="res://general images/placeholder_wind_effect.png" id="11_0ujfb"]
+[ext_resource type="Script" path="res://player_scripts/player_head.gd" id="12_xynvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys71y"]
 size = Vector2(8, 24)
@@ -27,6 +28,9 @@ size = Vector2(2.5, 10)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqkdg"]
 radius = 12.0
 height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r1oy"]
+size = Vector2(6, 5)
 
 [node name="PlayerMain" type="CharacterBody2D" groups=["player"]]
 collision_layer = 132
@@ -167,6 +171,18 @@ z_index = 100
 position = Vector2(0, 2)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("11_0ujfb")
+
+[node name="Head" type="StaticBody2D" parent="." groups=["limb"]]
+position = Vector2(4, -5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("12_xynvr")
+
+[node name="HeadCollision" type="CollisionShape2D" parent="Head"]
+position = Vector2(-4, -4.5)
+shape = SubResource("RectangleShape2D_7r1oy")
+
+[node name="ScriptHost" type="Node2D" parent="Head"]
 
 [connection signal="body_entered" from="CollectionArea" to="CollectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="CollectionArea" to="CollectionArea" method="_on_body_exited"]

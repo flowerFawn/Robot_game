@@ -31,6 +31,8 @@ func get_limb_type():
 			return "torsos"
 		"right_weapon", "left_weapon":
 			return "weapons"
+		"head":
+			return "heads"
 	
 func _process(_delta):
 	pass

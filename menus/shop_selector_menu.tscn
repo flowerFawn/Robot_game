@@ -67,8 +67,20 @@ text = "Torsos"
 script = ExtResource("2_qi0ah")
 button_limb = "torsos"
 
+[node name="Button5" type="Button" parent="."]
+offset_left = 716.0
+offset_top = 752.0
+offset_right = 1360.0
+offset_bottom = 1040.0
+theme = ExtResource("1_fd6sk")
+theme_override_font_sizes/font_size = 128
+text = "Heads"
+script = ExtResource("2_qi0ah")
+button_limb = "heads"
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
 [connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]
 [connection signal="pressed" from="Button4" to="Button4" method="_on_pressed"]
+[connection signal="pressed" from="Button5" to="Button5" method="_on_pressed"]
