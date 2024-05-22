@@ -72,23 +72,19 @@ position = Vector2(50, -21)
 position = Vector2(93, -23)
 hp = 25.0
 damage = 5.0
-bullet_speed = 250.0
 
 [node name="EnemyMain2" parent="SpawnLevel" instance=ExtResource("6_6756w")]
 position = Vector2(223, -204)
 hp = 25.0
 damage = 5.0
-bullet_speed = 250.0
 
 [node name="EnemyMain3" parent="SpawnLevel" instance=ExtResource("6_6756w")]
 position = Vector2(139, -23)
 hp = 25.0
 damage = 5.0
-bullet_speed = 250.0
 
 [node name="EnemyMain4" parent="SpawnLevel" instance=ExtResource("6_6756w")]
 position = Vector2(424, -23)
-bullet_speed = 250.0
 
 [node name="UIControl" parent="." instance=ExtResource("7_de3om")]
 
