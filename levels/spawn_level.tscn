@@ -18,7 +18,7 @@ size = Vector2(88, 166)
 size = Vector2(1350, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdeih"]
-size = Vector2(137, 3)
+size = Vector2(49, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csd51"]
 size = Vector2(20, 166)
@@ -50,7 +50,7 @@ position = Vector2(841, 125)
 shape = SubResource("RectangleShape2D_hjily")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/Floors"]
-position = Vector2(500.5, -44)
+position = Vector2(456.5, -44.25)
 shape = SubResource("RectangleShape2D_bdeih")
 one_way_collision = true
 
