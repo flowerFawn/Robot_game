@@ -98,6 +98,7 @@ searched_folder = "res://player_limbs/player_weapons"
 assigned_limb = "left_weapon"
 
 [node name="Head" type="OptionButton" parent="."]
+layout_mode = 0
 offset_left = 323.0
 offset_top = 97.0
 offset_right = 573.0
