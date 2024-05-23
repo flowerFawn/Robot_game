@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt4b361ry7x5t"]
+[gd_scene load_steps=13 format=3 uid="uid://bt4b361ry7x5t"]
 
 [ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="1_hngm8"]
 [ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="2_voi2j"]
 [ext_resource type="PackedScene" uid="uid://cu1cmttchc8so" path="res://dynamic_scene_assets/ladder.tscn" id="3_se45q"]
-[ext_resource type="PackedScene" uid="uid://qjcrbllqri7i" path="res://dynamic_scene_assets/one_way_floor.tscn" id="4_njxqv"]
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player_scripts/player.tscn" id="5_71u5p"]
 [ext_resource type="PackedScene" uid="uid://dla2x6o8b00mb" path="res://enemies/light_enemy.tscn" id="6_eiang"]
 [ext_resource type="PackedScene" uid="uid://d28alxgvssei7" path="res://UI/main_player_ui.tscn" id="7_nqixs"]
@@ -60,9 +59,6 @@ shape = SubResource("RectangleShape2D_i06bw")
 
 [node name="Ladders" parent="SpawnLevel" instance=ExtResource("3_se45q")]
 position = Vector2(201, -29)
-
-[node name="OneWayFloor" parent="SpawnLevel" instance=ExtResource("4_njxqv")]
-position = Vector2(23, -188)
 
 [node name="Player" parent="SpawnLevel" instance=ExtResource("5_71u5p")]
 visibility_layer = 3
