@@ -25,5 +25,5 @@ func _process(delta):
 	if not is_time_slowed:
 		time_stored = clamp(time_stored + delta / 4, 0, 10)
 	else:
-		time_stored = clamp(time_stored - delta, 0, 10)
+		time_stored = clamp(time_stored - delta * 2, 0, 10)
 	print(time_stored)
