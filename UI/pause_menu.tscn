@@ -46,7 +46,7 @@ theme = ExtResource("2_enp63")
 theme_override_font_sizes/font_size = 128
 text = "Main Menu"
 script = ExtResource("3_3wy8p")
-link_to = "res://main_menu.tscn"
+link_to = "res://menus/main_menu.tscn"
 
 [node name="QuitButton" type="Button" parent="Control"]
 layout_mode = 1
