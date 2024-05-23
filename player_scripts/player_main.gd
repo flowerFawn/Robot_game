@@ -13,9 +13,12 @@ var current_hp:float
 var current_parts:Array = ["head", "left_leg", "right_leg", "left_arm", "right_arm"]
 var slide_immunity_end:float
 var slide_immunity:bool = false
+var delta_multiplier:float = 1
+#delta multiplier is only intended to be used for the sandevistan head
 @export var camera_disabled:bool = false
 
 func _ready():
+	Engine.time_scale = 1
 	Player_Stats.player_current_hp = total_hp
 	Player_Stats.player_total_hp = total_hp
 	#gets the UI if it exists and calls set_max on it
@@ -28,6 +31,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	#as mentioned earlier, this is only intended to be used for the sandevistan head
+	delta = delta * delta_multiplier
 	#adds y speed if in the air
 	if player_state not in UNMOVABLE_STATES and is_climbing:
 		current_forces.y = take_climbing_input()

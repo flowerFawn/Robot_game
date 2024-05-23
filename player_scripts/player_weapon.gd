@@ -12,6 +12,7 @@ var spin_up:float
 var inaccuracy:int
 var left_spinning:bool
 var right_spinning:bool
+var attack_speed
 func _ready():
 	var stats: Dictionary
 	stats = decode_part_json()
@@ -21,6 +22,7 @@ func _ready():
 	if stats.get("projectile_turn_speed") != null:
 		projectile_turn_speed = stats["projectile_turn_speed"]
 	get_node("Shot_cooldown").wait_time = stats["attack_speed"]
+	attack_speed = stats["attack_speed"]
 	gain_damage = stats.get("gain_damage", false)
 	projectile_speed = stats["projectile_speed"]
 	gain_speed = stats.get("gain_speed", false)
@@ -59,12 +61,12 @@ func will_shoot():
 func is_shooting():
 	if Input.is_action_just_pressed("left_shoot") and is_left:
 		left_spinning = true
-		await get_tree().create_timer(spin_up).timeout
+		await get_tree().create_timer(spin_up / get_parent().get_parent().delta_multiplier).timeout
 		left_spinning = false
 		
 	if Input.is_action_just_pressed("right_shoot") and not is_left:
 		right_spinning = true
-		await get_tree().create_timer(spin_up).timeout
+		await get_tree().create_timer(spin_up / get_parent().get_parent().delta_multiplier).timeout
 		right_spinning = false
 		
 	if will_shoot():
@@ -72,6 +74,7 @@ func is_shooting():
 		
 func shoot_projectile():
 	#creates a new instance of the projectile, and sets its position
+	get_node("Shot_cooldown").wait_time = attack_speed / get_parent().get_parent().delta_multiplier
 	get_node("Shot_cooldown").start()
 	instanced_projectile = projectile.instantiate()
 	instanced_projectile.global_position = global_position

@@ -1,0 +1,4 @@
+{
+	"hp" : 5,
+	"script" : "res://limb_scripts/slowsand.gd"
+}

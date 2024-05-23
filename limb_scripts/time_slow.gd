@@ -25,5 +25,4 @@ func _process(delta):
 		time_stored = clamp(time_stored + delta / 4, 0, 10)
 	else:
 		time_stored = clamp(time_stored - delta, 0, 10)
-		time_stored
 	print(time_stored)
