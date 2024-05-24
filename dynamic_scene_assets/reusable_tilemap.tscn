@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2n3uetymhy4f"]
+
+[ext_resource type="TileSet" uid="uid://c067g8q7ovhxk" path="res://dynamic_scene_assets/reusable_tilemap.tres" id="1_1dhsq"]
+
+[node name="ReusableTileMap" type="TileMap" groups=["floor"]]
+tile_set = ExtResource("1_1dhsq")
+format = 2
+layer_0/tile_data = PackedInt32Array(65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 0, 0, 65538, 0, 0, 65537, 0, 0, 65536, 0, 0, 131071, 0, 0, 131070, 0, 0, 131069, 0, 0)
