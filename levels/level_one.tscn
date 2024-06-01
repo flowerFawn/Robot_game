@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5ps62fkcku5m" path="res://UI/pause_menu.tscn" id="8_i6t24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alqc2"]
-size = Vector2(12, 144)
+size = Vector2(12, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irah3"]
 size = Vector2(17, 144)
@@ -33,7 +33,7 @@ position = Vector2(-271, -125)
 position = Vector2(201, -29)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLevel/Ladders"]
-position = Vector2(310, 102)
+position = Vector2(310, 86)
 shape = SubResource("RectangleShape2D_alqc2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnLevel/Ladders"]

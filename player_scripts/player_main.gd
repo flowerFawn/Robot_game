@@ -194,13 +194,10 @@ func set_immunity(set_to):
 func can_walk():
 	#elif player_state not in UNMOVABLE_STATES and ((not (not are_legs_on_floor() and is_climbing) and current_parts.has("left_leg") and current_parts.has("right_leg")) or (not current_parts.has("left_leg") or not current_parts.has("right_leg") and not are_legs_on_floor())):
 	if player_state not in UNMOVABLE_STATES:
-		if not (not are_legs_on_floor() and is_climbing):
-			if current_parts.has("left_leg") and current_parts.has("right_leg"):
-				return true
-			elif not are_legs_on_floor():
-				return true
-			else:
-				return false
+		if current_parts.has("left_leg") and current_parts.has("right_leg"):
+			return true
+		elif not are_legs_on_floor():
+			return true
 		else:
 			return false
 	else:
