@@ -1,23 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://7s2mbix1nc7l"]
+[gd_scene load_steps=8 format=3 uid="uid://7s2mbix1nc7l"]
 
 [ext_resource type="Script" path="res://levels/level scripts/Workshop.gd" id="1_1a6c0"]
-[ext_resource type="PackedScene" uid="uid://jthnff20rgbe" path="res://dynamic_scene_assets/floors.tscn" id="1_g6u7q"]
-[ext_resource type="PackedScene" uid="uid://dm7u3cavl2j1w" path="res://dynamic_scene_assets/walls.tscn" id="2_bkqjd"]
+[ext_resource type="PackedScene" uid="uid://d2n3uetymhy4f" path="res://dynamic_scene_assets/reusable_tilemap.tscn" id="3_0uqf5"]
 [ext_resource type="PackedScene" uid="uid://br2p34txi01wm" path="res://player_scripts/player.tscn" id="3_gfvn6"]
 [ext_resource type="Script" path="res://levels/cheat_input_handler.gd" id="5_llhq3"]
 [ext_resource type="Theme" uid="uid://bppvu27nvmqm6" path="res://assets/standard_theme.tres" id="6_ey0ah"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyc6m"]
-size = Vector2(330, 31.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xlxa"]
-size = Vector2(25, 176)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ndvp"]
-size = Vector2(513, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y88ro"]
-size = Vector2(48, 16.5)
+size = Vector2(48, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsew8"]
 size = Vector2(16, 34)
@@ -33,27 +23,9 @@ script = ExtResource("1_1a6c0")
 position = Vector2(124, 143)
 camera_disabled = true
 
-[node name="Floors" parent="Workshop" instance=ExtResource("1_g6u7q")]
-position = Vector2(-1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Floors"]
-position = Vector2(160, 174.125)
-shape = SubResource("RectangleShape2D_pyc6m")
-
-[node name="Walls" parent="Workshop" instance=ExtResource("2_bkqjd")]
-position = Vector2(-5, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Walls"]
-position = Vector2(325, 75)
-shape = SubResource("RectangleShape2D_7xlxa")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Workshop/Walls"]
-position = Vector2(5, 80)
-shape = SubResource("RectangleShape2D_7xlxa")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Workshop/Walls"]
-position = Vector2(246.5, 0)
-shape = SubResource("RectangleShape2D_5ndvp")
+[node name="ReusableTileMap" parent="Workshop" instance=ExtResource("3_0uqf5")]
+position = Vector2(-21, 92)
+layer_0/tile_data = PackedInt32Array(262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 262146, 0, 0, 327682, 0, 0, 393218, 0, 0, 262147, 0, 0, 327683, 0, 0, 393219, 0, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0, 262149, 0, 0, 327685, 0, 0, 393221, 0, 0, 262150, 0, 0, 327686, 0, 0, 393222, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 262154, 0, 0, 327690, 0, 0, 393226, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, 262156, 0, 0, 327692, 0, 0, 393228, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 262158, 0, 0, 327694, 0, 0, 393230, 0, 0, 262159, 0, 0, 327695, 0, 0, 393231, 0, 0, 262160, 0, 0, 327696, 0, 0, 393232, 0, 0, 262161, 0, 0, 327697, 0, 0, 393233, 0, 0, 262162, 0, 0, 327698, 0, 0, 393234, 0, 0, 262163, 0, 0, 327699, 0, 0, 393235, 0, 0, 262164, 0, 0, 327700, 0, 0, 393236, 0, 0, 262165, 0, 0, 327701, 0, 0, 393237, 0, 0, -393196, 0, 0, -327660, 0, 0, -262124, 0, 0, -196588, 0, 0, -131052, 0, 0, -65516, 0, 0, 20, 0, 0, 65556, 0, 0, 131092, 0, 0, 196628, 0, 0, -393195, 0, 0, -327659, 0, 0, -262123, 0, 0, -196587, 0, 0, -131051, 0, 0, -65515, 0, 0, 21, 0, 0, 65557, 0, 0, 131093, 0, 0, 196629, 0, 0, -458752, 0, 0, -393216, 0, 0, -458751, 0, 0, -393215, 0, 0, -458750, 0, 0, -393214, 0, 0, -458749, 0, 0, -393213, 0, 0, -458748, 0, 0, -393212, 0, 0, -458747, 0, 0, -393211, 0, 0, -458746, 0, 0, -393210, 0, 0, -458745, 0, 0, -393209, 0, 0, -458744, 0, 0, -393208, 0, 0, -458743, 0, 0, -393207, 0, 0, -458742, 0, 0, -393206, 0, 0, -458741, 0, 0, -393205, 0, 0, -458740, 0, 0, -393204, 0, 0, -458739, 0, 0, -393203, 0, 0, -458738, 0, 0, -393202, 0, 0, -458737, 0, 0, -393201, 0, 0, -458736, 0, 0, -393200, 0, 0, -458735, 0, 0, -393199, 0, 0, -458734, 0, 0, -393198, 0, 0, -458733, 0, 0, -393197, 0, 0, -458732, 0, 0, -458731, 0, 0, -327680, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, -327679, 0, 0, -262143, 0, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0)
 
 [node name="WorkTableInteracable" type="Area2D" parent="Workshop"]
 position = Vector2(160, 150)
@@ -61,7 +33,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/WorkTableInteracable"]
-position = Vector2(0, 1.25)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_y88ro")
 
 [node name="ShopInteractable" type="Area2D" parent="Workshop"]
@@ -70,7 +42,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/ShopInteractable"]
-position = Vector2(0, -10)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_xsew8")
 
 [node name="ExitInteractable" type="Area2D" parent="Workshop"]
@@ -79,7 +51,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/ExitInteractable"]
-position = Vector2(0, -10)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_xsew8")
 
 [node name="QuitInteractable" type="Area2D" parent="Workshop"]
@@ -88,7 +60,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/QuitInteractable"]
-position = Vector2(0, -10)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_xsew8")
 
 [node name="LevelCamera" type="Camera2D" parent="." groups=["slide_excluded"]]
