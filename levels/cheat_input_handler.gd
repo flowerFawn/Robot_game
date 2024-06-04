@@ -30,7 +30,7 @@ func _on_text_changed(new_text):
 
 	check_for_cheat_code(text)
 
-func check_for_cheat_code(text):
+func check_for_cheat_code(current_text):
 	for cheat_code in _CHEAT_CODES:
 		checked_text = text.right(len(cheat_code))
 		if checked_text == cheat_code:

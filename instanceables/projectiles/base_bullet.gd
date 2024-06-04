@@ -18,10 +18,11 @@ func _physics_process(delta):
 	if gain_damage == true:
 		damage += delta * 10
 	hit_limb = move_and_collide(Vector2(speed * delta,0).rotated(rotation))
-	if hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group):
-		if hit_limb.get_collider().get_parent().is_in_group("player"):
+	if (hit_limb != null and hit_limb.get_collider().get_parent().is_in_group(targeted_group)) or (hit_limb != null and hit_limb.get_collider().is_in_group("all_hit")):
+		if hit_limb.get_collider().get_parent().is_in_group("player") or hit_limb.get_collider().is_in_group("shield"):
 			#total takes full damage, limb takes half
 			hit_limb.get_collider().take_damage(damage)
+			print("test")
 		elif hit_limb.get_collider().get_parent().is_in_group("enemy"):
 			#total takes full damage
 			hit_limb.get_collider().get_parent().take_damage(damage)

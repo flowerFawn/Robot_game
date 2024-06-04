@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0gmi3yxyp00n"]
+
+[ext_resource type="Script" path="res://instanceables/projectiles/shield.gd" id="1_a3fiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5oi5"]
+size = Vector2(10, 38)
+
+[node name="Shield" type="StaticBody2D" groups=["all_hit", "shield"]]
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("1_a3fiu")
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r5oi5")
