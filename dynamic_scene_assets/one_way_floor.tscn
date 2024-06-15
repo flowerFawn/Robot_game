@@ -12,3 +12,4 @@ script = ExtResource("1_qcsep")
 
 [node name="Warning Disabler" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4504o")
+disabled = true
