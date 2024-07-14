@@ -49,8 +49,7 @@ func _physics_process(delta):
 		current_forces.x = take_movement_inputs()
 	elif player_state == "walking":
 		current_forces.x = 0
-	if are_legs_on_floor():
-		current_forces.y -= take_jump_input()
+	handle_jump()
 	#if the player is not on the floor, and they are climbing, they will slow down (smoothes it out a lot, looks much prettier
 	if not are_legs_on_floor() and is_climbing and abs(current_forces.x) > 1:
 		current_forces.x -= 100 * delta
@@ -58,7 +57,6 @@ func _physics_process(delta):
 	if (player_state == "sliding" and abs(current_forces).x < 1) or (Input.is_action_just_released("slide") and player_state == "sliding"):
 		#sets state back, and does end_slide on each limb, undoing the start of the slide
 		run_end_slide()
-		set_immunity(false)
 	#takes 10 per second away from the current forces x axis, multiplier to change direction
 	if player_state == "sliding":
 		current_forces.x -= 10 * delta * stored_slide
@@ -100,8 +98,11 @@ func remove_stats(limb_stats: Dictionary, removed_limb):
 func add_gravity(delta):
 	#uses the floor ray like is_on_floor()
 	if get_node("FloorRay").get_collider() == null or not get_node("FloorRay").get_collider().is_in_group("floor"):
-		current_forces.y += total_weight * delta
-	else:
+		if current_forces.y < 0:
+			current_forces.y += total_weight * delta
+		else:
+			current_forces.y += total_weight * delta * 2
+	elif current_forces.y > 0:
 		current_forces.y = 0
 
 func take_movement_inputs():
@@ -113,12 +114,18 @@ func take_movement_inputs():
 		movement_total += total_speed
 	return movement_total
 
+func handle_jump():
+	if take_jump_input():
+		if player_state == "sliding":
+			run_end_slide()
+		current_forces.y = -total_jump
+
 func take_jump_input():
 	#if not jumping (or is not on the floor) will return 0 to be added, and if jumping and on the floor will add the total jump to the y movement
 	if Input.is_action_just_pressed("jump") and are_legs_on_floor():
-		return total_jump
+		return true
 	else:
-		return 0
+		return false
 		
 func take_slide_input():
 	if Input.is_action_just_pressed("slide") and player_state not in UNMOVABLE_STATES and are_legs_on_floor() and total_speed >= 30:
@@ -178,6 +185,7 @@ func run_slide(slide_output):
 
 func run_end_slide():
 	player_state = "walking"
+	set_immunity(false)
 	position.y -= 6
 	for limb in get_children():
 		if limb.is_in_group("ray"):	
