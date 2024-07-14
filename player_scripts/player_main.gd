@@ -46,7 +46,7 @@ func _physics_process(delta):
 	#does all the movement checks
 	#runs if the player_state isn't an unmoveable state (such as sliding or disabled) and they are on the floor, while in a ladder, or just not in a ladder, or that they are in the air with only one leg
 	elif can_walk():
-		current_forces.x = take_movement_inputs()
+		handle_horizontal_movement(delta)
 	elif player_state == "walking":
 		current_forces.x = 0
 	handle_jump()
@@ -105,14 +105,25 @@ func add_gravity(delta):
 	elif current_forces.y > 0:
 		current_forces.y = 0
 
-func take_movement_inputs():
+func handle_horizontal_movement(delta):
+	const movement_decay = 10
 	#returns a total  to set the speed to (only will be called when walking)
 	var movement_total:float = 0
-	if Input.is_action_pressed("left"):
-		movement_total -= total_speed
-	if Input.is_action_pressed("right"):
-		movement_total += total_speed
-	return movement_total
+	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+		#it takes a second of holding the button to 
+		if Input.is_action_pressed("left"):
+			print("X")
+			movement_total -= total_speed * delta
+		if Input.is_action_pressed("right"):
+			movement_total += total_speed * delta
+		clamp(current_forces.x + movement_total, -total_speed, total_speed)
+	else:
+		movement_total = movement_decay * delta
+		if current_forces.x > 0:
+			current_forces.x = clamp(current_forces.x - movement_total, 0, total_speed)
+		if 0 > current_forces.x:
+			current_forces.x = clamp(current_forces.x - movement_total, -total_speed, 0)
+		
 
 func handle_jump():
 	if take_jump_input():
