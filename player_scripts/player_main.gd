@@ -106,23 +106,24 @@ func add_gravity(delta):
 		current_forces.y = 0
 
 func handle_horizontal_movement(delta):
-	const movement_decay = 10
+	var movement_decay = 100
+	if not are_legs_on_floor():
+		movement_decay = 0
 	#returns a total  to set the speed to (only will be called when walking)
 	var movement_total:float = 0
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		#it takes a second of holding the button to 
 		if Input.is_action_pressed("left"):
-			print("X")
 			movement_total -= total_speed * delta
 		if Input.is_action_pressed("right"):
 			movement_total += total_speed * delta
-		clamp(current_forces.x + movement_total, -total_speed, total_speed)
+		current_forces.x = clamp(current_forces.x + movement_total, -total_speed, total_speed)
 	else:
 		movement_total = movement_decay * delta
 		if current_forces.x > 0:
 			current_forces.x = clamp(current_forces.x - movement_total, 0, total_speed)
 		if 0 > current_forces.x:
-			current_forces.x = clamp(current_forces.x - movement_total, -total_speed, 0)
+			current_forces.x = clamp(current_forces.x + movement_total, -total_speed, 0)
 		
 
 func handle_jump():
