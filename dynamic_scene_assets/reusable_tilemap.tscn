@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://c067g8q7ovhxk" path="res://dynamic_scene_assets/reusable_tilemap.tres" id="1_1dhsq"]
 
-[node name="ReusableTileMap" type="TileMap" groups=["floor"]]
+[node name="Layer0" type="TileMapLayer" groups=["floor"]]
+use_parent_material = true
 scale = Vector2(0.125, 0.125)
 tile_set = ExtResource("1_1dhsq")
-format = 2
